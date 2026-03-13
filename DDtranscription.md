@@ -1,8 +1,30 @@
-# Transcription
+<TEI>
+<teiHeader>
+ <fileDesc>
 
-## Folio 1
+  <titleStmt>
+   <title>Dādestān ī dēnīg </title>
+   <editor>Roya Assadollahi</editor>
+  </titleStmt>
 
+  <sourceDesc>
+   <msDesc>
+    <msIdentifier>
+     <repository> Ms.K35the University Library Copenhagen</repository>
+     <idno>MS 123</idno>
+    </msIdentifier>
+   </msDesc>
+  </sourceDesc>
 
+ </fileDesc>
+</teiHeader>
+<text>
+
+<body>
+
+<pb n="1"/>
+
+<ab>
 
 0.0	pad nām ud nērōg ayārīh ī dādār Ohrmazd wispān yazdān
 		hamāg yazdān ī mēnōyān ud yazdān ī gētīyān
@@ -14,7 +36,7 @@
 		čand-itān āfrīnēnīd ud čiyōn-itān āfrīnēnīd
 		purr-paymānīhā bowandag-abzōn-padēxīhā ō-iz ašmāh hamist ud ham-paywandān ǰud ǰud pad xwēš niyābag spurr rasād
     
-## Folio 2
+<pb n="2"/>
 
 ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 0.4	ān ī-tān framūd [K35_100r] nibištan [T60a_2r] abar ayāsišn ī ō ham-wēnišnīh ud ham-pursagīh ī abāg man mihrbānagīh ud dēn-dōstīh ī xwad
@@ -28,7 +50,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 		ēg-iš kerbag ī ahīy waxšišnīgtar ud ān ī meh pattāyišnīgtar 
 0.6	ud stāyišn ī-tān man rāy wēš az sāmān meh pāyag framūd nibištan
 
-## Folio 3
+<pb n="3"/>
 
 0.7	ān ī-tān pad dānistan ud šnāxtan rāh ī bē ō [K35_100v] man ēnyā ō anīy kas nē būdan framūd nibištan [T60a_2v]
 		az ašmāh dōšāramīh ō pēš hu-čašmīhā bē mādagwarīh ī rāstīh rāy čimīg nigerišn dādīhātar
@@ -40,7 +62,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 0.9	ān ī-tān kāmag abāyist ud xwaš-menišnīh az ān ī man abar būd framūd nibištan
 		ham nišān ī dōstīh ud hu-čašmīh u-tān az yazdān [K35_101r] ham paymān dōstīh ud hu-čašmīh ī xwēš bawēd
 
-## Folio 4
+<pb n="4"/>
 
 0.10	ān ī-tān [T60a_3r] andar wēš-dōstīh stāyīdārīh ud frāy-būdīhā man rāy pad kišwar dastwarīh ud ēkīh ī bē az didīgarīh ud tāgīh ud ǰudīh-iz ham-sāmān framūd nibištan
 		agar ōh-iz ašmāh dōstīh rāy nibišt pas-iz man duš-xwār sahist az ēd-ōwōn stāyišn
@@ -51,7 +73,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 	čē-m stāyišn ān kāmag ī pad xwēš pāyag ud tāyag wimand
 	u-m ābrōyīg sahēd ērīh ī andar xwēš ud abarīg ud hāwand-mehīh abar kehān
 
-## Folio 5
+<pb n="5"/>
 
 0.10	ān ī-tān [T60a_3r] andar wēš-dōstīh stāyīdārīh ud frāy-būdīhā man rāy pad kišwar dastwarīh ud ēkīh ī bē az didīgarīh ud tāgīh ud ǰudīh-iz ham-sāmān framūd nibištan
 		agar ōh-iz ašmāh dōstīh rāy nibišt pas-iz man duš-xwār sahist az ēd-ōwōn stāyišn
@@ -69,7 +91,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 		ud az ān ī a-wizīrišnīg frēzwānīg kār kam pardazišnīh ast ∵
 
 
-## Folio 6
+<pb n="6"/>
 
 0.13	abar pāsox ī hangām ī pardazišn ī-mān zamān dād ī-tān andar hamāg paydāgēnīd
 	ǰud-iz az hu-čašmīh ī dōstīhā ud nišān ī āgāhīhā ī-tān az ān ī man kam-pardazišnīh aziš paydāg
@@ -80,7 +102,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 			u-m hangām hangām andak ī pardazišn būd u-m ham pursišn nigerīd
 
 
-## Folio 7
+<pb n="7"/>
 
 0.16	ud ka-m ham-ǰādagīhā nibēsišnīh dīd ēg-im pursišn dar dar ǰudāg ud daxšagīhātar kerdan čimīgtar sahist
 0.17	u-m ō dibīr-ēw dād pursišn ī pad ham paččēn ī-tān [TD4_173] framūd nibištan dar dar harw pursišn-ēw pad dar-ēw nibišt ud hangerdēnīd
@@ -89,7 +111,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 0.20	az ān ī čiyōn ān ī amāh āgāhīh az ān ī pēšēnīgān dastwarān kē weh ud dānāgtar ud ahū ud rad ud dastwar ī amāh būd hēnd
 		ka-iz āgenēn ǰud-dādestānīh būd ān man ka-iz wizīr ī abar ham dar ēdōn čiyōn-imān dastwarān ī zamān ud dūdag pad mādagwar dāšt nibišt ∵
 
-## Folio 8
+<pb n="8"/>
 
 0.21	pas-iz abar gōwišn ī ān dastwar kē anīy-ēwēnag ēč ǰud-dādestānīh nēst
 	ud agar ast ī-m sahišn ō šnāsišn ī drīst rāy ayāft
@@ -108,7 +130,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 
 
 
-## Folio 9
+<pb n="9"/>
 
 0.25	ōwōn abar čim ī ham pursišnīhā agar ast ī-tān rōšntar ud paydāg ud čimīgtar abāyēd
 		ud nazdīktar rāh ō rāst nigēzišn rōšn
@@ -121,7 +143,7 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 		abāg a-brīd paywastagīhā [K35_104r] ī az bun ō frazām ud hāmhāgān-iz ∵ burzišnīg
 
 
-## Folio 10
+<pb n="10"/>
 
 0.28	paččēn ī pursišn čiyōn pāsox ēd kū ka-š tis andar nēst ī ān čim rāy ǰuttar ōwōn saham čiyōn nibēsīhēd ∵
 1.1	fradom ān pursēd kū mard ī ahlaw az star ud māh ud xwaršēd ātaxš ī Ohrmazd čē rāy weh dād estēd [TD4_176]
@@ -140,4 +162,12 @@ ud dagr pattāyād ud ō nēk-frazāmīh paywandīhād
 	mēnōyīg pad ān ī abēzag frawahr mēnōy-waxšīhā ō Druz kōxšāg ud spōzāg wānāg ud ānābāg ud ān ī yazdān spāh zōrēnāg
 	mēnōy xwadāyīh ī Ohrmazd gētīyīhā pad gētīy paymōgīh ud ham-bandīh ī tan ud gyān
 		
+</ab>
+
+</body>
+
+</text>
+
+</TEI>
+
 
