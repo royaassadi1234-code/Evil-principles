@@ -3,7 +3,7 @@
  <fileDesc>
 
   <titleStmt>
-   <title>Dādestān ī dēnīg </title>
+   <title>Transcription of Dādestān ī dēnīg </title>
    <editor>Roya Assadollahi</editor>
   </titleStmt>
 
