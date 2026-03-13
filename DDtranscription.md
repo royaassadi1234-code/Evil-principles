@@ -2,6 +2,7 @@
 
 ## Folio 1
 
+
 	pursišnīhā čand dar ī Mihr-xwaršēd ī Ādur-mahān az anōšag-ruwān Manuščihr ī Juwān-ǰamān kerd ud abārīg hu-dēnān u-š pāsox gōwizārēnīd ∵
 0.0	pad nām ud nērōg ayārīh ī dādār Ohrmazd wispān yazdān
 		hamāg yazdān ī mēnōyān ud yazdān ī gētīyān
