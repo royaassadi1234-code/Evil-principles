@@ -1,11 +1,31 @@
-# Translation
+<TEI>
+<teiHeader>
+ <fileDesc>
 
-## Folio 1
+  <titleStmt>
+   <title>Translation of Vizīdagīhā ī Zādspram </title>
+   <editor>Roya Assadollahi</editor>
+  </titleStmt>
 
-TRANSLATION: CHAPTER 1  
- 
-31 
- 
+  <sourceDesc>
+   <msDesc>
+    <msIdentifier>
+     <repository> the University Library Copenhagen</repository>
+     <idno>MS K35</idno>
+    </msIdentifier>
+   </msDesc>
+  </sourceDesc>
+
+ </fileDesc>
+</teiHeader>
+<text>
+
+<body>
+
+<pb n="1"/>
+
+<ab>
+<p>	
 This written aide -mémoire is called the Anthology of Zädspram son of Gušn -Jam.  
 Praise to the Creator Ohrmazd, to the Ameshas Spentas, to all the gods menog and gétig.  
 Words of the herbed Zädspram son of Gušn -jam, (originally) from the south.  
@@ -52,10 +72,10 @@ millennia. (10) And (Ohrmazd) divided it into three periods, each period (being)
 (11) Ahreman agreed.</p></text></page><page><number>16</number><text><p>(12) Ohrmazd saw that, since it was not possible to surround Ahreman, (for) whenever he 
 wished, he would return to his dark depths, many means would be prepared, and the fight 
 would be endless; so after fixing the time, he recited the Ahunawar.  
- 
+</p>
 
-## Folio 2
-
+<pb n="2"/>
+<p>
 (13) And by the Ahunawar he was shown three kinds (of things).  
  
 (14) First, that everything good is the will of Ohrmazd  
@@ -88,9 +108,10 @@ Ahreman (is) all malice  and devoid of goodness .</p></text></page><page><number
 punishment in sinners, and the striving toward good action and abstention from sin  
 (23) Third, the collaboration of creatures with one another, and from mutual aid (results) a 
 joint army; from the joint army (results) victory over the enemy, which is itself Renovation. 
+</p>
 
-## Folio 3
-
+<pb n="3"/>
+<p>
 (24) By these words, he [Ahreman] was confounded and fell back into darkness.  
  
 (25) Ohrmazd created the creatures with a body in the gerig state: first - 
@@ -143,8 +164,10 @@ other.
 towards the darkness, so that within the roof of the sky, a proportion of one -third reached 
 above the sphere of the stars.</p></text></page><page><number>19</number><text><p>CHAPTER 2  
 
-## Folio 4
+</p>
 
+<pb n="4"/>
+<p>
 On the Arrival of Ahreman in Creation  
  
 (1) It is revealed in religion that, in the month of Fravardin, on the day of Ohrmazd, at noon, 
@@ -179,8 +202,10 @@ Zoroaster, he was luminous like the sun. Ohrmazd created sleep in the form of a 
 years old, luminous and tall. And he sent to Gayömard and conferred sleep on him in a 
 duration equal to that of the recitation of an Ahuna vairya  
 
-## Folio 5
+</p>
 
+<pb n="5"/>
+<p>
 
 (11) When (Gayōmard) arose from (his) sleep, and his eyes were opened, he saw the world 
 that had become dark as night; all over the earth, similar to? (mad), were snakes, scorpions, 
@@ -207,8 +232,10 @@ came to defile the creatures, and (Ahreman) made the base of the sky to the exte
 which was lowered, as a main fortification, so that (the sky became) all dark, without light, 
 which is  
 and 000  
+</p>
 
-## Folio 6
+<pb n="6"/>
+<p>
 
 happened precisely in the coming of the adversary and enemy in the battles against God.  
  
@@ -241,9 +268,10 @@ is also called the (House of) Life, for it is a place in which vitality is distr
 Libra, in the Polaris below the eart h, through which the very force of mortality is more 
 manifest and more dominant. And because of the apogee of both of them, Gayomard 
 continued to live by himself  
+</p>
 
-
-## Folio 7
+<pb n="7"/>
+<p>
 
 (22) And for thirty years, Saturn did not return to (its) apogee, which is Libra. At the time 
 when Saturn came into Libra, Jupiter was in Capricorn, which is its perigee, and because of 
@@ -273,10 +301,11 @@ the two menogs came into Gayōmard's body —one for life, the activity of Ohrma
 considered very alive, the other for non -life, the Evil Spirit [in this acti vity] until it is killed, 
 and this will be the case until the end in the world, that is, other men will meet, and the 
 worst condition of the wicked. Ahreman saw destruction for the wicked; likewise, Ohrmazd 
-(saw) for the righteous the best thought, that is , the hope of eternity.  
+(saw) for the righteous the best thought, that is , the hope of eternity. 
+</p>
 
-
-## Folio 8
+<pb n="8"/>
+<p>
 
 (6) This was the first combat of heaven with Ahreman  
  
@@ -305,12 +334,10 @@ sets the wind of the atmosphere in motion, and the wind blew over the whole eart
 result was the Fräxkard Sea, which contains a third of this earth. Within it are kept a 
 thousand springs called the sheets of the lake, a thousand springs of water whos e water 
 comes from the seas and lakes and flows towards the (Fräxkard Sea).  
- 
+</p>
 
-
-## Folio 9
-
-
+<pb n="9"/>
+<p>
 (13) And each lake and each spring of water is of such a size that a swift rider (who) runs 
 around it on an Arab horse will reach it in forty days, that is, one thousand nine hundred 
 parasangs of the longest, each parasang (being) at least twenty thousand feet.</p></text></page><page><number>25</number><text><p>(14) Then the xrafstars died, and the poison that comes from them mingled with the earth. 
@@ -333,10 +360,10 @@ xrafstars was dissolved. Then the wind pushed (the water) back towards the sea F
 divided into three, and from it were (born) the three seas which are called Püidig, Kamrüd 
 and Syäwbun  
  
+</p>
 
-
-## Folio 10
-
+<pb n="10"/>
+<p>
 45</p></text></page><page><number>26</number><text><p>(18) Among these, Püidig  is itself a salty cauldron, in which the ebb and flow takes place, and 
 the connection of the ebb and flow depends on the moon, and all its changes are manifested 
 by the moon's ascendants and descendants.  
@@ -367,4 +394,14 @@ which have their source in the Alburz, descend into the earth and reappear in th
 triumphant fire Gušnasp; and secondly, (Lake) Sowar, which throws all the dirt  onto the 
 banks and keeps itself clear and pure, like the eye, which throws all dust and impurity to the 
 sides. Because of its depth, what enters the sea does not reach the bottom, and close to it 
-stands the fire Südig -Mihr, (i.e., the fire) Burzen -Mihr.  
+stands the fire Südig -Mihr, (i.e., the fire) Burzen -Mihr. 
+</p>
+		
+</ab>
+
+</body>
+
+</text>
+
+</TEI>
+
