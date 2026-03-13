@@ -1,7 +1,30 @@
-# Translation
+<TEI>
+<teiHeader>
+ <fileDesc>
 
-## Folio 1
+  <titleStmt>
+   <title>Translation of Dādestān ī dēnīg </title>
+   <editor>Roya Assadollahi</editor>
+  </titleStmt>
 
+  <sourceDesc>
+   <msDesc>
+    <msIdentifier>
+     <repository> the University Library Copenhagen</repository>
+     <idno>MS K35</idno>
+    </msIdentifier>
+   </msDesc>
+  </sourceDesc>
+
+ </fileDesc>
+</teiHeader>
+<text>
+
+<body>
+
+<pb n="1"/>
+
+<ab>
 HEADING 
 Questions on a number of subjects which Mihr-Xwarsed, son of Adur­
 Mah, and other associates of the Good Religion asked of Anosag-Ruwan 
@@ -26,8 +49,7 @@ and may it last long and conclude with gond results.
 meeting and discussion with me, it is (a sign) of your kindness and your 
 love of religion. 
 
-
-## Folio 2
+<pb n="2"/>
 
 (Int.5) We are all servants of the yazdan, and +fellow soldiers in the 
 struggle against the dr"z, persistent in the profession of the Good 
@@ -54,8 +76,7 @@ dranjenId-zand [I] uskiird-dadestan I agah den I nimUdiir cim I
 wizIdiir kirbag pad cand gyag hend ke pad-iz owon dadestan sniixtan 
 [ud] diinistan [Il riih aWe5an 3 wisadag. 
 
-
-## Folio 3
+<pb n="3"/>
 
 (fut.9) an I-tan kamag aba.yistan 4 ud xWaS-menisnih az an i man ahar 
 bUd framild nibistan a-m nisan I dostIh ud hu-c.smIh u-tan az yazdan 
@@ -73,7 +94,7 @@ tayag [ud] wimand u-m abroyIg sabed erth andar xwes abarIg [ud]
 hiiwand ud mehIh abar kehan. 
 
 
-## Folio 4
+<pb n="4"/>
 
 (Int.6) And +the main reason for the vast and high praise which you have 
 had written about me is your affection and kind regard, and my custom is to 
@@ -98,8 +119,7 @@ pleasant thoughts about me, this is also a mark of your friendship and
 benevolence, and may you have the same measure of friendship and kind 
 regards of the yazdiin. 
 
-
-## Folio 5
+<pb n="5"/>
 
 (1nt.10) As to that which you have had written in much friendship and 
 excessive praise of me (as if) I am a perfect Dastwar of the country, unique 
@@ -131,7 +151,7 @@ xwahisnih abe-bim.
 
 
 
-## Folio 6
+<pb n="6"/>
 
 (Int.15) ud im namag andar mah [I] IIr pad dol owon mad ka 
 xwastiirlh I az sahIgan pad se salag bahr 8 I siilag-e ud hu-denan 
@@ -147,7 +167,7 @@ judag ud daxsagIhatar 13 kardan cimigtar sahist.
 nibislan dar-dar har(w) pursisn-e pad dar-e nibisl ud hangirdenId. 
 
 
-## Folio 7
+<pb n="7"/>
 
 (Int.12) As to that which (you have had written) surely and confidently in 
 . regard to lengthy writing of your enquiries, it also showed that I should 
@@ -177,7 +197,7 @@ was a time of a little leisure for me, and I could look at these questions.
 
 
 
-## Folio 8
+<pb n="8"/>
 
 
 (Int.16) When I saw this letter (including) different cases, then it seemed 
@@ -201,7 +221,7 @@ mowmard 6 i den-agah ke snased ke den-agahiha wirast pad spas
 darem. [ud] madayan I raslih I pesenIglln dastwariin gowi n an ce pad 
 cim andar pasox [ud] ed ce pad rosngan n I wizir nibist. 
 
-## Folio 9
+<pb n="9"/>
 
 (Int.22) agar edon cim ray bowandag ayab wiz1r ray rosn ne wenihed 
 ne pargast az a-bowandaglh i den wizlr pad rosniha-nimiidarIh ud 
@@ -226,7 +246,7 @@ according to the opinion chiefly held by the authorities of our time and
 family:
 
 
-## Folio 10
+<pb n="10"/>
 
 (Int.21) Also, in respect of the statement of a authority of another kind (i.e. 
 not of my time and family) there is no disagreement, and if there is 
@@ -258,3 +278,12 @@ ud cimigtar abayed nazdiktar rab 5 rast nigezisn ud Iosn ne jud 5
 wizir f frazanag peiobay i den. man cand-im danisn [ud] adugih 
 hame ka pursed u-m tuwan pasoxenem. 
 
+
+		
+</ab>
+
+</body>
+
+</text>
+
+</TEI>
