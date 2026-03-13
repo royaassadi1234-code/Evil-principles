@@ -86,10 +86,62 @@ things:
 manner that Ohrmazd (is) all goodness and devoid of malice, and his will is all good, (while) 
 Ahreman (is) all malice  and devoid of goodness .</p></text></page><page><number>17</number><text><p>(22) Second, the hope of reward and retribution in the virtuous, the fear of chastisement and 
 punishment in sinners, and the striving toward good action and abstention from sin  
+(23) Third, the collaboration of creatures with one another, and from mutual aid (results) a 
+joint army; from the joint army (results) victory over the enemy, which is itself Renovation. 
 
 ## Folio 3
 
-
+(24) By these words, he [Ahreman] was confounded and fell back into darkness.  
+ 
+(25) Ohrmazd created the creatures with a body in the gerig state: first - 
+ 
+ly, the sky; secondly, water; thirdly, the earth; fourth - 
+ 
+ly, plants; fifth, cattle; sixth, man, and the  
+ 
+fire was in all, disseminated everywhere, all like six substances whose  
+Search  
+ 
+Q 
+ 
+D 
+ 
+Share  
+ 
+TRANSLATION: CHAPTER 2  
+ 
+35</p></text></page><page><number>18</number><text><p>The duration of creation was as long, it is said, as (the time) to lower one eyelid over the 
+other.  
+ 
+(26) For three thousand years, creation was endowed with a body without movement. The 
+sun, the moon, and the stars stood without moving in the heights.  
+ 
+(27) At the end of the period, Ohrmazd observed: "What is the advantage of creating 
+creatures if they (are) incapable of running, walking, or moving?" And with the help of the 
+Firmament and Zurwân, he created creation.  
+ 
+(28) Zurwän was unable to advance Ohrmazd's creatures without (also) advancing Ahreman's 
+creatures, because the Principles were detrimental and opposed to one another  
+ 
+(29) And considering the end (of time), he [Zurwån] gave Ahreman an instrument of the 
+same essence of darkness to which Zurwān's strength was bound and which was like frog 
+skin, black and ash -colored . 
+ 
+ (30) And giving it (to him), he said: " With these weapons Āz will devour what belongs to you, 
+and will herself die of hunger  if, at the end of the nine thousand years, you do not 
+accomplish what you threatened (to do), after the pact has been made and the time 
+determined."  
+ 
+(31) Immediately, Ahreman with his accomplices came to the sphere of the stars  
+ 
+(32) He drew from there down into the void the base of the sky, which was placed in the 
+sphere of the stars (void), which is external to the foundation of the (regions) of light and 
+(that of the regions) of darkness, and the place of combat in which both w ill attack each 
+other.  
+ 
+(33) And the darkness that he held with him, he carried into the sky. He thus drew the sky 
+towards the darkness, so that within the roof of the sky, a proportion of one -third reached 
+above the sphere of the stars.</p></text></page><page><number>19</number><text><p>CHAPTER 2  
 
 ## Folio 4
 
