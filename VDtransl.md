@@ -1,46 +1,26 @@
-# Translation
+<TEI>
 
-## Folio 1
+<teiHeader>
+ <fileDesc>
+  <titleStmt>
+   <title>Text Unit 1</title>
+   <editor>Roya Assadollahi</editor>
+  </titleStmt>
+ </fileDesc>
+</teiHeader>
 
+<text>
 
+<body>
 
-## Folio 2
+<pb n="1r"/>
 
+<ab>
 
+</ab>
 
-## Folio 3
+</body>
 
+</text>
 
-
-## Folio 4
-
-
-
-## Folio 5
-
-
-
-
-## Folio 6
-
-
-
-
-## Folio 7
-
-
-
-
-## Folio 8
-
-
-
-
-## Folio 9
-
-
-
-
-
-## Folio 10
-
+</TEI>
