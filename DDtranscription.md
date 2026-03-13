@@ -10,8 +10,8 @@
   <sourceDesc>
    <msDesc>
     <msIdentifier>
-     <repository> Ms.K35the University Library Copenhagen</repository>
-     <idno>MS 123</idno>
+     <repository> the University Library Copenhagen</repository>
+     <idno>MS K35</idno>
     </msIdentifier>
    </msDesc>
   </sourceDesc>
