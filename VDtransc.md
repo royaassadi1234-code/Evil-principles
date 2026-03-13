@@ -1,8 +1,29 @@
-# Transcription
+<TEI>
+<teiHeader>
+ <fileDesc>
 
-## Folio 1
+  <titleStmt>
+   <title>Transcription of Vīdēvdād </title>
+   <editor>Roya Assadollahi</editor>
+  </titleStmt>
 
+  <sourceDesc>
+   <msDesc>
+    <msIdentifier>
+     <repository> the University Library Copenhagen</repository>
+     <idno>MS K35</idno>
+    </msIdentifier>
+   </msDesc>
+  </sourceDesc>
 
+ </fileDesc>
+</teiHeader>
+<text>
+
+<body>
+
+<pb n="1"/>
+<ab>
 barsom 33 tāg ud frāgām 2 tāg barsom bastan ud parāhōm kardan sāzišn hamāg frāz nihādan ud ān kas kē zōdīh yazēd kardan aṣ̌əm. vohū. ēk guftan
 
 aṣ̌əm. vohū. vahištəm. astī.
@@ -27,7 +48,7 @@ yaϑā. ahū. vairiiō. aϑā. ratuš. aṣ̌āt̰cīt̰. hacā.
 vaŋhə̄uš. dazdā. manaŋhō. š́iiaōϑananąm. aŋhə̄uš. mazdāi.
 xšaϑrəmcā. ahurāi.ā. yim. drigubiiō. dadat̰. vāstārəm.
 
-## Folio 2
+<pb n="2"/>
 
  VVrS0.Ext3
 
@@ -59,7 +80,7 @@ aṣ̌əm. vohū. vahištəm. astī.
 uštā. astī. uštā. aɱāi.
 hiiat̰. aṣ̌āi. vahištāi. aṣ̌əm.
 
-## Folio 3
+<pb n="3"/>
 
  VVrS0.Ext9
 
@@ -81,7 +102,7 @@ zōd ud rāspīg
 frauuarāne. mazdaiiasnō. zaraϑuštriš. vīdaēuuō. ahura.t̰kaēšō.
 
 
-## Folio 4
+<pb n="4"/>
 
 [Gāh]
 ušahināi. aṣ̌aōne. aṣ̌ahe. raϑβe. yasnāica. vaɱāica. xšnaōϑrāica. frasastaiiaēca.
@@ -101,7 +122,7 @@ agar rāspīg yašt sāxtag bawēd
 zōd yaϑā. ahū. vairiiō. yō. zaōtā. frā. mē. mrūtē.
 rāspīg aϑā. ratuš. aṣ̌āt̰cīt̰. hacā. frā. aṣ̌auuā. vīδuuā̊. mraōtū.
 
-## Folio 5
+<pb n="5"/>
 
 agar pad mān ī ātaxšān āϑrō. ahurahe. mazdā̊. puϑra. tauua. ātarš. puϑra. ahurahe. mazdā̊. xšnaōϑra. yasnāica. vaɱāica. xšnaōϑrāica. frasastaiiaēca. pad mān ī wehān tauua. ātarš. puϑra. ahurahe. mazdā̊. xšnaōϑra. yasnāica. vaɱāica. xšnaōϑrāica. frasastaiiaēca. agar ham zōd xwēš-tan yašt sāxtag bawēd yaϑā. ahū. vairiiō. zaōtā. frā.mē. mrūtē. aϑā. ratuš. aṣ̌āt̰cit̰. hacā. aṣ̌auuā. viδuuā̊. mraōtū. rāspīg yašt sāxtag bawēd zōd yaϑā. ahū. vairiiō. yō. zaōtā. frā.mē. mrūtē. rāspīg aϑā. ratuš. aṣ̌āt̰cit̰. hacā. aṣ̌auuā. viδuuā̊. mraōtū.
 VVrS0.4 (#GY0.3) = Y0.4 YR0.5 VrS0.4 VytVrS0.4
@@ -113,7 +134,7 @@ aṣ̌əm. vohū. vahištəm. astī.
 uštā. astī. uštā. aɱāi.
 hiiat̰. aṣ̌āi. vahištāi. aṣ̌əm.
 
-## Folio 6
+<pb n="6"/>
 
  VVrS0.5 (#GY0.3) = Y0.5 YR0.6 VrS0.5 VytVrS0.5
 
@@ -136,7 +157,7 @@ fərā. və̄. rāhī. aməṣ̌ā. spəṇtā. yasnəmcā. vaɱəmcā.
 fərā. manaŋhā. fərā. vacaŋhā. fərā. š́iiaōϑanā. fərā. aŋhuiiā. fərā. tanuuascīt̰. xᵛax́iiā̊. uštanəm.
 
 
-## Folio 7
+<pb n="7"/>
 
  VVrS0.8 (#GY0.6) [Y12.4] = Y0.8 YR0.9 VrS0.8 VytVrS0.8
 
@@ -160,7 +181,7 @@ dātāi. haδa.dātāi. vīdaēuuāi. zaraϑuštrāi. aṣ̌aōne. aṣ̌ahe. raϑ
 [Raθβąm]
 raϑβąm. aiiaranąmca. asńiianąmca. māhiianąmca. yāiriianąmca. sarəδanąmca. yasnāica. vaɱāica. xšnaōϑrāica. frasastaiiaēca.
 
-## Folio 8
+<pb n="8"/>
 
 [Šnūman]
 sraōšahe. aṣ̌iiehe. taxmahe. tanu.mąϑrahe. darši.draōš. āhūiriiehe.
@@ -171,7 +192,7 @@ zōd yaϑā. ahū. vairiiō. zaōtā. frā. mē. mrūtē.
 rāspīg yaϑā. ahū. vairiiō. yō. zaōtā. frā. mē. mrūtē.
 zōd aϑā. ratuš. aṣ̌āt̰cīt̰. hacā. frā. aṣ̌auuā. vīδuuā̊. mraōtū.
 
-## Folio 9
+<pb n="9"/>
 
  VVrS0.11 (#GY0.13) = Y0.11 YR0.12 VrS0.11 VytVrS0.11
 
@@ -195,7 +216,7 @@ uštā. astī. uštā. aɱāi.
 hiiat̰. aṣ̌āi. vahištāi. aṣ̌əm.
 
 
-## Folio 10
+<pb n="10"/>
 
  VVrS0.14 (#GY0.15) = Y0.14 YR0.15 VrS0.14 VytVrS0.14
 
@@ -222,6 +243,18 @@ gə̄uš. tašne. gə̄uš. urune. āϑre. ahurahe. mazdā̊. yaētuštəmāi. a
 VVrS1.3 (#CVS1.1) ≈ VytVrS1.3
 
 ńiuuaēδaiiemi. haṇkāraiiemi.
+		
+</ab>
+
+</body>
+
+</text>
+
+</TEI>
+
+
+
+
 
 dātāi. haδa.dātāi. vīdaēuuāi. zaraϑuštrāi. aṣ̌aōne. aṣ̌ahe. raϑβe.
 
