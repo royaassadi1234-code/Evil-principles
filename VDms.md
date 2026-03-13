@@ -1,1 +1,21 @@
-
+# Manuscript Images
+## Folio 1
+![Folio 1](images/vd (1).png)
+## Folio 2
+![Folio 2](images/vd (2).png)
+## Folio 3
+![Folio 3](images/vd (3).png)
+## Folio 4
+![Folio 4](images/vd (4).png)
+## Folio 5
+![Folio 5](images/vd (5).png)
+## Folio 6
+![Folio 6](images/vd (6).png)
+## Folio 7
+![Folio 7](images/vd (7).png)
+## Folio 8
+![Folio 8](images/vd (8).png)
+## Folio 9
+![Folio 9](images/vd (9).png)
+## Folio 10
+![Folio 10](images/vd (10).png)
