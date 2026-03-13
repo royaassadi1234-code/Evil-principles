@@ -14,7 +14,7 @@
 ## Folio 7
 ![Folio 7](images/wz7.png)
 ## Folio 8
-![Folio 8](images/wzw8.png)
+![Folio 8](images/wz8.png)
 ## Folio 9
 ![Folio 9](images/wz9.png)
 ## Folio 10
