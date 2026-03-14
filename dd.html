@@ -38,22 +38,55 @@ text-align:center;
 <h1>Dādestān ī Dēnīg</h1>
 
 <div class="container">
-
-<div class="column">
-<h2>Manuscript</h2>
-
-<img src="images/DD1.png">
-<img src="images/dd2.png">
-  <img src="images/dd3.png">
-  <img src="images/dd4.png">
-  <img src="images/dd5.png">
-  <img src="images/dd6.png">
-  <img src="images/dd7.png">
-  <img src="images/dd8.png">
-  <img src="images/dd9.png">
-  <img src="images/dd10.png">
-
+  <div class="column">
+    <h2>Manuscript</h2>
+    <img id="manuscriptImage" src="images/DD1.png" style="max-width:100%; height:auto;">
+    
+    <div style="margin-top: 10px;">
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+  </div>
 </div>
+
+<script>
+  // List of all manuscript images
+  const images = [
+    "images/DD1.png",
+    "images/DD2.png",
+    "images/DD3.png",
+    "images/DD4.png",
+    "images/DD5.png",
+    "images/DD6.png",
+    "images/DD7.png",
+    "images/DD8.png",
+    "images/DD9.png",
+    "images/DD10.png"
+  ];
+
+  let currentIndex = 0;
+
+  const imgElement = document.getElementById("manuscriptImage");
+
+  function showImage(index) {
+    if(index < 0) index = 0;
+    if(index >= images.length) index = images.length - 1;
+    currentIndex = index;
+    imgElement.src = images[currentIndex];
+  }
+
+  function nextPage() {
+    if(currentIndex < images.length - 1) {
+      showImage(currentIndex + 1);
+    }
+  }
+
+  function prevPage() {
+    if(currentIndex > 0) {
+      showImage(currentIndex - 1);
+    }
+  }
+</script>
 
 <div class="column">
 <h2>Transcription</h2>
