@@ -38,54 +38,87 @@ text-align:center;
 <h1>Dādestān ī Dēnīg</h1>
 
 <div class="container">
-  <div class="column">
-    <h2>Manuscript</h2>
-    <img id="manuscriptImage" src="images/DD1.png" style="max-width:100%; height:auto;">
-    
-    <div style="margin-top: 10px;">
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    </div>
+  <h2>Manuscript</h2>
+  <img id="manuscriptImage" src="images/DD1.png" style="max-width:100%; height:auto;">
+
+  <h2>Transcription</h2>
+  <div id="transcriptionText" style="border:1px solid #ccc; padding:10px; min-height:80px;">
+    Your transcription text for page 1
+  </div>
+
+  <h2>Translation</h2>
+  <div id="translationText" style="border:1px solid #ccc; padding:10px; min-height:80px;">
+    Your translation text for page 1
+  </div>
+
+  <div style="margin-top: 10px;">
+    <button onclick="prevPage()">Previous</button>
+    <span id="pageNumber">Page 1 of 10</span>
+    <button onclick="nextPage()">Next</button>
   </div>
 </div>
 
 <script>
-  // List of all manuscript images
   const images = [
-    "images/DD1.png",
-    "images/DD2.png",
-    "images/DD3.png",
-    "images/DD4.png",
-    "images/DD5.png",
-    "images/DD6.png",
-    "images/DD7.png",
-    "images/DD8.png",
-    "images/DD9.png",
-    "images/DD10.png"
+    "images/DD1.png","images/DD2.png","images/DD3.png","images/DD4.png",
+    "images/DD5.png","images/DD6.png","images/DD7.png","images/DD8.png",
+    "images/DD9.png","images/DD10.png"
+  ];
+
+  const transcriptions = [
+    "Transcription text for page 1",
+    "Transcription text for page 2",
+    "Transcription text for page 3",
+    "Transcription text for page 4",
+    "Transcription text for page 5",
+    "Transcription text for page 6",
+    "Transcription text for page 7",
+    "Transcription text for page 8",
+    "Transcription text for page 9",
+    "Transcription text for page 10"
+  ];
+
+  const translations = [
+    "Translation text for page 1",
+    "Translation text for page 2",
+    "Translation text for page 3",
+    "Translation text for page 4",
+    "Translation text for page 5",
+    "Translation text for page 6",
+    "Translation text for page 7",
+    "Translation text for page 8",
+    "Translation text for page 9",
+    "Translation text for page 10"
   ];
 
   let currentIndex = 0;
 
   const imgElement = document.getElementById("manuscriptImage");
+  const transcriptionElement = document.getElementById("transcriptionText");
+  const translationElement = document.getElementById("translationText");
+  const pageNumberElement = document.getElementById("pageNumber");
 
-  function showImage(index) {
+  function showPage(index) {
     if(index < 0) index = 0;
     if(index >= images.length) index = images.length - 1;
     currentIndex = index;
+
     imgElement.src = images[currentIndex];
+    transcriptionElement.textContent = transcriptions[currentIndex];
+    translationElement.textContent = translations[currentIndex];
+    pageNumberElement.textContent = `Page ${currentIndex + 1} of ${images.length}`;
   }
 
   function nextPage() {
-    if(currentIndex < images.length - 1) {
-      showImage(currentIndex + 1);
-    }
+    if(currentIndex < images.length - 1) showPage(currentIndex + 1);
   }
 
   function prevPage() {
-    if(currentIndex > 0) {
-      showImage(currentIndex - 1);
-    }
+    if(currentIndex > 0) showPage(currentIndex - 1);
   }
+
+  // Initialize first page
+  showPage(0);
 </script>
 
 <div class="column">
