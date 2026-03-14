@@ -1,36 +1,30 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dādestān ī Dēnīg</title>
 
 <style>
-
-.container{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:20px;
-padding:20px;
+.container {
+  padding: 20px;
 }
 
-.column{
-border:1px solid #ccc;
-padding:15px;
-overflow:auto;
+img {
+  width: 100%;
+  height: auto;
 }
 
-img{
-width:100%;
+h1 {
+  text-align: center;
 }
 
-h1{
-text-align:center;
+.column {
+  border: 1px solid #ccc;
+  padding: 15px;
+  overflow: auto;
 }
-
 </style>
-
 </head>
 
 <body>
@@ -39,7 +33,7 @@ text-align:center;
 
 <div class="container">
   <h2>Manuscript</h2>
-  <img id="manuscriptImage" src="images/DD1.png" style="max-width:100%; height:auto;">
+  <img id="manuscriptImage" src="images/DD1.png">
 
   <h2>Transcription</h2>
   <div id="transcriptionText" style="border:1px solid #ccc; padding:10px; min-height:80px;">
@@ -59,81 +53,55 @@ text-align:center;
 </div>
 
 <script>
-  const images = [
-    "images/DD1.png","images/DD2.png","images/DD3.png","images/DD4.png",
-    "images/DD5.png","images/DD6.png","images/DD7.png","images/DD8.png",
-    "images/DD9.png","images/DD10.png"
-  ];
+const images = [
+  "images/DD1.png","images/DD2.png","images/DD3.png","images/DD4.png",
+  "images/DD5.png","images/DD6.png","images/DD7.png","images/DD8.png",
+  "images/DD9.png","images/DD10.png"
+];
 
-  const transcriptions = [
-    "Transcription text for page 1",
-    "Transcription text for page 2",
-    "Transcription text for page 3",
-    "Transcription text for page 4",
-    "Transcription text for page 5",
-    "Transcription text for page 6",
-    "Transcription text for page 7",
-    "Transcription text for page 8",
-    "Transcription text for page 9",
-    "Transcription text for page 10"
-  ];
+const transcriptions = [
+  "Transcription text for page 1","Transcription text for page 2","Transcription text for page 3",
+  "Transcription text for page 4","Transcription text for page 5","Transcription text for page 6",
+  "Transcription text for page 7","Transcription text for page 8","Transcription text for page 9",
+  "Transcription text for page 10"
+];
 
-  const translations = [
-    "Translation text for page 1",
-    "Translation text for page 2",
-    "Translation text for page 3",
-    "Translation text for page 4",
-    "Translation text for page 5",
-    "Translation text for page 6",
-    "Translation text for page 7",
-    "Translation text for page 8",
-    "Translation text for page 9",
-    "Translation text for page 10"
-  ];
+const translations = [
+  "Translation text for page 1","Translation text for page 2","Translation text for page 3",
+  "Translation text for page 4","Translation text for page 5","Translation text for page 6",
+  "Translation text for page 7","Translation text for page 8","Translation text for page 9",
+  "Translation text for page 10"
+];
 
-  let currentIndex = 0;
+let currentIndex = 0;
 
-  const imgElement = document.getElementById("manuscriptImage");
-  const transcriptionElement = document.getElementById("transcriptionText");
-  const translationElement = document.getElementById("translationText");
-  const pageNumberElement = document.getElementById("pageNumber");
+const imgElement = document.getElementById("manuscriptImage");
+const transcriptionElement = document.getElementById("transcriptionText");
+const translationElement = document.getElementById("translationText");
+const pageNumberElement = document.getElementById("pageNumber");
 
-  function showPage(index) {
-    if(index < 0) index = 0;
-    if(index >= images.length) index = images.length - 1;
-    currentIndex = index;
+function showPage(index) {
+  if(index < 0) index = 0;
+  if(index >= images.length) index = images.length - 1;
+  currentIndex = index;
 
-    imgElement.src = images[currentIndex];
-    transcriptionElement.textContent = transcriptions[currentIndex];
-    translationElement.textContent = translations[currentIndex];
-    pageNumberElement.textContent = `Page ${currentIndex + 1} of ${images.length}`;
-  }
+  imgElement.src = images[currentIndex];
+  transcriptionElement.textContent = transcriptions[currentIndex];
+  translationElement.textContent = translations[currentIndex];
+  pageNumberElement.textContent = `Page ${currentIndex + 1} of ${images.length}`;
+}
 
-  function nextPage() {
-    if(currentIndex < images.length - 1) showPage(currentIndex + 1);
-  }
+function nextPage() {
+  if(currentIndex < images.length - 1) showPage(currentIndex + 1);
+}
 
-  function prevPage() {
-    if(currentIndex > 0) showPage(currentIndex - 1);
-  }
+function prevPage() {
+  if(currentIndex > 0) showPage(currentIndex - 1);
+}
 
-  // Initialize first page
-  showPage(0);
+// Initialize first page
+showPage(0);
 </script>
-		
-</ab>
-
-</body>
-
-</text>
-
-</TEI>
-
-</p>
-
-</div>
-
-</div>
 
 </body>
 </html>
