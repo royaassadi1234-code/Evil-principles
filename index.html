@@ -1,32 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+<meta charset="UTF-8">
+
 <title>Evil Principles Project</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+margin:40px;
+}
+
+h1{
+text-align:center;
+}
+
+nav{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-bottom:40px;
+}
+
+nav a{
+text-decoration:none;
+font-size:20px;
+color:black;
+}
+
+.container{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:40px;
+}
+
+.card{
+text-align:center;
+border:1px solid #ddd;
+padding:15px;
+}
+
+.card img{
+width:100%;
+height:auto;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Evil Principles in Middle Persian Texts</h1>
+<h1>Evil Principles in selected Middle Persian and Avestan Texts</h1>
 
-<p>Digital manuscript edition.</p>
+<nav>
+<a href="dd.html">Dādestān ī Dēnīg</a>
+<a href="vd.html">Vīdēvdād</a>
+<a href="wz.html">Wizīdagīhā ī Zādspram</a>
+</nav>
 
-<h2>Dādestān ī Dēnīg</h2>
+<div class="container">
 
-<ul>
-<li><a href="dd.html">Dādestān ī Dēnīg</a></li>
-</ul>
-  
-<h2>Vizīdagīhā ī Zādspram</h2>
+<div class="card">
+<img src="images/ddfolio1.jpg">
+<h3>Dādestān ī Dēnīg</h3>
+<p><a href="dd.html">Open Edition</a></p>
+</div>
 
-<ul>
-<li><a href="WZ.html">Vizīdagīhā ī Zādspram</a></li>
-</ul>
-  
-<h2>Vīdēvdād</h2>
+<div class="card">
+<img src="images/vdfolio1.jpg">
+<h3>Vīdēvdād</h3>
+<p><a href="vd.html">Open Edition</a></p>
+</div>
 
-<ul>
-<li><a href="VD.html">Vīdēvdād</a></li>
-</ul>
+<div class="card">
+<img src="images/wzfolio1.jpg">
+<h3>Wizīdagīhā ī Zādspram</h3>
+<p><a href="wz.html">Open Edition</a></p>
+</div>
+
+</div>
 
 </body>
+
 </html>
