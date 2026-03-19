@@ -2,27 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Vīdēvdād</title>
+<title>Wizīdagīhā ī Zādspram</title>
 
 <style>
 body {
   font-family: Arial, sans-serif;
-  margin: 30px;
-  max-width: 1200px;
+  margin: 0;
+  padding: 20px;
 }
 
 /* Three columns layout */
 .container {
-  display: flex;            /* horizontal layout */
-  gap: 40px;                /* space between columns */
-  width: 100%;              /* full page width */
-  box-sizing: border-box;   /* include padding in width */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 equal columns */
+  gap: 20px;
+  width: 100%;
 }
 
 /* Each column */
 .column {
-  flex: 1;
-  min-width: 200px; 
   display: flex;
   flex-direction: column;
   gap: 10px;
