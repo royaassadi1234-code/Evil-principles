@@ -41,6 +41,7 @@ width:100%;
 height:200px;
 object-fit:cover;
 }
+
 .project-container {
   max-width: 1200px;
   padding: 24px;
@@ -98,6 +99,35 @@ object-fit:cover;
   font-weight: 600;
 }
 
+.card-container {
+  display: flex;               /* align children horizontally */
+  justify-content: center;     /* center the cards in the container */
+  gap: 20px;                   /* space between cards */
+  flex-wrap: wrap;             /* wrap to next line on small screens */
+  margin: 40px auto;           /* optional: center the container */
+}
+
+.card {
+  background: #f8f8f8;         /* optional background color */
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 250px;                /* fixed width for cards */
+  transition: transform 0.3s;
+}
+
+.card img {
+  width: 100%;                 /* make image fit card */
+  height: auto;
+  border-radius: 4px;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* subtle hover effect */
+}
+
+
 </style>
 
 </head>
@@ -133,25 +163,25 @@ century Iran.</p>
 </div>
 
 
+<div class="card-container">
+  <div class="card">
+    <img src="images/vdfolio1.jpg" alt="Vīdēvdād">
+    <h3>Vīdēvdād</h3>
+    <p><a href="vd.html">Open Edition</a></p>
+  </div>
 
-<div class="card">
-<img src="images/vdfolio1.jpg">
-<h3>Vīdēvdād</h3>
-<p><a href="vd.html">Open Edition</a></p>
+  <div class="card">
+    <img src="images/ddfolio1.jpg" alt="Dādestān ī Dēnīg">
+    <h3>Dādestān ī Dēnīg</h3>
+    <p><a href="dd.html">Open Edition</a></p>
+  </div>
+
+  <div class="card">
+    <img src="images/wzfolio1.jpg" alt="Wizīdagīhā ī Zādspram">
+    <h3>Wizīdagīhā ī Zādspram</h3>
+    <p><a href="wz.html">Open Edition</a></p>
+  </div>
 </div>
-
-<div class="card">
-<img src="images/ddfolio1.jpg">
-<h3>Dādestān ī Dēnīg</h3>
-<p><a href="dd.html">Open Edition</a></p>
-</div>
-
-<div class="card">
-<img src="images/wzfolio1.jpg">
-<h3>Wizīdagīhā ī Zādspram</h3>
-<p><a href="wz.html">Open Edition</a></p>
-</div>
-
 
 </div>
 
