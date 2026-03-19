@@ -1,76 +1,195 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-
-<title>Vizīdagīhā ī Zādspram</title>
+<title>Wizīdagīhā ī Zādspram Study</title>
 
 <style>
-
-.container{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:20px;
-padding:20px;
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  max-width: 1200px;
 }
 
-.column{
-border:1px solid #ccc;
-padding:15px;
-overflow:auto;
+/* Three-column layout */
+.container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-img{
-width:100%;
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-h1{
-text-align:center;
+/* Vertical blocks */
+.block {
+  padding: 12px 15px;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
 }
 
+.block:hover {
+  background-color: #bbb;
+}
+
+/* Horizontal cards row */
+.cards {
+  display: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+}
+
+/* Highlights */
+.red-highlight {
+  color: red;
+  font-weight: bold;
+}
+
+.green-highlight {
+  color: green;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+.container {
+  display: flex;
+  justify-content: space-between; /* spreads columns evenly */
+  gap: 20px; /* space between columns */
+  margin-bottom: 30px;
+}
+.column {
+  flex: 1;           /* each column takes equal width */
+  min-width: 200px;  /* optional: prevent too narrow on small screens */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 </style>
+
+<script>
+// Toggle cards
+function toggleCards(id) {
+  const el = document.getElementById(id);
+  if (el.style.display === "grid") {
+    el.style.display = "none";
+  } else {
+    el.style.display = "grid";
+  }
+}
+
+// Highlight words automatically
+function highlightWords() {
+  const redWords = ['aŋhrō','maińiiuš','Ahrimen','angraman'];
+  const greenWords = ['Druj'];
+  document.querySelectorAll('.card').forEach(card => {
+    let html = card.innerHTML;
+    redWords.forEach(word => {
+      const regex = new RegExp(`\\b(${word})\\b`, 'g');
+      html = html.replace(regex, '<span class="red-highlight">$1</span>');
+    });
+    greenWords.forEach(word => {
+      const regex = new RegExp(`\\b(${word})\\b`, 'g');
+      html = html.replace(regex, '<span class="green-highlight">$1</span>');
+    });
+    card.innerHTML = html;
+  });
+}
+
+window.onload = highlightWords;
+</script>
 
 </head>
 
 <body>
 
-<h1>Vizīdagīhā ī Zādspram</h1>
+<h1>Vīdēvdād Study</h1>
+<p>Click a block to show transcription, translation, and comparison cards.</p>
 
 <div class="container">
 
-<div class="column">
-<h2>Manuscript</h2>
+  <!-- Column 1: Ahreman -->
+  <div class="column">
+    <h2>Ahreman</h2>
+    <div class="block" onclick="toggleCards('ahreman1')">I</div>
+    <div class="cards" id="ahreman1">
+      <div class="card"><h3>Transcription</h3><p>Ahrimen and aŋhrō appear in this passage.</p></div>
+      <div class="card"><h3>Translation</h3><p>Translation including Druj.</p></div>
+      <div class="card"><h3>Comparison</h3><p>Comparison mentioning maińiiuš and angraman.</p></div>
+    </div>
 
-<img src="images/WZ1.png">
-<img src="images/WZ2.png">
-<img src="images/WZ3.png">
-<img src="images/WZ4.png">
-  <img src="images/wz5.png">
-  <img src="images/wz6.png">
-  <img src="images/wz7.png">
-  <img src="images/wz8.png">
-  <img src="images/wz9.png">
-  <img src="images/wz10.png">
-</div>
+    <div class="block" onclick="toggleCards('ahreman2')">II</div>
+    <div class="cards" id="ahreman2">
+      <div class="card"><h3>Transcription</h3><p>Ahrimen is further developed.</p></div>
+      <div class="card"><h3>Translation</h3><p>Translation Druj included.</p></div>
+      <div class="card"><h3>Comparison</h3><p>Comparison with aŋhrō and maińiiuš.</p></div>
+    </div>
 
-<div class="column">
-<h2>Transcription</h2>
+    <!-- Add more blocks as needed (III → X) -->
+  </div>
 
-<p>
-Paste transcription from DDtranscription.md here
-</p>
+  <!-- Column 2: Druj -->
+  <div class="column">
+    <h2>Druj</h2>
+    <div class="block" onclick="toggleCards('druj1')">I</div>
+    <div class="cards" id="druj1">
+      <div class="card"><h3>Transcription</h3><p>Druj appears here with Ahrimen.</p></div>
+      <div class="card"><h3>Translation</h3><p>Translation text mentioning Druj.</p></div>
+      <div class="card"><h3>Comparison</h3><p>Comparison aŋhrō and maińiiuš.</p></div>
+    </div>
 
-</div>
+    <div class="block" onclick="toggleCards('druj2')">II</div>
+    <div class="cards" id="druj2">
+      <div class="card"><h3>Transcription</h3><p>Second block with Druj and angraman.</p></div>
+      <div class="card"><h3>Translation</h3><p>Translation Druj highlighted.</p></div>
+      <div class="card"><h3>Comparison</h3><p>Comparison Ahrimen and maińiiuš.</p></div>
+    </div>
 
-<div class="column">
-<h2>Translation</h2>
+  </div>
 
-<p>
-Paste translation from DDtranslation.md here
-</p>
+  <!-- Column 3: Polyseme -->
+  <div class="column">
+    <h2>Polyseme</h2>
+    <div class="block" onclick="toggleCards('poly1')">I</div>
+    <div class="cards" id="poly1">
+      <div class="card"><h3>Transcription</h3><p>Polyseme text including Ahrimen.</p></div>
+      <div class="card"><h3>Translation</h3><p>Translation Druj appears here.</p></div>
+      <div class="card"><h3>Comparison</h3><p>Comparison aŋhrō, maińiiuš, angraman.</p></div>
+    </div>
 
-</div>
+    <div class="block" onclick="toggleCards('poly2')">II</div>
+    <div class="cards" id="poly2">
+      <div class="card"><h3>Transcription</h3><p>Second block text with Ahrimen and Druj.</p></div>
+      <div class="card"><h3>Translation</h3><p>Translation text mentioning Druj.</p></div>
+      <div class="card"><h3>Comparison</h3><p>Comparison aŋhrō and maińiiuš.</p></div>
+    </div>
+
+  </div>
 
 </div>
 
