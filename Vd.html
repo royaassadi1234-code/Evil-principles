@@ -13,14 +13,16 @@ body {
 
 /* Three columns layout */
 .container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  display: flex;            /* horizontal layout */
+  gap: 20px;                /* space between columns */
+  width: 100%;              /* full page width */
+  box-sizing: border-box;   /* include padding in width */
 }
 
 /* Each column */
 .column {
   flex: 1;
+  min-width: 200px; 
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -116,7 +118,6 @@ window.onload = highlightWords;
 
 <h1>Vīdēvdād</h1>
 <p>Click a block to show transcription, translation, and comparison. Only one block's cards are visible at a time.</p>
-
 <div class="container">
 
   <!-- Column 1: Ahreman -->
