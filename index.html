@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ahreman and Drūz Comparative Study</title>
+<title>Devil is in the detail</title>
 
 <style>
 
@@ -82,6 +82,12 @@ body {
     grid-template-columns: 1fr;
   }
 }
+  .nav {
+    display: flex;
+    flex-direction: column; /* Stacks buttons vertically */
+    width: max-content;    /* Prevents buttons from stretching full-width */
+    gap: 10px;             /* Adds space between buttons */
+  }
 
 </style>
 
@@ -127,7 +133,7 @@ function showDruz() {
 
 <body>
 
-<h1>Ahreman and Drūz in Zoroastrian Texts</h1>
+<h1>Diabolus in singulis est</h1>
 
 <p>Select a section to view the comparison:</p>
 
@@ -136,13 +142,6 @@ function showDruz() {
   <button onclick="showSection('sec1')">I</button>
   <button onclick="showSection('sec2')">II</button>
   <button onclick="showSection('sec3')">III</button>
-</div>
-
-<!-- Filters -->
-<div class="filters">
-  <button onclick="showAll()">Show All</button>
-  <button onclick="showAhreman()">Only Ahreman</button>
-  <button onclick="showDruz()">Only Drūz</button>
 </div>
 
 <!-- ===================== -->
@@ -257,6 +256,13 @@ function showDruz() {
       as a fully developed concept derived from Ahreman.
     </p>
   </div>
+  
+<!-- Filters -->
+<div class="filters">
+  <button onclick="showAll()">Show All</button>
+  <button onclick="showAhreman()">Only Ahreman</button>
+  <button onclick="showDruz()">Only Drūz</button>
+</div>
 
 </div>
 
