@@ -2,263 +2,186 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ahreman and Drūz Comparative Study</title>
+<title>Vīdēvdād Study</title>
 
 <style>
-
 body {
   font-family: Arial, sans-serif;
-  margin: 40px;
-  max-width: 1100px;
+  margin: 30px;
+  max-width: 1000px;
 }
 
-/* Top list */
-.nav {
+/* Vertical blocks list */
+.block-list {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 30px;
 }
 
-.nav button {
-  padding: 10px 15px;
-  cursor: pointer;
-  border: none;
-  background: #ddd;
-  border-radius: 5px;
-}
-
-.nav button:hover {
-  background: #bbb;
-}
-
-/* Hide sections by default */
-.content {
-  display: none;
-}
-
-/* Grid layout */
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-}
-
-/* Blocks */
 .block {
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-/* Highlights */
-.ahreman {
-  background-color: #ffe066;
-}
-
-.druz {
-  background-color: #b2f2bb;
-}
-
-.hidden {
-  background-color: transparent !important;
-}
-
-/* Filter buttons */
-.filters {
-  margin-bottom: 20px;
-}
-
-.filters button {
-  margin-right: 10px;
-  padding: 6px 10px;
-  border: none;
+  padding: 12px 20px;
+  background-color: #ddd;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.block:hover {
+  background-color: #bbb;
+}
+
+/* Horizontal cards row */
+.cards {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+}
+
+/* Highlight words */
+.red-highlight {
+  color: red;
+  font-weight: bold;
+}
+
+.green-highlight {
+  color: green;
+  font-weight: bold;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .row {
+  .cards {
     grid-template-columns: 1fr;
   }
 }
-
 </style>
 
 <script>
-
-// Show selected section
-function showSection(id) {
-  document.querySelectorAll('.content').forEach(el => {
-    el.style.display = 'none';
-  });
-
-  document.getElementById(id).style.display = 'block';
+// Toggle display of cards for a block
+function toggleCards(id) {
+  const el = document.getElementById(id);
+  if (el.style.display === "grid") {
+    el.style.display = "none";
+  } else {
+    el.style.display = "grid";
+  }
 }
 
-// Highlight filters
-function showAll() {
-  document.querySelectorAll('.ahreman, .druz').forEach(el => {
-    el.classList.remove('hidden');
+// Automatic word highlighting
+function highlightWords() {
+  const redWords = ['aŋhrō','maińiiuš','Ahrimen','angraman'];
+  const greenWords = ['Druj'];
+  const allText = document.querySelectorAll('.card');
+
+  allText.forEach(card => {
+    let html = card.innerHTML;
+
+    // Red
+    redWords.forEach(word => {
+      const regex = new RegExp(`\\b(${word})\\b`, 'g');
+      html = html.replace(regex, '<span class="red-highlight">$1</span>');
+    });
+
+    // Green
+    greenWords.forEach(word => {
+      const regex = new RegExp(`\\b(${word})\\b`, 'g');
+      html = html.replace(regex, '<span class="green-highlight">$1</span>');
+    });
+
+    card.innerHTML = html;
   });
 }
 
-function showAhreman() {
-  document.querySelectorAll('.ahreman').forEach(el => {
-    el.classList.remove('hidden');
-  });
-  document.querySelectorAll('.druz').forEach(el => {
-    el.classList.add('hidden');
-  });
-}
-
-function showDruz() {
-  document.querySelectorAll('.druz').forEach(el => {
-    el.classList.remove('hidden');
-  });
-  document.querySelectorAll('.ahreman').forEach(el => {
-    el.classList.add('hidden');
-  });
-}
-
+window.onload = highlightWords;
 </script>
-
 </head>
 
 <body>
 
-<h1>Ahreman and Drūz in Zoroastrian Texts</h1>
+<h1>Vīdēvdād</h1>
+<p>Click a block to show its transcription, translation, and comparison.</p>
 
-<p>Select a section to view the comparison:</p>
-
-<!-- Navigation -->
-<div class="nav">
-  <button onclick="showSection('sec1')">I</button>
-  <button onclick="showSection('sec2')">II</button>
-  <button onclick="showSection('sec3')">III</button>
-</div>
-
-<!-- Filters -->
-<div class="filters">
-  <button onclick="showAll()">Show All</button>
-  <button onclick="showAhreman()">Only Ahreman</button>
-  <button onclick="showDruz()">Only Drūz</button>
-</div>
-
-<!-- ===================== -->
-<!-- I -->
-<!-- ===================== -->
-
-<div id="sec1" class="content">
-
-<h2>I. (Title of Passage)</h2>
-
-<div class="row">
-
-  <div class="block">
-    <h3>Transcription</h3>
-    <p>
-      ... transcription text ...
-      <span class="ahreman">Ahreman appears here</span>
-    </p>
+<div class="block-list">
+  <div class="block" onclick="toggleCards('cards1')">I</div>
+  <div class="cards" id="cards1">
+    <div class="card"><h3>Transcription</h3><p>Text with Ahrimen and aŋhrō here...</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation including Druj...</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison mentioning maińiiuš and angraman.</p></div>
   </div>
 
-  <div class="block">
-    <h3>Translation</h3>
-    <p>
-      ... translation text ...
-      <span class="druz">Drūz emerges here</span>
-    </p>
+  <div class="block" onclick="toggleCards('cards2')">II</div>
+  <div class="cards" id="cards2">
+    <div class="card"><h3>Transcription</h3><p>Second passage with Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation mentioning aŋhrō and Druj.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison with maińiiuš and angraman.</p></div>
   </div>
 
-  <div class="block">
-    <h3>Analysis</h3>
-    <p>
-      This passage shows
-      <span class="ahreman">Ahreman</span>
-      in an early form, while
-      <span class="druz">Drūz</span>
-      is not yet fully developed.
-    </p>
+  <div class="block" onclick="toggleCards('cards3')">III</div>
+  <div class="cards" id="cards3">
+    <div class="card"><h3>Transcription</h3><p>Third block aŋhrō and Druj example.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation text with Ahrimen highlighted.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison including maińiiuš, angraman, and Druj.</p></div>
   </div>
 
-</div>
-
-</div>
-
-<!-- ===================== -->
-<!-- II -->
-<!-- ===================== -->
-
-<div id="sec2" class="content">
-
-<h2>II. (Title of Passage)</h2>
-
-<div class="row">
-
-  <div class="block">
-    <h3>Transcription</h3>
-    <p>
-      ... text ...
-      <span class="ahreman">Ahreman becomes more defined</span>
-    </p>
+  <!-- Repeat the same for IV → X -->
+  <div class="block" onclick="toggleCards('cards4')">IV</div>
+  <div class="cards" id="cards4">
+    <div class="card"><h3>Transcription</h3><p>Block IV text with aŋhrō and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation with Ahrimen.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison mentions maińiiuš and angraman.</p></div>
   </div>
 
-  <div class="block">
-    <h3>Translation</h3>
-    <p>
-      ... translation ...
-    </p>
+  <div class="block" onclick="toggleCards('cards5')">V</div>
+  <div class="cards" id="cards5">
+    <div class="card"><h3>Transcription</h3><p>Text with Ahrimen, Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation including aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison with maińiiuš and angraman.</p></div>
   </div>
 
-  <div class="block">
-    <h3>Analysis</h3>
-    <p>
-      Here,
-      <span class="ahreman">Ahreman</span>
-      becomes more abstract and structured.
-    </p>
+  <div class="block" onclick="toggleCards('cards6')">VI</div>
+  <div class="cards" id="cards6">
+    <div class="card"><h3>Transcription</h3><p>VI transcription with Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation mentioning aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison includes maińiiuš and angraman.</p></div>
   </div>
 
-</div>
-
-</div>
-
-<!-- ===================== -->
-<!-- III -->
-<!-- ===================== -->
-
-<div id="sec3" class="content">
-
-<h2>III. (Title of Passage)</h2>
-
-<div class="row">
-
-  <div class="block">
-    <h3>Transcription</h3>
-    <p>
-      ... text ...
-      <span class="druz">Drūz is systematized</span>
-    </p>
+  <div class="block" onclick="toggleCards('cards7')">VII</div>
+  <div class="cards" id="cards7">
+    <div class="card"><h3>Transcription</h3><p>VII transcription aŋhrō and Ahrimen.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj mentioned.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
   </div>
 
-  <div class="block">
-    <h3>Translation</h3>
-    <p>
-      ... translation ...
-    </p>
+  <div class="block" onclick="toggleCards('cards8')">VIII</div>
+  <div class="cards" id="cards8">
+    <div class="card"><h3>Transcription</h3><p>Block VIII text Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
   </div>
 
-  <div class="block">
-    <h3>Analysis</h3>
-    <p>
-      This passage presents
-      <span class="druz">Drūz</span>
-      as a fully developed concept derived from Ahreman.
-    </p>
+  <div class="block" onclick="toggleCards('cards9')">IX</div>
+  <div class="cards" id="cards9">
+    <div class="card"><h3>Transcription</h3><p>IX transcription Ahrimen aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj included.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
   </div>
 
-</div>
+  <div class="block" onclick="toggleCards('cards10')">X</div>
+  <div class="cards" id="cards10">
+    <div class="card"><h3>Transcription</h3><p>X transcription Ahrimen and aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
 
 </div>
 
