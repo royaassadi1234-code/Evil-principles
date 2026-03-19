@@ -66,8 +66,71 @@ button {
   background-color: transparent !important;
 }
 
-</style>
+  .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 50px;
+}
 
+.column {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Image styling */
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+  @media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+  img {
+  height: 300px;
+  object-fit: cover;
+}
+  img {
+  height: 300px;
+  object-fit: cover;
+}
+
+</style>
+<div class="row">
+
+  <a href="images/page1.jpg" target="_blank">
+  <img src="images/page1.jpg">
+</a>
+
+  <!-- Manuscript -->
+  <div class="column">
+    <h3>Manuscript</h3>
+    <img src="images/page1.jpg" alt="Manuscript page">
+  </div>
+
+  <!-- Transcription -->
+  <div class="column">
+    <h3>Transcription</h3>
+    <p>
+      Here is the transcription text...
+      <span class="ahreman">Ahreman appears here</span>
+    </p>
+  </div>
+
+  <!-- Analysis -->
+  <div class="column">
+    <h3>Analysis</h3>
+    <p>
+      This passage shows
+      <span class="druz">Drūz as a developed concept</span>.
+    </p>
+  </div>
+
+</div>
 <script>
 function showAll() {
   document.querySelectorAll('.ahreman, .druz').forEach(el => {
