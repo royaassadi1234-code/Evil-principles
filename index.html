@@ -1,23 +1,172 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Text Comparison Project</title>
+<meta charset="UTF-8">
+<title>Ahreman and Drūz Comparison</title>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  max-width: 1000px;
+  line-height: 1.6;
+}
+
+/* Navigation */
+.menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+/* Text containers */
+.text-block {
+  margin-bottom: 50px;
+}
+
+.text-title {
+  margin-top: 40px;
+  color: darkblue;
+}
+
+/* Highlights */
+.ahreman {
+  background-color: #ffe066;
+}
+
+.druz {
+  background-color: #b2f2bb;
+}
+
+/* Buttons */
+.buttons {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Notes */
+.note {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+/* Hide class */
+.hidden {
+  background-color: transparent !important;
+}
+
+</style>
+
+<script>
+function showAll() {
+  document.querySelectorAll('.ahreman, .druz').forEach(el => {
+    el.classList.remove('hidden');
+  });
+}
+
+function showAhreman() {
+  document.querySelectorAll('.ahreman').forEach(el => {
+    el.classList.remove('hidden');
+  });
+  document.querySelectorAll('.druz').forEach(el => {
+    el.classList.add('hidden');
+  });
+}
+
+function showDruz() {
+  document.querySelectorAll('.druz').forEach(el => {
+    el.classList.remove('hidden');
+  });
+  document.querySelectorAll('.ahreman').forEach(el => {
+    el.classList.add('hidden');
+  });
+}
+</script>
+
 </head>
 
 <body>
 
-<h1>Text Comparison Study</h1>
+<h1>Comparison of Ahreman and Drūz</h1>
 
-<p>This project compares three texts (Vīdēvdād , Dādestān ī dēnīg, Vizīdagīhā ī Zādspram) in relation to two concepts (Ahreman  and Drūz).</p>
+<p>This project compares the development of <strong>Ahreman</strong> and <strong>Drūz</strong> across three texts:</p>
 
-<h2>Pages</h2>
-<ul>
-  <li><a href="Vd.html">Text Vīdēvdād</a></li>
-  <li><a href="dd.html">Text Dādestān ī dēnīg</a></li>
-  <li><a href="WZ.html">Text Vizīdagīhā ī Zādspram</a></li>
-  <li><a href="comparison.html">Comparison</a></li>
+<ul class="menu">
+  <li>Vīdēvdād</li>
+  <li>Dādestān ī dēnīg</li>
+  <li>Wizīdagīhā ī Zādspram</li>
 </ul>
+
+<div class="buttons">
+  <button onclick="showAll()">Show All</button>
+  <button onclick="showAhreman()">Only Ahreman</button>
+  <button onclick="showDruz()">Only Drūz</button>
+</div>
+
+<!-- TEXT 1 -->
+<div class="text-block">
+
+<h2 class="text-title">Vīdēvdād</h2>
+
+<p>
+Here you insert your text. For example:
+<span class="ahreman">Ahreman appears as the destructive principle opposing creation</span>,
+while later developments introduce
+<span class="druz">Drūz as a more specific manifestation of deception and corruption</span>.
+</p>
+
+<p class="note">
+Note: In this text, Ahreman is dominant, while Drūz is less systematized.
+</p>
+
+</div>
+
+<!-- TEXT 2 -->
+<div class="text-block">
+
+<h2 class="text-title">Dādestān ī dēnīg</h2>
+
+<p>
+In this passage,
+<span class="ahreman">Ahreman is further defined in metaphysical terms</span>,
+and
+<span class="druz">Drūz becomes more active as a corrupting force affecting creation</span>.
+</p>
+
+<p class="note">
+Note: This text develops the relationship between Ahreman and Drūz more explicitly.
+</p>
+
+</div>
+
+<!-- TEXT 3 -->
+<div class="text-block">
+
+<h2 class="text-title">Wizīdagīhā ī Zādspram</h2>
+
+<p>
+Here,
+<span class="ahreman">Ahreman is integrated into a more structured cosmology</span>,
+while
+<span class="druz">Drūz is systematized as a category of evil forces</span>.
+</p>
+
+<p class="note">
+Note: This text shows a more advanced conceptual development.
+</p>
+
+</div>
 
 </body>
 </html>
