@@ -41,6 +41,59 @@ width:100%;
 height:200px;
 object-fit:cover;
 }
+.project-container {
+  max-width: 400px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.project-container:hover {
+  transform: translateY(-5px);
+  border-color: #007bff;
+}
+
+.project-tag {
+  font-size: 12px;
+  font-weight: bold;
+  color: #007bff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-header h2 {
+  margin: 8px 0;
+  font-size: 1.5rem;
+  color: #1a1a1a;
+}
+
+.project-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+.project-tech code {
+  background: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-right: 8px;
+  color: #374151;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 24px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+}
 
 </style>
 
@@ -48,14 +101,36 @@ object-fit:cover;
 
 <body>
 
-<h1>Diabolus in minutis latet:
-    Evil Principles in selected Middle Persian and Avestan Texts</h1>
+<h1>Diabolus in minutis latet:</h1>
 
 <nav>
 <a href="vd.html">Vīdēvdād</a>
 <a href="dd.html">Dādestān ī Dēnīg</a>
 <a href="wz.html">Wizīdagīhā ī Zādspram</a>
 </nav>
+
+<div class="project-container">
+  <div class="project-header">
+    <span class="project-tag">comparative studies</span>
+    <h2>Evil Principles in selected Middle Persian and Avestan Texts</h2>
+  </div>
+  
+  <p class="project-description">While Some Pahlavi texts focus more on Ahreman  (or "Gannāg-Mēnōy") as the ultimate
+evil principle, Drūz also plays an active role in other Middle Persian works
+like Dādestān ī Dēnīg. It seems that Drūz is really the main representation of
+Evil/Chaos for Manuščihr. both comparative and digital humanities methods will be combined to examine, on the one hand, how the two
+concepts relate to each other and what are some main differences in Dādestān ī
+dēnīg and Vizīdagīhā ī Zādspram; on the other hand, it seeks to find out, however partially, what the twoprinciple actually meant to the Mazdyasnian high priests during the 9th
+century Iran.</p>
+  
+  <div class="project-tech">
+    <code>React</code>
+    <code>Node.js</code>
+    <code>PostgreSQL</code>
+  </div>
+  
+  <a href="#" class="project-link">View Project &rarr;</a>
+</div>
 
 <div class="container">
 
