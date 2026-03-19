@@ -22,7 +22,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 40px;
 }
 
 /* Vertical blocks */
@@ -76,6 +76,19 @@ body {
   .cards {
     grid-template-columns: 1fr;
   }
+}
+.container {
+  display: flex;
+  justify-content: space-between; /* spreads columns evenly */
+  gap: 20px; /* space between columns */
+  margin-bottom: 30px;
+}
+.column {
+  flex: 1;           /* each column takes equal width */
+  min-width: 200px;  /* optional: prevent too narrow on small screens */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 </style>
 
@@ -137,6 +150,64 @@ window.onload = highlightWords;
       <div class="card"><h3>Comparison</h3><p>Comparison with aŋhrō and maińiiuš.</p></div>
     </div>
 
+    
+  <div class="block" onclick="toggleCards('cards3')">III</div>
+  <div class="cards" id="cards3">
+    <div class="card"><h3>Transcription</h3><p>Third block aŋhrō and Druj example.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation text with Ahrimen highlighted.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison including maińiiuš, angraman, and Druj.</p></div>
+  </div>
+
+  <!-- Repeat the same for IV → X -->
+  <div class="block" onclick="toggleCards('cards4')">IV</div>
+  <div class="cards" id="cards4">
+    <div class="card"><h3>Transcription</h3><p>Block IV text with aŋhrō and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation with Ahrimen.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison mentions maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards5')">V</div>
+  <div class="cards" id="cards5">
+    <div class="card"><h3>Transcription</h3><p>Text with Ahrimen, Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation including aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison with maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards6')">VI</div>
+  <div class="cards" id="cards6">
+    <div class="card"><h3>Transcription</h3><p>VI transcription with Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation mentioning aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison includes maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards7')">VII</div>
+  <div class="cards" id="cards7">
+    <div class="card"><h3>Transcription</h3><p>VII transcription aŋhrō and Ahrimen.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj mentioned.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards8')">VIII</div>
+  <div class="cards" id="cards8">
+    <div class="card"><h3>Transcription</h3><p>Block VIII text Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards9')">IX</div>
+  <div class="cards" id="cards9">
+    <div class="card"><h3>Transcription</h3><p>IX transcription Ahrimen aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj included.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards10')">X</div>
+  <div class="cards" id="cards10">
+    <div class="card"><h3>Transcription</h3><p>X transcription Ahrimen and aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
     <!-- Add more blocks as needed (III → X) -->
   </div>
 
@@ -155,6 +226,63 @@ window.onload = highlightWords;
       <div class="card"><h3>Transcription</h3><p>Second block with Druj and angraman.</p></div>
       <div class="card"><h3>Translation</h3><p>Translation Druj highlighted.</p></div>
       <div class="card"><h3>Comparison</h3><p>Comparison Ahrimen and maińiiuš.</p></div>
+      
+  <div class="block" onclick="toggleCards('cards3')">III</div>
+  <div class="cards" id="cards3">
+    <div class="card"><h3>Transcription</h3><p>Third block aŋhrō and Druj example.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation text with Ahrimen highlighted.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison including maińiiuš, angraman, and Druj.</p></div>
+  </div>
+
+  <!-- Repeat the same for IV → X -->
+  <div class="block" onclick="toggleCards('cards4')">IV</div>
+  <div class="cards" id="cards4">
+    <div class="card"><h3>Transcription</h3><p>Block IV text with aŋhrō and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation with Ahrimen.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison mentions maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards5')">V</div>
+  <div class="cards" id="cards5">
+    <div class="card"><h3>Transcription</h3><p>Text with Ahrimen, Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation including aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison with maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards6')">VI</div>
+  <div class="cards" id="cards6">
+    <div class="card"><h3>Transcription</h3><p>VI transcription with Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation mentioning aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison includes maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards7')">VII</div>
+  <div class="cards" id="cards7">
+    <div class="card"><h3>Transcription</h3><p>VII transcription aŋhrō and Ahrimen.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj mentioned.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards8')">VIII</div>
+  <div class="cards" id="cards8">
+    <div class="card"><h3>Transcription</h3><p>Block VIII text Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards9')">IX</div>
+  <div class="cards" id="cards9">
+    <div class="card"><h3>Transcription</h3><p>IX transcription Ahrimen aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj included.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards10')">X</div>
+  <div class="cards" id="cards10">
+    <div class="card"><h3>Transcription</h3><p>X transcription Ahrimen and aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
     </div>
 
   </div>
@@ -175,6 +303,63 @@ window.onload = highlightWords;
       <div class="card"><h3>Translation</h3><p>Translation text mentioning Druj.</p></div>
       <div class="card"><h3>Comparison</h3><p>Comparison aŋhrō and maińiiuš.</p></div>
     </div>
+    
+  <div class="block" onclick="toggleCards('cards3')">III</div>
+  <div class="cards" id="cards3">
+    <div class="card"><h3>Transcription</h3><p>Third block aŋhrō and Druj example.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation text with Ahrimen highlighted.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison including maińiiuš, angraman, and Druj.</p></div>
+  </div>
+
+  <!-- Repeat the same for IV → X -->
+  <div class="block" onclick="toggleCards('cards4')">IV</div>
+  <div class="cards" id="cards4">
+    <div class="card"><h3>Transcription</h3><p>Block IV text with aŋhrō and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation with Ahrimen.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison mentions maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards5')">V</div>
+  <div class="cards" id="cards5">
+    <div class="card"><h3>Transcription</h3><p>Text with Ahrimen, Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation including aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison with maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards6')">VI</div>
+  <div class="cards" id="cards6">
+    <div class="card"><h3>Transcription</h3><p>VI transcription with Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation mentioning aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison includes maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards7')">VII</div>
+  <div class="cards" id="cards7">
+    <div class="card"><h3>Transcription</h3><p>VII transcription aŋhrō and Ahrimen.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj mentioned.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards8')">VIII</div>
+  <div class="cards" id="cards8">
+    <div class="card"><h3>Transcription</h3><p>Block VIII text Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards9')">IX</div>
+  <div class="cards" id="cards9">
+    <div class="card"><h3>Transcription</h3><p>IX transcription Ahrimen aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj included.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards10')">X</div>
+  <div class="cards" id="cards10">
+    <div class="card"><h3>Transcription</h3><p>X transcription Ahrimen and aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
 
   </div>
 
