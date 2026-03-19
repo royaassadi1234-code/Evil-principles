@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Dādestān ī dēnīg Study</title>
+<title>Vīdēvdād</title>
 
 <style>
 body {
@@ -11,15 +11,18 @@ body {
   max-width: 1200px;
 }
 
-/* Three-column layout */
+/* Three columns layout */
 .container {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 30px;
+  display: flex;            /* horizontal layout */
+  gap: 40px;                /* space between columns */
+  width: 100%;              /* full page width */
+  box-sizing: border-box;   /* include padding in width */
 }
 
+/* Each column */
 .column {
   flex: 1;
+  min-width: 200px; 
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -27,7 +30,7 @@ body {
 
 /* Vertical blocks */
 .block {
-  padding: 12px 15px;
+  padding: 12px;
   background-color: #ddd;
   cursor: pointer;
   border-radius: 5px;
@@ -39,25 +42,24 @@ body {
   background-color: #bbb;
 }
 
-/* Horizontal cards row */
+/* Cards displayed vertically */
 .cards {
   display: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px;
 }
 
+/* Individual card */
 .card {
   background-color: #f9f9f9;
   padding: 12px;
   border-radius: 8px;
-  line-height: 1.6;
   border: 1px solid #ccc;
+  line-height: 1.5;
 }
 
-/* Highlights */
+/* Highlight words */
 .red-highlight {
   color: red;
   font-weight: bold;
@@ -68,45 +70,32 @@ body {
   font-weight: bold;
 }
 
-/* Responsive */
+/* Responsive for small screens */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
   }
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
-.container {
-  display: flex;
-  justify-content: space-between; /* spreads columns evenly */
-  gap: 20px; /* space between columns */
-  margin-bottom: 30px;
-}
-.column {
-  flex: 1;           /* each column takes equal width */
-  min-width: 200px;  /* optional: prevent too narrow on small screens */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 </style>
 
 <script>
-// Toggle cards
+// Toggle cards and auto-hide others
 function toggleCards(id) {
+  // Hide all cards
+  document.querySelectorAll('.cards').forEach(c => {
+    if(c.id !== id) c.style.display = 'none';
+  });
+
+  // Toggle selected
   const el = document.getElementById(id);
-  if (el.style.display === "grid") {
-    el.style.display = "none";
-  } else {
-    el.style.display = "grid";
-  }
+  el.style.display = (el.style.display === 'flex') ? 'none' : 'flex';
 }
 
 // Highlight words automatically
 function highlightWords() {
-  const redWords = ['aŋhrō','maińiiuš','Ahrimen','angraman'];
+  const redWords = ['aŋhrōmaińiiuš', 'Ahrimen', 'angraman'];
   const greenWords = ['Druj'];
+
   document.querySelectorAll('.card').forEach(card => {
     let html = card.innerHTML;
     redWords.forEach(word => {
@@ -125,70 +114,56 @@ window.onload = highlightWords;
 </script>
 
 </head>
-
 <body>
 
-<h1>Vīdēvdād Study</h1>
-<p>Click a block to show transcription, translation, and comparison cards.</p>
-
+<h1>Vīdēvdād</h1>
+<p>Click a block to show transcription, translation, and comparison. Only one block's cards are visible at a time.</p>
 <div class="container">
 
   <!-- Column 1: Ahreman -->
   <div class="column">
     <h2>Ahreman</h2>
-    <div class="block" onclick="toggleCards('ahreman1')">I</div>
-    <div class="cards" id="ahreman1">
-      <div class="card"><h3>Transcription</h3><p>Ahrimen and aŋhrō appear in this passage.</p></div>
-      <div class="card"><h3>Translation</h3><p>Translation including Druj.</p></div>
-      <div class="card"><h3>Comparison</h3><p>Comparison mentioning maińiiuš and angraman.</p></div>
-    </div>
-
-    <div class="block" onclick="toggleCards('ahreman2')">II</div>
-    <div class="cards" id="ahreman2">
-      <div class="card"><h3>Transcription</h3><p>Ahrimen is further developed.</p></div>
-      <div class="card"><h3>Translation</h3><p>Translation Druj included.</p></div>
-      <div class="card"><h3>Comparison</h3><p>Comparison with aŋhrō and maińiiuš.</p></div>
-    </div>
-
-    <!-- Add more blocks as needed (III → X) -->
+    <!-- 10 blocks -->
+    <script>
+      for(let i=1;i<=10;i++){
+        document.write('<div class="block" onclick="toggleCards(\'ah'+i+'\')">'+i+'</div>');
+        document.write('<div class="cards" id="ah'+i+'">');
+        document.write('<div class="card"><h3>Transcription</h3><p>Ahrimen and aŋhrōmaińiiuš appear in block '+i+'.</p></div>');
+        document.write('<div class="card"><h3>Translation</h3><p>Translation Druj appears in block '+i+'.</p></div>');
+        document.write('<div class="card"><h3>Comparison</h3><p>Comparison angraman mentioned in block '+i+'.</p></div>');
+        document.write('</div>');
+      }
+    </script>
   </div>
 
   <!-- Column 2: Druj -->
   <div class="column">
     <h2>Druj</h2>
-    <div class="block" onclick="toggleCards('druj1')">I</div>
-    <div class="cards" id="druj1">
-      <div class="card"><h3>Transcription</h3><p>Druj appears here with Ahrimen.</p></div>
-      <div class="card"><h3>Translation</h3><p>Translation text mentioning Druj.</p></div>
-      <div class="card"><h3>Comparison</h3><p>Comparison aŋhrō and maińiiuš.</p></div>
-    </div>
-
-    <div class="block" onclick="toggleCards('druj2')">II</div>
-    <div class="cards" id="druj2">
-      <div class="card"><h3>Transcription</h3><p>Second block with Druj and angraman.</p></div>
-      <div class="card"><h3>Translation</h3><p>Translation Druj highlighted.</p></div>
-      <div class="card"><h3>Comparison</h3><p>Comparison Ahrimen and maińiiuš.</p></div>
-    </div>
-
+    <script>
+      for(let i=1;i<=10;i++){
+        document.write('<div class="block" onclick="toggleCards(\'dr'+i+'\')">'+i+'</div>');
+        document.write('<div class="cards" id="dr'+i+'">');
+        document.write('<div class="card"><h3>Transcription</h3><p>Druj appears with Ahrimen and aŋhrōmaińiiuš in block '+i+'.</p></div>');
+        document.write('<div class="card"><h3>Translation</h3><p>Translation includes Druj in block '+i+'.</p></div>');
+        document.write('<div class="card"><h3>Comparison</h3><p>Comparison angraman in block '+i+'.</p></div>');
+        document.write('</div>');
+      }
+    </script>
   </div>
 
   <!-- Column 3: Polyseme -->
   <div class="column">
     <h2>Polyseme</h2>
-    <div class="block" onclick="toggleCards('poly1')">I</div>
-    <div class="cards" id="poly1">
-      <div class="card"><h3>Transcription</h3><p>Polyseme text including Ahrimen.</p></div>
-      <div class="card"><h3>Translation</h3><p>Translation Druj appears here.</p></div>
-      <div class="card"><h3>Comparison</h3><p>Comparison aŋhrō, maińiiuš, angraman.</p></div>
-    </div>
-
-    <div class="block" onclick="toggleCards('poly2')">II</div>
-    <div class="cards" id="poly2">
-      <div class="card"><h3>Transcription</h3><p>Second block text with Ahrimen and Druj.</p></div>
-      <div class="card"><h3>Translation</h3><p>Translation text mentioning Druj.</p></div>
-      <div class="card"><h3>Comparison</h3><p>Comparison aŋhrō and maińiiuš.</p></div>
-    </div>
-
+    <script>
+      for(let i=1;i<=10;i++){
+        document.write('<div class="block" onclick="toggleCards(\'pl'+i+'\')">'+i+'</div>');
+        document.write('<div class="cards" id="pl'+i+'">');
+        document.write('<div class="card"><h3>Transcription</h3><p>Polyseme text with Ahrimen and aŋhrōmaińiiuš in block '+i+'.</p></div>');
+        document.write('<div class="card"><h3>Translation</h3><p>Translation Druj appears in block '+i+'.</p></div>');
+        document.write('<div class="card"><h3>Comparison</h3><p>Comparison angraman in block '+i+'.</p></div>');
+        document.write('</div>');
+      }
+    </script>
   </div>
 
 </div>
