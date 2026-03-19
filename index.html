@@ -102,7 +102,7 @@ object-fit:cover;
 .card-container {
   display: flex;               /* align children horizontally */
   justify-content: center;     /* center the cards in the container */
-  gap: 20px;                   /* space between cards */
+  gap: 50px;                   /* space between cards */
   flex-wrap: wrap;             /* wrap to next line on small screens */
   margin: 40px auto;           /* optional: center the container */
 }
@@ -113,13 +113,14 @@ object-fit:cover;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  width: 250px;                /* fixed width for cards */
+  width: 450px;                /* fixed width for cards */
   transition: transform 0.3s;
 }
 
 .card img {
   width: 100%;                 /* make image fit card */
-  height: auto;
+  height: 200px;
+  object-fit: cover;
   border-radius: 4px;
 }
 
