@@ -1,107 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dādestān ī Dēnīg</title>
+<title>Vīdēvdād Study</title>
 
 <style>
-.container {
-  padding: 20px;
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  max-width: 1000px;
 }
 
-img {
-  width: 100%;
-  height: auto;
+/* Vertical blocks list */
+.block-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
 }
 
-h1 {
-  text-align: center;
+.block {
+  padding: 12px 20px;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.column {
+.block:hover {
+  background-color: #bbb;
+}
+
+/* Horizontal cards row */
+.cards {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  line-height: 1.6;
   border: 1px solid #ccc;
-  padding: 15px;
-  overflow: auto;
+}
+
+/* Highlight words */
+.red-highlight {
+  color: red;
+  font-weight: bold;
+}
+
+.green-highlight {
+  color: green;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
+
+<script>
+// Toggle display of cards for a block
+function toggleCards(id) {
+  const el = document.getElementById(id);
+  if (el.style.display === "grid") {
+    el.style.display = "none";
+  } else {
+    el.style.display = "grid";
+  }
+}
+
+// Automatic word highlighting
+function highlightWords() {
+  const redWords = ['aŋhrō maińiiuš','Ahrimen','angraman'];
+  const greenWords = ['Druj'];
+  const allText = document.querySelectorAll('.card');
+
+  allText.forEach(card => {
+    let html = card.innerHTML;
+
+    // Red
+    redWords.forEach(word => {
+      const regex = new RegExp(`\\b(${word})\\b`, 'g');
+      html = html.replace(regex, '<span class="red-highlight">$1</span>');
+    });
+
+    // Green
+    greenWords.forEach(word => {
+      const regex = new RegExp(`\\b(${word})\\b`, 'g');
+      html = html.replace(regex, '<span class="green-highlight">$1</span>');
+    });
+
+    card.innerHTML = html;
+  });
+}
+
+window.onload = highlightWords;
+</script>
 </head>
 
 <body>
 
-<h1>Dādestān ī Dēnīg</h1>
+<h1>Vīdēvdād</h1>
+<p>Click a block to show its transcription, translation, and comparison.</p>
 
-<div class="container">
-  <h2>Manuscript</h2>
-  <img id="manuscriptImage" src="images/DD1.png">
-
-  <h2>Transcription</h2>
-  <div id="transcriptionText" style="border:1px solid #ccc; padding:10px; min-height:80px;">
-    Your transcription text for page 1
+<div class="block-list">
+  <div class="block" onclick="toggleCards('cards1')">I</div>
+  <div class="cards" id="cards1">
+    <div class="card"><h3>Transcription</h3><p>Text with Ahrimen and aŋhrō here...</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation including Druj...</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison mentioning maińiiuš and angraman.</p></div>
   </div>
 
-  <h2>Translation</h2>
-  <div id="translationText" style="border:1px solid #ccc; padding:10px; min-height:80px;">
-    Your translation text for page 1
+  <div class="block" onclick="toggleCards('cards2')">II</div>
+  <div class="cards" id="cards2">
+    <div class="card"><h3>Transcription</h3><p>Second passage with Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation mentioning aŋhrō and Druj.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison with maińiiuš and angraman.</p></div>
   </div>
 
-  <div style="margin-top: 10px;">
-    <button onclick="prevPage()">Previous</button>
-    <span id="pageNumber">Page 1 of 10</span>
-    <button onclick="nextPage()">Next</button>
+  <div class="block" onclick="toggleCards('cards3')">III</div>
+  <div class="cards" id="cards3">
+    <div class="card"><h3>Transcription</h3><p>Third block aŋhrō and Druj example.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation text with Ahrimen highlighted.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison including maińiiuš, angraman, and Druj.</p></div>
   </div>
+
+  <!-- Repeat the same for IV → X -->
+  <div class="block" onclick="toggleCards('cards4')">IV</div>
+  <div class="cards" id="cards4">
+    <div class="card"><h3>Transcription</h3><p>Block IV text with aŋhrō and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation with Ahrimen.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison mentions maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards5')">V</div>
+  <div class="cards" id="cards5">
+    <div class="card"><h3>Transcription</h3><p>Text with Ahrimen, Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation including aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison with maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards6')">VI</div>
+  <div class="cards" id="cards6">
+    <div class="card"><h3>Transcription</h3><p>VI transcription with Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation mentioning aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison includes maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards7')">VII</div>
+  <div class="cards" id="cards7">
+    <div class="card"><h3>Transcription</h3><p>VII transcription aŋhrō and Ahrimen.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj mentioned.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards8')">VIII</div>
+  <div class="cards" id="cards8">
+    <div class="card"><h3>Transcription</h3><p>Block VIII text Ahrimen and Druj.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation aŋhrō.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards9')">IX</div>
+  <div class="cards" id="cards9">
+    <div class="card"><h3>Transcription</h3><p>IX transcription Ahrimen aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj included.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
+  <div class="block" onclick="toggleCards('cards10')">X</div>
+  <div class="cards" id="cards10">
+    <div class="card"><h3>Transcription</h3><p>X transcription Ahrimen and aŋhrō.</p></div>
+    <div class="card"><h3>Translation</h3><p>Translation Druj.</p></div>
+    <div class="card"><h3>Comparison</h3><p>Comparison maińiiuš and angraman.</p></div>
+  </div>
+
 </div>
-
-<script>
-const images = [
-  "images/DD1.png","images/DD2.png","images/DD3.png","images/DD4.png",
-  "images/DD5.png","images/DD6.png","images/DD7.png","images/DD8.png",
-  "images/DD9.png","images/DD10.png"
-];
-
-const transcriptions = [
-  "Transcription text for page 1","Transcription text for page 2","Transcription text for page 3",
-  "Transcription text for page 4","Transcription text for page 5","Transcription text for page 6",
-  "Transcription text for page 7","Transcription text for page 8","Transcription text for page 9",
-  "Transcription text for page 10"
-];
-
-const translations = [
-  "Translation text for page 1","Translation text for page 2","Translation text for page 3",
-  "Translation text for page 4","Translation text for page 5","Translation text for page 6",
-  "Translation text for page 7","Translation text for page 8","Translation text for page 9",
-  "Translation text for page 10"
-];
-
-let currentIndex = 0;
-
-const imgElement = document.getElementById("manuscriptImage");
-const transcriptionElement = document.getElementById("transcriptionText");
-const translationElement = document.getElementById("translationText");
-const pageNumberElement = document.getElementById("pageNumber");
-
-function showPage(index) {
-  if(index < 0) index = 0;
-  if(index >= images.length) index = images.length - 1;
-  currentIndex = index;
-
-  imgElement.src = images[currentIndex];
-  transcriptionElement.textContent = transcriptions[currentIndex];
-  translationElement.textContent = translations[currentIndex];
-  pageNumberElement.textContent = `Page ${currentIndex + 1} of ${images.length}`;
-}
-
-function nextPage() {
-  if(currentIndex < images.length - 1) showPage(currentIndex + 1);
-}
-
-function prevPage() {
-  if(currentIndex > 0) showPage(currentIndex - 1);
-}
-
-// Initialize first page
-showPage(0);
-</script>
 
 </body>
 </html>
