@@ -1,67 +1,266 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-
-<title>Vīdēvdād</title>
+<title>Diabolus in minutis latet</title>
 
 <style>
 
-.container{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:20px;
-padding:20px;
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  max-width: 1100px;
 }
 
-.column{
-border:1px solid #ccc;
-padding:15px;
-overflow:auto;
+/* Top list */
+.nav {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-img{
-width:100%;
+.nav button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  background: #ddd;
+  border-radius: 5px;
 }
 
-h1{
-text-align:center;
+.nav button:hover {
+  background: #bbb;
 }
+
+/* Hide sections by default */
+.content {
+  display: none;
+}
+
+/* Grid layout */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* Blocks */
+.block {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Highlights */
+.ahreman {
+  background-color: #ffe066;
+}
+
+.druz {
+  background-color: #b2f2bb;
+}
+
+.hidden {
+  background-color: transparent !important;
+}
+
+/* Filter buttons */
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters button {
+  margin-right: 10px;
+  padding: 6px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+  .nav {
+    display: flex;       /* Aligns children (buttons) in a row */
+    flex-direction: row; /* Ensures horizontal direction */
+    gap: 10px;           /* Optional: Adds space between the buttons */
+  }
 
 </style>
+
+<script>
+
+// Show selected section
+function showSection(id) {
+  document.querySelectorAll('.content').forEach(el => {
+    el.style.display = 'none';
+  });
+
+  document.getElementById(id).style.display = 'block';
+}
+
+// Highlight filters
+function showAll() {
+  document.querySelectorAll('.ahreman, .druz').forEach(el => {
+    el.classList.remove('hidden');
+  });
+}
+
+function showAhreman() {
+  document.querySelectorAll('.ahreman').forEach(el => {
+    el.classList.remove('hidden');
+  });
+  document.querySelectorAll('.druz').forEach(el => {
+    el.classList.add('hidden');
+  });
+}
+
+function showDruz() {
+  document.querySelectorAll('.druz').forEach(el => {
+    el.classList.remove('hidden');
+  });
+  document.querySelectorAll('.ahreman').forEach(el => {
+    el.classList.add('hidden');
+  });
+}
+
+</script>
 
 </head>
 
 <body>
 
-<h1>Vīdēvdād</h1>
+<h1>Diabolus in minutis latet</h1>
 
-<div class="container">
+<p>Select a section to view the comparison:</p>
 
-<div class="column">
-<h2>Manuscript</h2>
+<!-- Navigation -->
+<div class="nav">
+  <button onclick="showSection('sec1')">Vīdēvdād </button>
+  
+  <!-- ===================== -->
+<!-- I -->
+<!-- ===================== -->
 
-<img src="images/folio1.jpg">
-<img src="images/folio2.jpg">
+<div id="sec1" class="content">
+
+<h2>Vīdēvdād </h2>
+
+<div class="row">
+
+  <div class="block">
+    <h3>Transcription</h3>
+    <p>
+      ... transcription text ...
+      <span class="ahreman">Ahreman appears here</span>
+    </p>
+  </div>
+
+  <div class="block">
+    <h3>Translation</h3>
+    <p>
+      ... translation text ...
+      <span class="druz">Drūz emerges here</span>
+    </p>
+  </div>
+
+  <div class="block">
+    <h3>Analysis</h3>
+    <p>
+      This passage shows
+      <span class="ahreman">Ahreman</span>
+      in an early form, while
+      <span class="druz">Drūz</span>
+      is not yet fully developed.
+    </p>
+  </div>
 
 </div>
 
-<div class="column">
-<h2>Transcription</h2>
+</div>
+  <button onclick="showSection('sec2')">Dādestān ī dēnīg</button>
 
-<p>
-Paste transcription from DDtranscription.md here
-</p>
+  <!-- ===================== -->
+<!-- II -->
+<!-- ===================== -->
+
+<div id="sec2" class="content">
+
+<h2>Dādestān ī dēnīg</h2>
+
+<div class="row">
+
+  <div class="block">
+    <h3>Transcription</h3>
+    <p>
+      ... text ...
+      <span class="ahreman">Ahreman becomes more defined</span>
+    </p>
+  </div>
+
+  <div class="block">
+    <h3>Translation</h3>
+    <p>
+      ... translation ...
+    </p>
+  </div>
+
+  <div class="block">
+    <h3>Analysis</h3>
+    <p>
+      Here,
+      <span class="ahreman">Ahreman</span>
+      becomes more abstract and structured.
+    </p>
+  </div>
 
 </div>
 
-<div class="column">
-<h2>Translation</h2>
+</div>
+  <button onclick="showSection('sec3')">Wizīdagīhā ī Zādspram</button>
+  <!-- ===================== -->
+<!-- III -->
+<!-- ===================== -->
 
-<p>
-Paste translation from DDtranslation.md here
-</p>
+<div id="sec3" class="content">
+
+<h2>Wizīdagīhā ī Zādspram</h2>
+
+<div class="row">
+
+  <div class="block">
+    <h3>Transcription</h3>
+    <p>
+      ... text ...
+      <span class="druz">Drūz is systematized</span>
+    </p>
+  </div>
+
+  <div class="block">
+    <h3>Translation</h3>
+    <p>
+      ... translation ...
+    </p>
+  </div>
+
+  <div class="block">
+    <h3>Analysis</h3>
+    <p>
+      This passage presents
+      <span class="druz">Drūz</span>
+      as a fully developed concept derived from Ahreman.
+    </p>
+  </div>
+</div>
+  
+<!-- Filters -->
+<div class="filters">
+  <button onclick="showAll()">Show All</button>
+  <button onclick="showAhreman()">Only Ahreman</button>
+  <button onclick="showDruz()">Only Drūz</button>
+</div>
 
 </div>
 
