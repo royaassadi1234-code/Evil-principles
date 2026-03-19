@@ -2,14 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ahreman and Drūz Comparison</title>
+<title>Ahreman and Drūz Comparative Study</title>
 
 <style>
 
 body {
   font-family: Arial, sans-serif;
   margin: 40px;
-  max-width: 1000px;
+  max-width: 1200px;
   line-height: 1.6;
 }
 
@@ -22,14 +22,39 @@ body {
   margin-bottom: 30px;
 }
 
-/* Text containers */
-.text-block {
+/* Buttons */
+.buttons {
+  margin-bottom: 30px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Grid layout */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
   margin-bottom: 50px;
 }
 
-.text-title {
-  margin-top: 40px;
-  color: darkblue;
+.column {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Images */
+img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 /* Highlights */
@@ -41,17 +66,8 @@ body {
   background-color: #b2f2bb;
 }
 
-/* Buttons */
-.buttons {
-  margin-bottom: 20px;
-}
-
-button {
-  padding: 8px 12px;
-  margin-right: 10px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
+.hidden {
+  background-color: transparent !important;
 }
 
 /* Notes */
@@ -61,76 +77,15 @@ button {
   color: #555;
 }
 
-/* Hide class */
-.hidden {
-  background-color: transparent !important;
-}
-
-  .row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 50px;
-}
-
-.column {
-  background: #f9f9f9;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-/* Image styling */
-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-  @media (max-width: 900px) {
+/* Responsive */
+@media (max-width: 900px) {
   .row {
     grid-template-columns: 1fr;
   }
 }
-  img {
-  height: 300px;
-  object-fit: cover;
-}
-  img {
-  height: 300px;
-  object-fit: cover;
-}
 
 </style>
-<div class="row">
 
-  <a href="images/page1.jpg" target="_blank">
-  <img src="images/page1.jpg">
-</a>
-
-  <!-- Manuscript -->
-  <div class="column">
-    <h3>Manuscript</h3>
-    <img src="images/page1.jpg" alt="Manuscript page">
-  </div>
-
-  <!-- Transcription -->
-  <div class="column">
-    <h3>Transcription</h3>
-    <p>
-      Here is the transcription text...
-      <span class="ahreman">Ahreman appears here</span>
-    </p>
-  </div>
-
-  <!-- Analysis -->
-  <div class="column">
-    <h3>Analysis</h3>
-    <p>
-      This passage shows
-      <span class="druz">Drūz as a developed concept</span>.
-    </p>
-  </div>
-
-</div>
 <script>
 function showAll() {
   document.querySelectorAll('.ahreman, .druz').forEach(el => {
@@ -161,9 +116,9 @@ function showDruz() {
 
 <body>
 
-<h1>Comparison of Ahreman and Drūz</h1>
+<h1>Ahreman and Drūz in Three Zoroastrian Texts</h1>
 
-<p>This project compares the development of <strong>Ahreman</strong> and <strong>Drūz</strong> across three texts:</p>
+<p>This digital project compares the development of <strong>Ahreman</strong> and <strong>Drūz</strong> in:</p>
 
 <ul class="menu">
   <li>Vīdēvdād</li>
@@ -177,57 +132,118 @@ function showDruz() {
   <button onclick="showDruz()">Only Drūz</button>
 </div>
 
-<!-- TEXT 1 -->
-<div class="text-block">
+<!-- ===================== -->
+<!-- CONCEPT: AHREMAN -->
+<!-- ===================== -->
 
-<h2 class="text-title">Vīdēvdād</h2>
+<h2>Concept: Ahreman</h2>
 
-<p>
-Here you insert your text. For example:
-<span class="ahreman">Ahreman appears as the destructive principle opposing creation</span>,
-while later developments introduce
-<span class="druz">Drūz as a more specific manifestation of deception and corruption</span>.
-</p>
+<!-- Passage 1 -->
+<div class="row">
 
-<p class="note">
-Note: In this text, Ahreman is dominant, while Drūz is less systematized.
-</p>
+  <div class="column">
+    <h3>Manuscript</h3>
+    <a href="images/page1.jpg" target="_blank">
+      <img src="images/page1.jpg" alt="Manuscript page">
+    </a>
+  </div>
+
+  <div class="column">
+    <h3>Transcription</h3>
+    <p><strong>Vīdēvdād, Fargard X</strong></p>
+    <p>
+      ... text here ...
+      <span class="ahreman">Ahreman appears as the destructive force</span>
+      ...
+    </p>
+  </div>
+
+  <div class="column">
+    <h3>Analysis</h3>
+    <p>
+      This passage presents
+      <span class="ahreman">Ahreman</span>
+      as primarily cosmological rather than moral.
+    </p>
+
+    <p class="note">
+      Note: No clear systematization of Drūz yet.
+    </p>
+  </div>
 
 </div>
 
-<!-- TEXT 2 -->
-<div class="text-block">
+<!-- Passage 2 -->
+<div class="row">
 
-<h2 class="text-title">Dādestān ī dēnīg</h2>
+  <div class="column">
+    <h3>Manuscript</h3>
+    <a href="images/page2.jpg" target="_blank">
+      <img src="images/page2.jpg">
+    </a>
+  </div>
 
-<p>
-In this passage,
-<span class="ahreman">Ahreman is further defined in metaphysical terms</span>,
-and
-<span class="druz">Drūz becomes more active as a corrupting force affecting creation</span>.
-</p>
+  <div class="column">
+    <h3>Transcription</h3>
+    <p><strong>Dādestān ī dēnīg</strong></p>
+    <p>
+      ... text here ...
+      <span class="ahreman">Ahreman is defined more abstractly</span>
+    </p>
+  </div>
 
-<p class="note">
-Note: This text develops the relationship between Ahreman and Drūz more explicitly.
-</p>
+  <div class="column">
+    <h3>Analysis</h3>
+    <p>
+      Here,
+      <span class="ahreman">Ahreman</span>
+      becomes more metaphysical and structured.
+    </p>
+
+    <p class="note">
+      Note: Development beyond Vīdēvdād.
+    </p>
+  </div>
 
 </div>
 
-<!-- TEXT 3 -->
-<div class="text-block">
+<!-- ===================== -->
+<!-- CONCEPT: DRŪZ -->
+<!-- ===================== -->
 
-<h2 class="text-title">Wizīdagīhā ī Zādspram</h2>
+<h2>Concept: Drūz</h2>
 
-<p>
-Here,
-<span class="ahreman">Ahreman is integrated into a more structured cosmology</span>,
-while
-<span class="druz">Drūz is systematized as a category of evil forces</span>.
-</p>
+<!-- Passage 3 -->
+<div class="row">
 
-<p class="note">
-Note: This text shows a more advanced conceptual development.
-</p>
+  <div class="column">
+    <h3>Manuscript</h3>
+    <a href="images/page3.jpg" target="_blank">
+      <img src="images/page3.jpg">
+    </a>
+  </div>
+
+  <div class="column">
+    <h3>Transcription</h3>
+    <p><strong>Wizīdagīhā ī Zādspram</strong></p>
+    <p>
+      ... text here ...
+      <span class="druz">Drūz appears as a structured category of evil</span>
+    </p>
+  </div>
+
+  <div class="column">
+    <h3>Analysis</h3>
+    <p>
+      This shows
+      <span class="druz">Drūz</span>
+      as a developed system derived from Ahreman.
+    </p>
+
+    <p class="note">
+      Note: Fully systematized concept.
+    </p>
+  </div>
 
 </div>
 
