@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Devil is in the detail</title>
+<title>Diabolus in minutis latet</title>
 
 <style>
 
@@ -83,10 +83,9 @@ body {
   }
 }
   .nav {
-    display: flex;
-    flex-direction: column; /* Stacks buttons vertically */
-    width: max-content;    /* Prevents buttons from stretching full-width */
-    gap: 10px;             /* Adds space between buttons */
+    display: flex;       /* Aligns children (buttons) in a row */
+    flex-direction: row; /* Ensures horizontal direction */
+    gap: 10px;           /* Optional: Adds space between the buttons */
   }
 
 </style>
@@ -133,13 +132,13 @@ function showDruz() {
 
 <body>
 
-<h1>Diabolus in singulis est</h1>
+<h1>Diabolus in minutis latet</h1>
 
 <p>Select a section to view the comparison:</p>
 
 <!-- Navigation -->
 <div class="nav">
-  <button onclick="showSection('sec1')">I</button>
+  <button onclick="showSection('sec1')">Vīdēvdād </button>
   
   <!-- ===================== -->
 <!-- I -->
@@ -147,7 +146,7 @@ function showDruz() {
 
 <div id="sec1" class="content">
 
-<h2>I. (Title of Passage)</h2>
+<h2>Vīdēvdād </h2>
 
 <div class="row">
 
@@ -181,7 +180,7 @@ function showDruz() {
 </div>
 
 </div>
-  <button onclick="showSection('sec2')">II</button>
+  <button onclick="showSection('sec2')">Dādestān ī dēnīg</button>
 
   <!-- ===================== -->
 <!-- II -->
@@ -189,7 +188,7 @@ function showDruz() {
 
 <div id="sec2" class="content">
 
-<h2>II. (Title of Passage)</h2>
+<h2>Dādestān ī dēnīg</h2>
 
 <div class="row">
 
@@ -220,14 +219,14 @@ function showDruz() {
 </div>
 
 </div>
-  <button onclick="showSection('sec3')">III</button>
+  <button onclick="showSection('sec3')">Wizīdagīhā ī Zādspram</button>
   <!-- ===================== -->
 <!-- III -->
 <!-- ===================== -->
 
 <div id="sec3" class="content">
 
-<h2>III. (Title of Passage)</h2>
+<h2>Wizīdagīhā ī Zādspram</h2>
 
 <div class="row">
 
