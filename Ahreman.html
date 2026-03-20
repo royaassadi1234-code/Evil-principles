@@ -204,7 +204,10 @@ function toggleCards(id) {
 
 function renderColumn(prefix, items) {
   items.forEach((item, i) => {
-    document.write('<div class="block" onclick="toggleCards(\\'' + prefix + i + '\\')">' + item.label + '</div>');
+    document.write(
+      '<div class="block" onclick="toggleCards(\'' + prefix + i + '\')">' + item.label + '</div>'
+    );
+
     document.write('<div class="cards" id="' + prefix + i + '">');
     document.write('<div class="card"><h3>Transcription</h3><p>' + item.transcription + '</p></div>');
     document.write('<details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>' + item.translation + '</p></div></details>');
@@ -214,14 +217,14 @@ function renderColumn(prefix, items) {
 }
 
 function highlightWords() {
-  const redWords = ['aŋhrōmaińiiuš', 'Ahrimen', 'angraman', 'gannāgmēnōy', 'ahreman'];
+  const redWords = ['aŋhrōmaińiiuš', 'Ahrimen', 'angraman'];
   const greenWords = ['Druj'];
 
   document.querySelectorAll('.card').forEach(card => {
     let html = card.innerHTML;
 
     redWords.forEach(word => {
-      const regex = new RegExp('\\b(' + word + ')\\b', 'gi');
+      const regex = new RegExp('\\b(' + word + ')\\b', 'g');
       html = html.replace(regex, '<span class="red-highlight">$1</span>');
     });
 
@@ -243,7 +246,7 @@ window.onload = highlightWords;
 <main class="page">
   <section class="hero">
     <h1>Ahreman</h1>
-    <p class="intro">Click a block to show or hide its transcription, translation, and notes. You can keep multiple blocks open at the same time.</p>
+    <p class="intro">Click a block to show or hide its transcription, translation, and comparison cards. You can keep multiple blocks open at the same time.</p>
   </section>
 
   <div class="container">
@@ -251,9 +254,9 @@ window.onload = highlightWords;
       <h2>Vidēvdād</h2>
       <script>
         const column1Items = [
-          { label: "Fargard 1", transcription: "abar gumēzišn ī spennāgmēnōy ud gannāgmēnōy", translation: "", comparison: "" },
-          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "", comparison: "" },
-          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "", comparison: "" }
+          { label: "Fargard 1", transcription: "Text for Fargard 1 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 1 mentioning Druj.", comparison: "Comparison for Fargard 1 including angraman." },
+          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 2 mentioning Druj.", comparison: "Comparison for Fargard 2 including angraman." },
+          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 3 mentioning Druj.", comparison: "Comparison for Fargard 3 including angraman." }
         ];
 
         renderColumn('ah', column1Items);
@@ -264,9 +267,9 @@ window.onload = highlightWords;
       <h2>Dādestān ī dēnīg</h2>
       <script>
         const column2Items = [
-          { label: "Vd 9: Haoma", transcription: "Text for Vd 9: Haoma with Ahrimen and aŋhrōmaińiiuš.", translation: "", comparison: "" },
-          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "", comparison: "" },
-          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "", comparison: "" }
+          { label: "Vd 9: Haoma", transcription: "Text for Vd 9: Haoma with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Vd 9: Haoma mentioning Druj.", comparison: "Comparison for Vd 9: Haoma including angraman." },
+          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 2 mentioning Druj.", comparison: "Comparison for Fargard 2 including angraman." },
+          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 3 mentioning Druj.", comparison: "Comparison for Fargard 3 including angraman." }
         ];
 
         renderColumn('dd', column2Items);
@@ -277,32 +280,9 @@ window.onload = highlightWords;
       <h2>Wizīdagīhā ī Zādspram</h2>
       <script>
         const column3Items = [
-          { label: "4.0", transcription: "abar gumēzišn ī spennāgmēnōy ud gannāgmēnōy", translation: "", comparison: "WZahr 4.0" },
-          { label: "6.0", transcription: "ohrmazd andar rōšnīh ahreman andar tārīkīh ud ohrmazd az astīh ī ahreman madan =iz ō pahikār āgāh", translation: "", comparison: "WZahr 6.0" },
-          { label: "7.0", transcription: "ahreman az astīh ud rōšnīh ī ohrmazd nē āgāh būd", translation: "", comparison: "WZahr 7.0" },
-          { label: "8.0", transcription: "ahreman andar tom ud tārīkīh ō frōd kustān hamē raft", translation: "", comparison: "WZahr 8.0" },
-          { label: "10.0", transcription: "ka frāz ō wimand mad ohrmazd abāz dāštan ī ahreman az xwēš šahr rāy frāz ō hamrānīh mad u =š pad abēzag gōwišn ī dādīg stardag kird u =š abāz ō tom abgand", translation: "", comparison: "WZahr 10.0" },
-          { label: "12.0", transcription: "ahreman =iz andar tom abzār hamē ārāst", translation: "", comparison: "WZahr 12.0" },
-          { label: "15.0", transcription: "did ahreman padistād kū bē hāzēm harwisp ox ī astōmand ō adōstīh ī tō dōstīh ī man", translation: "", comparison: "WZahr 15.0" },
-          { label: "16.0", transcription: "ohrmazd pad mēnōyxradīh dīd kū ān =iz ī ahreman padistād tuwānīg pad kirdan agar nē brīnōmand zamānag ī kōxšišn", translation: "", comparison: "WZahr 16.0" },
-          { label: "17.0", transcription: "u =š zamān bē ō ayārīh xwāst čē =š dīd kū ahreman pad mayānǰīgīh ī ēč nērawišnīh abar ēstēd", translation: "", comparison: "WZahr 17.0" },
-          { label: "21.0", transcription: "ahreman abar ēstād", translation: "", comparison: "WZahr 21.0" },
-          { label: "22.0", transcription: "ohrmazd dīd kū ka ahreman parwastag kirdan nē šāyēd hamē ka xwāhēd abāz ō xwēš buništ ī tārīkīh šawēd", translation: "", comparison: "WZahr 22.0" },
-          { label: "35.0", transcription: "ast fradom rāstdēnīh ī xwad āstawānīh ī abar dōbuništagīh pad ān ristag brahm kū ohrmazd hamāgwehīh awattarīh u =š kām wisp frārōn ahreman wispwattarīh awehīh", translation: "", comparison: "WZahr 35.0" },
-          { label: "46.0", transcription: "zurwān anādūg būd kū =š dām ī ohrmazd rawāg kird bē az rawāgīh ī ahreman dām", translation: "", comparison: "WZahr 46.0" },
-          { label: "48.0", transcription: "u =š frazāmnigerīhā abzār =ēw ī az xwad gōhr ī tārīkīh kē =š nērōg ī zurwānīg pad =iš paywastag pōst ēwēnag ī wazagīg ud syā ud ādurestargōn frāz ō ahreman burd", translation: "", comparison: "WZahr 48.0" },
-          { label: "50.0", transcription: "pad hamzamān ahreman az hamzōrān hammis bē ō starpāyag āmad", translation: "", comparison: "WZahr 50.0" },
-          { label: "53.0", transcription: "abar andar āmadan ī ahreman ō dām", translation: "", comparison: "WZahr 53.0" },
-          { label: "56.0", transcription: "ahreman tābišnīg ud sōzišnīg pad =iš abar āmad", translation: "", comparison: "WZahr 56.0" },
-          { label: "82.0", transcription: "ēn būd bālist pādixšāyīh ī ahreman čē abāg wisp zōr ī =š būd bē ō āhōgēnišn ī dāmān mad", translation: "", comparison: "WZahr 82.0" },
-          { label: "87.0", transcription: "ahreman mēnīd kū =m bowandag mad pērōzīh čē =m škast asmān ud āhōgēnīd pad tom ud tār u =m kird pad drubuštīh", translation: "", comparison: "WZahr 87.0" },
-          { label: "94.0", transcription: "čē wizir būd ī brīngar zurwān pad bun andar āmadan ī ahreman kū abar ō sīh zamestān gayōmart ī tbk ān ī gyān bazišn frāz brēhēnam", translation: "", comparison: "WZahr 94.0" },
-          { label: "102.0", transcription: "abar padīragēstišnīh ī ān āhōgēnišn ī ahreman abar ohrmazd dāmān burd", translation: "", comparison: "WZahr 102.0" },
-          { label: "104.0", transcription: "čē čiyōn andarōn asmān āmad ēg mēnōy ī asmān artēštār homānāg baxt kē ayōšustēn zrēy paymōxt dārēd ī xwad ayōšustēn asmān ast pad burz wāng padist barišn guft ō ahreman kū nūn ka andar āmad hē ā =t abāz nē hilam", translation: "", comparison: "WZahr 104.0" },
-          { label: "107.0", transcription: "pad ham zamān ahreman kōxšīd kū abāz ō xwēš bunag ī tārīkīh šawēd u =š widarg nē ayāft", translation: "", comparison: "WZahr 107.0" },
-          { label: "109.0", transcription: "čiyōn gōwīhēd pad gāhān kū ēdōn =iz ān ī harw dō mēnōy ō ham mad hēnd ō ān ī ōy ī fradom dahišn kū harw dō mēnōy ō tan ī gayōmart mad hēnd kē =iz pad zīndagīh ohrmazd pad ēd kār kū wēš zīndag dārād kē =iz pad azīndagīh gannāgmēnōy pad ēd kār kū wēš bē ōzanād kē =iz ēdōn ān ast tā ō ān ī abdom andar axwān kū mardōm =iz ī abārīg abar ōh rasēnd", translation: "", comparison: "WZahr 109.0" },
-          { label: "110.0", transcription: "ud wattomīh ī druwandān ahreman ud druwandān rāy abesīhišn bē dīd ēdōn ōy ī ahlaw pāšommenišnīh ī ohrmazd ī ēmēd ī hamēyīgīh", translation: "", comparison: "WZahr 110.0" },
-          { label: "111.0", transcription: "ēn būd fradom ardīg ī asmānān abāg ahreman", translation: "", comparison: "WZahr 111.0" }
+          { label: "Fargard 1", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 1 mentioning Druj.", comparison: "Comparison for Fargard 1 including angraman." },
+          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 2 mentioning Druj.", comparison: "Comparison for Fargard 2 including angraman." },
+          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 3 mentioning Druj.", comparison: "Comparison for Fargard 3 including angraman." }
         ];
 
         renderColumn('wz', column3Items);
