@@ -5,66 +5,163 @@
 <title>Vidēvdād</title>
 
 <style>
+:root {
+  --bg: #f4efe6;
+  --bg-accent: #e7ddd1;
+  --surface: rgba(255, 251, 245, 0.9);
+  --surface-strong: #fffdf9;
+  --text: #241b16;
+  --muted: #65584f;
+  --border: rgba(92, 67, 48, 0.14);
+  --shadow: 0 18px 50px rgba(56, 39, 25, 0.12);
+  --accent: #9f3f2c;
+  --accent-dark: #7f2e20;
+  --block-bg: #efe5d8;
+  --block-hover: #e3d2be;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(159, 63, 44, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(122, 92, 61, 0.12), transparent 24%),
+    linear-gradient(180deg, #f8f4ed 0%, var(--bg) 50%, var(--bg-accent) 100%);
+}
+
+.page {
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 36px 0 56px;
+  display: grid;
+  gap: 28px;
+}
+
+.hero {
+  padding: 36px 32px 30px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(247, 240, 231, 0.9));
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+}
+
+.intro {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.7;
 }
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.column h2 {
+  margin: 0 0 4px;
+  font-size: 1.45rem;
+  line-height: 1.25;
 }
 
 .block {
-  padding: 12px;
-  background-color: #ddd;
+  padding: 14px 16px;
+  background: var(--block-bg);
   cursor: pointer;
-  border-radius: 5px;
+  border: 1px solid rgba(159, 63, 44, 0.1);
+  border-radius: 16px;
   text-align: center;
   font-weight: bold;
+  color: var(--text);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .block:hover {
-  background-color: #bbb;
+  transform: translateY(-2px);
+  background: var(--block-hover);
+  border-color: rgba(159, 63, 44, 0.22);
 }
 
 .cards {
   display: none;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 5px;
+  gap: 12px;
+  margin-top: -2px;
 }
 
 .card {
-  background-color: #f9f9f9;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  line-height: 1.5;
+  background: var(--surface-strong);
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  line-height: 1.65;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: var(--accent-dark);
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
 }
 
 .red-highlight {
-  color: red;
+  color: #a12f1c;
   font-weight: bold;
 }
 
 .green-highlight {
-  color: green;
+  color: #2f6a45;
   font-weight: bold;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    width: min(100% - 28px, 900px);
+    padding: 24px 0 40px;
+    gap: 22px;
+  }
+
+  .hero,
+  .column {
+    padding: 22px 18px;
+    border-radius: 22px;
   }
 }
 </style>
@@ -126,70 +223,74 @@ window.onload = highlightWords;
 </head>
 <body>
 
-<h1>Ahreman</h1>
-<p>Click a block to show or hide its transcription, translation, and comparison cards. You can keep multiple blocks open at the same time.</p>
+<main class="page">
+  <section class="hero">
+    <h1>Ahreman</h1>
+    <p class="intro">Click a block to show or hide its transcription, translation, and comparison cards. You can keep multiple blocks open at the same time.</p>
+  </section>
 
-<div class="container">
-  <div class="column">
-    <h2>Vidēvdād</h2>
-    <script>
-      const column1Labels = [
-        "Fargard 1",
-        "Fargard 2",
-        "Fargard 3",
-        "Fargard 4",
-        "Fargard 5",
-        "Fargard 6",
-        "Fargard 7",
-        "Fargard 8",
-        "Fargard 9",
-        "Fargard 10"
-      ];
+  <div class="container">
+    <div class="column">
+      <h2>Vidēvdād</h2>
+      <script>
+        const column1Labels = [
+          "Fargard 1",
+          "Fargard 2",
+          "Fargard 3",
+          "Fargard 4",
+          "Fargard 5",
+          "Fargard 6",
+          "Fargard 7",
+          "Fargard 8",
+          "Fargard 9",
+          "Fargard 10"
+        ];
 
-      renderColumn('ah', column1Labels);
-    </script>
+        renderColumn('ah', column1Labels);
+      </script>
+    </div>
+
+    <div class="column">
+      <h2>Dādestān ī dēnīg</h2>
+      <script>
+        const column2Labels = [
+          "Fargard 1",
+          "Fargard 2",
+          "Fargard 3",
+          "Fargard 4",
+          "Fargard 5",
+          "Fargard 6",
+          "Fargard 7",
+          "Fargard 8",
+          "Fargard 9",
+          "Fargard 10"
+        ];
+
+        renderColumn('dd', column2Labels);
+      </script>
+    </div>
+
+    <div class="column">
+      <h2>Wizīdagīhā ī Zādspram</h2>
+      <script>
+        const column3Labels = [
+          "Fargard 1",
+          "Fargard 2",
+          "Fargard 3",
+          "Fargard 4",
+          "Fargard 5",
+          "Fargard 6",
+          "Fargard 7",
+          "Fargard 8",
+          "Fargard 9",
+          "Fargard 10"
+        ];
+
+        renderColumn('wz', column3Labels);
+      </script>
+    </div>
   </div>
-
-  <div class="column">
-    <h2>Dādestān ī dēnīg</h2>
-    <script>
-      const column2Labels = [
-        "Fargard 1",
-        "Fargard 2",
-        "Fargard 3",
-        "Fargard 4",
-        "Fargard 5",
-        "Fargard 6",
-        "Fargard 7",
-        "Fargard 8",
-        "Fargard 9",
-        "Fargard 10"
-      ];
-
-      renderColumn('dd', column2Labels);
-    </script>
-  </div>
-
-  <div class="column">
-    <h2>Wizīdagīhā ī Zādspram</h2>
-    <script>
-      const column3Labels = [
-        "Fargard 1",
-        "Fargard 2",
-        "Fargard 3",
-        "Fargard 4",
-        "Fargard 5",
-        "Fargard 6",
-        "Fargard 7",
-        "Fargard 8",
-        "Fargard 9",
-        "Fargard 10"
-      ];
-
-      renderColumn('wz', column3Labels);
-    </script>
-  </div>
-</div>
+</main>
 
 </body>
 </html>
