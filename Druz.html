@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Dādestān ī dēnīg</title>
+<title>Druj</title>
 
 <style>
 :root {
@@ -20,9 +20,7 @@
   --block-hover: #e3d2be;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -67,28 +65,45 @@ h1 {
   line-height: 1.7;
 }
 
-.container {
+.section-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.grid-header,
+.grid-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  align-items: start;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 22px;
+.column-heading,
+.column-cell {
   border: 1px solid var(--border);
   border-radius: 24px;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
 
-.column h2 {
-  margin: 0 0 4px;
+.column-heading {
+  padding: 22px;
+}
+
+.column-heading h2 {
+  margin: 0;
   font-size: 1.45rem;
   line-height: 1.25;
+}
+
+.column-cell {
+  padding: 18px;
+  min-height: 96px;
+}
+
+.column-cell.is-empty {
+  background: rgba(255, 251, 245, 0.55);
+  border-style: dashed;
+  box-shadow: none;
 }
 
 .block {
@@ -113,7 +128,7 @@ h1 {
   display: none;
   flex-direction: column;
   gap: 12px;
-  margin-top: -2px;
+  margin-top: 12px;
 }
 
 .card {
@@ -130,7 +145,8 @@ h1 {
   color: var(--accent-dark);
 }
 
-.card p {
+.card p,
+.empty-note {
   margin: 0;
   color: var(--muted);
 }
@@ -151,32 +167,15 @@ h1 {
   color: var(--accent-dark);
 }
 
-.card-toggle summary::-webkit-details-marker {
-  display: none;
-}
+.card-toggle summary::-webkit-details-marker { display: none; }
+.card-toggle[open] summary { border-bottom: 1px solid var(--border); }
+.card-toggle .card-body { padding: 16px; color: var(--muted); line-height: 1.65; }
 
-.card-toggle[open] summary {
-  border-bottom: 1px solid var(--border);
-}
-
-.card-toggle .card-body {
-  padding: 16px;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.red-highlight {
-  color: #a12f1c;
-  font-weight: bold;
-}
-
-.green-highlight {
-  color: #2f6a45;
-  font-weight: bold;
-}
+.empty-note { font-style: italic; }
 
 @media (max-width: 1000px) {
-  .container {
+  .grid-header,
+  .grid-row {
     grid-template-columns: 1fr;
   }
 }
@@ -189,7 +188,8 @@ h1 {
   }
 
   .hero,
-  .column {
+  .column-heading,
+  .column-cell {
     padding: 22px 18px;
     border-radius: 22px;
   }
@@ -202,42 +202,77 @@ function toggleCards(id) {
   selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
 }
 
-function renderColumn(prefix, items) {
-  items.forEach((item, i) => {
-    document.write(
-      '<div class="block" onclick="toggleCards(\'' + prefix + i + '\')">' + item.label + '</div>'
-    );
-
-    document.write('<div class="cards" id="' + prefix + i + '">');
-    document.write('<div class="card"><h3>Transcription</h3><p>' + item.transcription + '</p></div>');
-    document.write('<details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>' + item.translation + '</p></div></details>');
-    document.write('<details class="card-toggle"><summary>Notes</summary><div class="card-body"><p>' + item.comparison + '</p></div></details>');
-    document.write('</div>');
-  });
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
-function highlightWords() {
-  const redWords = ['aŋhrōmaińiiuš', 'Ahrimen', 'angraman'];
-  const greenWords = ['Druj'];
+function createEntryMarkup(prefix, item, index) {
+  if (!item) {
+    return '<div class="column-cell is-empty"><p class="empty-note">No section in this row.</p></div>';
+  }
 
-  document.querySelectorAll('.card').forEach(card => {
-    let html = card.innerHTML;
-
-    redWords.forEach(word => {
-      const regex = new RegExp('\\b(' + word + ')\\b', 'g');
-      html = html.replace(regex, '<span class="red-highlight">$1</span>');
-    });
-
-    greenWords.forEach(word => {
-      const regex = new RegExp('\\b(' + word + ')\\b', 'g');
-      html = html.replace(regex, '<span class="green-highlight">$1</span>');
-    });
-
-    card.innerHTML = html;
-  });
+  const cardId = `${prefix}${index}`;
+  return `
+    <div class="column-cell">
+      <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
+      <div class="cards" id="${cardId}">
+        <div class="card"><h3>Transcription</h3><p>${escapeHtml(item.transcription)}</p></div>
+        <details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>${escapeHtml(item.translation)}</p></div></details>
+        <details class="card-toggle"><summary>Notes</summary><div class="card-body"><p>${escapeHtml(item.comparison)}</p></div></details>
+      </div>
+    </div>
+  `;
 }
 
-window.onload = highlightWords;
+function renderSectionGrid(columns) {
+  const root = document.getElementById('section-grid');
+  const maxRows = Math.max(...columns.map(column => column.items.length));
+
+  let html = `
+    <div class="grid-header">
+      ${columns.map(column => `<section class="column-heading"><h2>${escapeHtml(column.title)}</h2></section>`).join('')}
+    </div>
+  `;
+
+  for (let i = 0; i < maxRows; i += 1) {
+    html += '<div class="grid-row">';
+    columns.forEach(column => {
+      html += createEntryMarkup(column.prefix, column.items[i], i);
+    });
+    html += '</div>';
+  }
+
+  root.innerHTML = html;
+}
+
+const column1Items = [
+  { label: "Section 1", transcription: "", translation: "", comparison: "Add Vidēvdād notes here." },
+  { label: "Section 2", transcription: "", translation: "", comparison: "Add Vidēvdād notes here." },
+  { label: "Section 3", transcription: "", translation: "", comparison: "Add Vidēvdād notes here." }
+];
+
+const column2Items = [
+  { label: "Section 1", transcription: "", translation: "", comparison: "Add Dādestān ī dēnīg notes here." },
+  { label: "Section 2", transcription: "", translation: "", comparison: "Add Dādestān ī dēnīg notes here." },
+  { label: "Section 3", transcription: "", translation: "", comparison: "Add Dādestān ī dēnīg notes here." }
+];
+
+const column3Items = [
+  { label: "Section 1", transcription: "", translation: "", comparison: "Add Wizīdagīhā ī Zādspram notes here." },
+  { label: "Section 2", transcription: "", translation: "", comparison: "Add Wizīdagīhā ī Zādspram notes here." },
+  { label: "Section 3", transcription: "", translation: "", comparison: "Add Wizīdagīhā ī Zādspram notes here." }
+];
+
+window.onload = () => {
+  renderSectionGrid([
+    { title: 'Vidēvdād', prefix: 'vd', items: column1Items },
+    { title: 'Dādestān ī dēnīg', prefix: 'dd', items: column2Items },
+    { title: 'Wizīdagīhā ī Zādspram', prefix: 'wz', items: column3Items }
+  ]);
+};
 </script>
 
 </head>
@@ -246,49 +281,10 @@ window.onload = highlightWords;
 <main class="page">
   <section class="hero">
     <h1>Druj</h1>
-    <p class="intro">Click a block to show or hide its transcription, translation, and comparison cards. You can keep multiple blocks open at the same time.</p>
+    <p class="intro">Each row now holds one separate section across the three texts. The placeholders are empty so you can add the transcriptions later and keep matching sections beside each other.</p>
   </section>
 
-  <div class="container">
-    <div class="column">
-      <h2>Vidēvdād</h2>
-      <script>
-        const column1Items = [
-          { label: "Fargard 1", transcription: "Text for Fargard 1 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 1 mentioning Druj.", comparison: "Comparison for Fargard 1 including angraman." },
-          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 2 mentioning Druj.", comparison: "Comparison for Fargard 2 including angraman." },
-          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 3 mentioning Druj.", comparison: "Comparison for Fargard 3 including angraman." }
-        ];
-
-        renderColumn('ah', column1Items);
-      </script>
-    </div>
-
-    <div class="column">
-      <h2>Dādestān ī dēnīg</h2>
-      <script>
-        const column2Items = [
-          { label: "Fargard 1", transcription: "Text for Fargard 1 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 1 mentioning Druj.", comparison: "Comparison for Fargard 1 including angraman." },
-          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 2 mentioning Druj.", comparison: "Comparison for Fargard 2 including angraman." },
-          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 3 mentioning Druj.", comparison: "Comparison for Fargard 3 including angraman." }
-        ];
-
-        renderColumn('dd', column2Items);
-      </script>
-    </div>
-
-    <div class="column">
-      <h2>Wizīdagīhā ī Zādspram</h2>
-      <script>
-        const column3Items = [
-          { label: "Fargard 1", transcription: "Text for Fargard 1 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 1 mentioning Druj.", comparison: "Comparison for Fargard 1 including angraman." },
-          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 2 mentioning Druj.", comparison: "Comparison for Fargard 2 including angraman." },
-          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "Translation of Fargard 3 mentioning Druj.", comparison: "Comparison for Fargard 3 including angraman." }
-        ];
-
-        renderColumn('wz', column3Items);
-      </script>
-    </div>
-  </div>
+  <div id="section-grid" class="section-grid"></div>
 </main>
 
 </body>
