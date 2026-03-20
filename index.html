@@ -1,193 +1,264 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-
 <title>Diabolus in minutis latet</title>
 
 <style>
-
-body{
-font-family: Arial, sans-serif;
-margin:40px;
+:root {
+  --bg: #f4efe6;
+  --bg-accent: #e5dccf;
+  --surface: rgba(255, 251, 245, 0.9);
+  --surface-strong: #fffdf9;
+  --text: #241b16;
+  --muted: #66574e;
+  --border: rgba(92, 67, 48, 0.14);
+  --shadow: 0 18px 50px rgba(56, 39, 25, 0.12);
+  --accent: #9f3f2c;
+  --accent-dark: #7f2e20;
+  --accent-soft: #efe0d7;
 }
 
-h1{
-text-align:center;
+* {
+  box-sizing: border-box;
 }
 
-nav{
-display:flex;
-justify-content:center;
-gap:40px;
-margin-bottom:40px;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(159, 63, 44, 0.12), transparent 32%),
+    radial-gradient(circle at top right, rgba(122, 92, 61, 0.12), transparent 28%),
+    linear-gradient(180deg, #f8f4ed 0%, var(--bg) 48%, var(--bg-accent) 100%);
 }
 
-nav a{
-text-decoration:none;
-font-size:20px;
-color:black;
+.page {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0 56px;
+  display: grid;
+  gap: 36px;
 }
 
-.container{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:40px;
+.hero {
+  text-align: center;
+  padding: 48px 28px 32px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(247, 240, 231, 0.9));
+  box-shadow: var(--shadow);
 }
 
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
+h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
 }
 
-.project-container {
-  max-width: 1200px;
-  padding: 24px;
-  background: #ffffff;
-  border: 1px solid #e1e4e8;
-  border-radius: 12px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-  width: 160%;       /* or any width you want */
-  margin: 0 auto;   /* this centers the div horizontally */
-  text-align: center; /* optional: center the text inside */
-}
-
-.project-container:hover {
-  transform: translateY(-5px);
-  border-color: #007bff;
-}
-
-.project-tag {
-  font-size: 12px;
-  font-weight: bold;
-  color: #007bff;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.project-header h2 {
-  margin: 8px 0;
-  font-size: 1.5rem;
-  color: #1a1a1a;
-}
-
-.project-description {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #4b5563;
-  margin-bottom: 20px;
-}
-
-.project-tech code {
-  background: #f3f4f6;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 13px;
-  margin-right: 8px;
-  color: #374151;
-}
-
-.project-link {
-  display: inline-block;
-  margin-top: 24px;
-  text-decoration: none;
-  color: #007bff;
-  font-weight: 600;
+.intro {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--muted);
 }
 
 .card-container {
-  display: flex;               /* align children horizontally */
-  justify-content: center;     /* center the cards in the container */
-  gap: 50px;                   /* space between cards */
-  flex-wrap: wrap;             /* wrap to next line on small screens */
-  margin: 40px auto;           /* optional: center the container */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
 }
 
 .card {
-  background: #f8f8f8;         /* optional background color */
-  padding: 20px;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  width: 450px;                /* fixed width for cards */
-  transition: transform 0.3s;
-}
-
-.card img {
-  width: 100%;                 /* make image fit card */
-  height: 200px;
-  object-fit: cover;
-  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px); /* subtle hover effect */
+  transform: translateY(-8px);
+  border-color: rgba(159, 63, 44, 0.32);
+  box-shadow: 0 24px 60px rgba(56, 39, 25, 0.18);
 }
 
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
 
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+  padding: 22px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.card button {
+  margin-top: auto;
+  align-self: flex-start;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: #fffaf7;
+  font: inherit;
+  font-size: 0.98rem;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(127, 46, 32, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(127, 46, 32, 0.28);
+}
+
+.project-container {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.project-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-header h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.project-description {
+  margin: 0 0 22px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-tech code {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #f0e7dc;
+  color: #4f3c30;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .page {
+    width: min(100% - 28px, 900px);
+    padding: 24px 0 40px;
+    gap: 24px;
+  }
+
+  .hero,
+  .project-container {
+    padding: 24px 20px;
+    border-radius: 22px;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
-
 </head>
-
 <body>
 
-<h1>Diabolus in minutis latet</h1>
+<main class="page">
+  <section class="hero">
+    <h1>Diabolus in minutis latet</h1>
+    <p class="intro">
+      A small digital edition exploring evil principles in selected Middle Persian and Avestan texts through linked passages, comparison, and close reading.
+    </p>
+  </section>
 
+  <section class="card-container">
+    <article class="card">
+      <img src="images/vdfolio1.jpg" alt="Vidēvdād">
+      <div class="card-content">
+        <h3>Ahreman</h3>
+        <p>Trace passages centered on Ahreman across the selected textual witnesses.</p>
+        <button onclick="window.location.href='Ahreman.html'">Related passages</button>
+      </div>
+    </article>
 
-  
+    <article class="card">
+      <img src="images/ddfolio1.jpg" alt="Dādestān ī Dēnīg">
+      <div class="card-content">
+        <h3>Druz</h3>
+        <p>Follow the textual role of Druz and compare its representation across works.</p>
+        <button onclick="window.location.href='Druz.html'">Related passages</button>
+      </div>
+    </article>
 
-</div>
+    <article class="card">
+      <img src="images/wzfolio1.jpg" alt="Wizīdagīhā ī Zādspram">
+      <div class="card-content">
+        <h3>Hybrid</h3>
+        <p>Review passages where categories overlap and the conceptual boundaries become mixed.</p>
+        <button onclick="window.location.href='hybrid.html'">Related passages</button>
+      </div>
+    </article>
+  </section>
 
+  <section class="project-container">
+    <div class="project-header">
+      <span class="project-tag">Roya Assadollahi</span>
+      <h2>Evil Principles in Selected Middle Persian and Avestan Texts</h2>
+    </div>
 
-<div class="card-container">
-  <div class="card">
-    <img src="images/vdfolio1.jpg" alt="Vīdēvdād">
-    <h3>Ahreman</h3>
-    <button onclick="window.location.href='Ahreman.html'">related passages</button>
-  </div>
+    <p class="project-description">
+      While some Pahlavi texts focus more on Ahreman, or "Gannāg-Mēnōy," as the ultimate evil principle, Druz also plays an active role in other Middle Persian works such as Dādestān ī Dēnīg. This project combines comparative and digital humanities methods to examine how these concepts relate to each other, how they differ in Dādestān ī Dēnīg and Wizīdagīhā ī Zādspram, and what these principles may have meant to Mazdayasnian high priests in ninth-century Iran.
+    </p>
 
-  <div class="card">
-    <img src="images/ddfolio1.jpg" alt="Dādestān ī Dēnīg">
-    <h3>Drūz</h3>
-     <button onclick="window.location.href='Druz.html'">related passages</button>
-  </div>
-
-  <div class="card">
-    <img src="images/wzfolio1.jpg" alt="Wizīdagīhā ī Zādspram">
-    <h3>Hybrid</h3>
-     <button onclick="window.location.href='hybrid.html'">related passages</button>
-  </div>
-</div>
-
-<div class="container"></div>
-
-<div class="project-container">
-  <div class="project-header">
-    <span class="project-tag">Roya Assadollahi</span>
-    <h2>Evil Principles in selected Middle Persian and Avestan Texts</h2>
-  </div>
-  
-  <p class="project-description">While Some Pahlavi texts focus more on Ahreman  (or "Gannāg-Mēnōy") as the ultimate
-evil principle, Drūz also plays an active role in other Middle Persian works
-like Dādestān ī Dēnīg. It seems that Drūz is really the main representation of
-Evil/Chaos for Manuščihr. both comparative and digital humanities methods will be combined to examine, on the one hand, how the two
-concepts relate to each other and what are some main differences in Dādestān ī
-dēnīg and Vizīdagīhā ī Zādspram; on the other hand, it seeks to find out, however partially, what the two principle actually meant to the Mazdyasnian high priests during the 9th
-century Iran.</p>
-  
-  <div class="project-tech">
-    <code>html</code>
-    <code>CSS</code>
-    <code>comparative studies</code>
-
-  </div>
-
-</div>
+    <div class="project-tech">
+      <code>HTML</code>
+      <code>CSS</code>
+      <code>comparative studies</code>
+    </div>
+  </section>
+</main>
 
 </body>
-
 </html>
