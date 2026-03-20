@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WZahr</title>
+<style>
+:root {
+  --bg: #f4efe6;
+  --surface: rgba(255, 251, 245, 0.94);
+  --surface-strong: #fffdf9;
+  --text: #241b16;
+  --muted: #65584f;
+  --border: rgba(92, 67, 48, 0.14);
+  --shadow: 0 18px 50px rgba(56, 39, 25, 0.12);
+  --accent: #9f3f2c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(159, 63, 44, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(122, 92, 61, 0.12), transparent 24%),
+    linear-gradient(180deg, #f8f4ed 0%, var(--bg) 100%);
+}
+
+.page {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 36px 0 56px;
+  display: grid;
+  gap: 24px;
+}
+
+.hero,
+.entry {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 32px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2.1rem, 5vw, 3.8rem);
+}
+
+.intro {
+  margin: 0 auto;
+  width: min(760px, 100%);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.entries {
+  display: grid;
+  gap: 16px;
+}
+
+.entry {
+  padding: 18px 20px;
+  background: var(--surface-strong);
+}
+
+.entry-number {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(159, 63, 44, 0.1);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.entry p {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .page {
+    width: min(100% - 28px, 900px);
+    padding: 24px 0 40px;
+  }
+
+  .hero,
+  .entry {
+    padding: 20px 18px;
+  }
+}
+</style>
+</head>
+<body>
+
+<main class="page">
+  <section class="hero">
+    <h1>WZahr</h1>
+    <p class="intro">Cleaned selection from <em>Wizīdagīhā ī Zādspram</em> containing only passages related to <span class="highlight">Ahreman</span> and closely linked references such as <span class="highlight">gannāgmēnōy</span>.</p>
+  </section>
+
+  <section class="entries">
+    <article class="entry">
+      <div class="entry-number">4.0</div>
+      <p>abar gumēzišn ī spennāgmēnōy ud <span class="highlight">gannāgmēnōy</span></p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">6.0</div>
+      <p>ohrmazd andar rōšnīh <span class="highlight">ahreman</span> andar tārīkīh ud ohrmazd az astīh ī <span class="highlight">ahreman</span> madan =iz ō pahikār āgāh</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">7.0</div>
+      <p><span class="highlight">ahreman</span> az astīh ud rōšnīh ī ohrmazd nē āgāh būd</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">8.0</div>
+      <p><span class="highlight">ahreman</span> andar tom ud tārīkīh ō frōd kustān hamē raft</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">10.0</div>
+      <p>ka frāz ō wimand mad ohrmazd abāz dāštan ī <span class="highlight">ahreman</span> az xwēš šahr rāy frāz ō hamrānīh mad u =š pad abēzag gōwišn ī dādīg stardag kird u =š abāz ō tom abgand</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">12.0</div>
+      <p><span class="highlight">ahreman</span> =iz andar tom abzār hamē ārāst</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">15.0</div>
+      <p>did <span class="highlight">ahreman</span> padistād kū bē hāzēm harwisp ox ī astōmand ō adōstīh ī tō dōstīh ī man</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">16.0</div>
+      <p>ohrmazd pad mēnōyxradīh dīd kū ān =iz ī <span class="highlight">ahreman</span> padistād tuwānīg pad kirdan agar nē brīnōmand zamānag ī kōxšišn</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">17.0</div>
+      <p>u =š zamān bē ō ayārīh xwāst čē =š dīd kū <span class="highlight">ahreman</span> pad mayānǰīgīh ī ēč nērawišnīh abar ēstēd</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">21.0</div>
+      <p><span class="highlight">ahreman</span> abar ēstād</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">22.0</div>
+      <p>ohrmazd dīd kū ka <span class="highlight">ahreman</span> parwastag kirdan nē šāyēd hamē ka xwāhēd abāz ō xwēš buništ ī tārīkīh šawēd</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">35.0</div>
+      <p>ast fradom rāstdēnīh ī xwad āstawānīh ī abar dōbuništagīh pad ān ristag brahm kū ohrmazd hamāgwehīh awattarīh u =š kām wisp frārōn <span class="highlight">ahreman</span> wispwattarīh awehīh</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">46.0</div>
+      <p>zurwān anādūg būd kū =š dām ī ohrmazd rawāg kird bē az rawāgīh ī <span class="highlight">ahreman</span> dām</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">48.0</div>
+      <p>u =š frazāmnigerīhā abzār =ēw ī az xwad gōhr ī tārīkīh kē =š nērōg ī zurwānīg pad =iš paywastag pōst ēwēnag ī wazagīg ud syā ud ādurestargōn frāz ō <span class="highlight">ahreman</span> burd</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">50.0</div>
+      <p>pad hamzamān <span class="highlight">ahreman</span> az hamzōrān hammis bē ō starpāyag āmad</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">53.0</div>
+      <p>abar andar āmadan ī <span class="highlight">ahreman</span> ō dām</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">56.0</div>
+      <p><span class="highlight">ahreman</span> tābišnīg ud sōzišnīg pad =iš abar āmad</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">82.0</div>
+      <p>ēn būd bālist pādixšāyīh ī <span class="highlight">ahreman</span> čē abāg wisp zōr ī =š būd bē ō āhōgēnišn ī dāmān mad</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">87.0</div>
+      <p><span class="highlight">ahreman</span> mēnīd kū =m bowandag mad pērōzīh čē =m škast asmān ud āhōgēnīd pad tom ud tār u =m kird pad drubuštīh</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">94.0</div>
+      <p>čē wizir būd ī brīngar zurwān pad bun andar āmadan ī <span class="highlight">ahreman</span> kū abar ō sīh zamestān gayōmart ī tbk ān ī gyān bazišn frāz brēhēnam</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">102.0</div>
+      <p>abar padīragēstišnīh ī ān āhōgēnišn ī <span class="highlight">ahreman</span> abar ohrmazd dāmān burd</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">104.0</div>
+      <p>čē čiyōn andarōn asmān āmad ēg mēnōy ī asmān artēštār homānāg baxt kē ayōšustēn zrēy paymōxt dārēd ī xwad ayōšustēn asmān ast pad burz wāng padist barišn guft ō <span class="highlight">ahreman</span> kū nūn ka andar āmad hē ā =t abāz nē hilam</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">107.0</div>
+      <p>pad ham zamān <span class="highlight">ahreman</span> kōxšīd kū abāz ō xwēš bunag ī tārīkīh šawēd u =š widarg nē ayāft</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">109.0</div>
+      <p>čiyōn gōwīhēd pad gāhān kū ēdōn =iz ān ī harw dō mēnōy ō ham mad hēnd ō ān ī ōy ī fradom dahišn kū harw dō mēnōy ō tan ī gayōmart mad hēnd kē =iz pad zīndagīh ohrmazd pad ēd kār kū wēš zīndag dārād kē =iz pad azīndagīh <span class="highlight">gannāgmēnōy</span> pad ēd kār kū wēš bē ōzanād kē =iz ēdōn ān ast tā ō ān ī abdom andar axwān kū mardōm =iz ī abārīg abar ōh rasēnd</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">110.0</div>
+      <p>ud wattomīh ī druwandān <span class="highlight">ahreman</span> ud druwandān rāy abesīhišn bē dīd ēdōn ōy ī ahlaw pāšommenišnīh ī ohrmazd ī ēmēd ī hamēyīgīh</p>
+    </article>
+    <article class="entry">
+      <div class="entry-number">111.0</div>
+      <p>ēn būd fradom ardīg ī asmānān abāg <span class="highlight">ahreman</span></p>
+    </article>
+  </section>
+</main>
+
+</body>
+</html>
