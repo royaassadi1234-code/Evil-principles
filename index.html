@@ -114,6 +114,25 @@ h1 {
   margin: 0;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.expandable {
+  display: grid;
+  gap: 10px;
+}
+
+.expandable summary {
+  cursor: pointer;
+  color: var(--accent-dark);
+  font-weight: bold;
+  list-style: none;
+}
+
+.expandable summary::-webkit-details-marker {
+  display: none;
+}
+
+.expandable:not([open]) .full-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 7;
@@ -172,6 +191,13 @@ h1 {
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--muted);
+}
+
+.project-description.expandable {
+  margin: 0 0 22px;
+}
+
+.project-description:not([open]) .full-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
@@ -226,7 +252,9 @@ h1 {
       <img src="images/vdfolio1.jpg" alt="Vidēvdād">
       <div class="card-content">
         <h3>Vidēvdād</h3>
-        <p>Of the three major divisions of the 21 Nasks of the Sasanian Avesta, the Vendīdād—Avestan  widaēwa-dāta-, 
+        <details class="expandable">
+          <summary>See more</summary>
+          <p class="full-text">Of the three major divisions of the 21 Nasks of the Sasanian Avesta, the Vendīdād—Avestan  widaēwa-dāta-, 
           Pahl. jud-dēw-dād “The Law repudiating the Demons” (Benveniste, 1970)—was the last of those called dādīg 
           “dealing with law,” and 19th overall. The summary of its contents given 
           in the 9th-century Dēnkard (Bk. 8.44; West, 1892, pp. 6-8, 152-66; ed. Madan, pp. 777-84) accords 
@@ -237,7 +265,8 @@ h1 {
            assume that at some point after the fall of the Sasanian empire the twelfth chapter became lost. 
            Since this chapter is also absent from the Vendīdād Sāde Mss. (on which, see below), we can conclude 
            that the composite texts were constructed after the 7th century, that is, after the loss of Chap. 12, 
-           and that the Widēwdād-ceremony (Modi, 1922, pp. 350-51) is an innovation of the Islamic period. </p>
+           and that the Widēwdād-ceremony (Modi, 1922, pp. 350-51) is an innovation of the Islamic period.</p>
+        </details>
         <button onclick="window.location.href='Vidēvdād.html'">Related passages</button>
       </div>
     </article>
@@ -246,9 +275,12 @@ h1 {
       <img src="images/ddfolio1.jpg" alt="Dādestān ī Dēnīg">
       <div class="card-content">
         <h3>Dādestān ī Dēnīg</h3>
-        <p>Content. Dādestān ī dēnīg is a strictly orthodox and traditional work, dealing with 
+        <details class="expandable">
+          <summary>See more</summary>
+          <p class="full-text">Content. Dādestān ī dēnīg is a strictly orthodox and traditional work, dealing with 
           a variety of subjects ranging from religious to social, ethical, legal, and philosophical 
           questions, as well as cosmology, natural phenomena, and the like.</p>
+        </details>
         <button onclick="window.location.href='Dādestān ī Dēnīg.html'">Related passages</button>
       </div>
     </article>
@@ -257,7 +289,9 @@ h1 {
       <img src="images/wzfolio1.jpg" alt="Wizīdagīhā ī Zādspram">
       <div class="card-content">
         <h3>Wizīdagīhā ī Zādspram</h3>
-        <p>The book is both a good witness to Mazdean  cosmogony and thought, but the author also 
+        <details class="expandable">
+          <summary>See more</summary>
+          <p class="full-text">The book is both a good witness to Mazdean  cosmogony and thought, but the author also 
 seems to have drawn extensively on what had become, over the centuries of the Sassanid 
 monarchy, a legacy in the Iranian world, namely the data of Greek philosophy, gnosis, 
 Manichaeism in particular, but also Gre co-Chaldean medicine or astrology, not to mention 
@@ -268,6 +302,7 @@ the end of the world, in the analysis of the human compound, in anci ent Iranian
 and finally in the legends about Zoroaster, which are probably the result of late 
 developments,7 because Mazdaism, like the other great religions, could not do without its 
 own hagiography.</p>
+        </details>
         <button onclick="window.location.href='Wizīdagīhā ī Zādspram.html'">Related passages</button>
       </div>
     </article>
@@ -279,9 +314,12 @@ own hagiography.</p>
       <h2>Evil Principles in Selected Middle Persian and Avestan Texts</h2>
     </div>
 
-    <p class="project-description">
+    <details class="project-description expandable">
+      <summary>See more</summary>
+      <p class="full-text">
       While some Pahlavi texts focus more on Ahreman, or "Gannāg-Mēnōy," as the ultimate evil principle, Druz also plays an active role in other Middle Persian works such as Dādestān ī Dēnīg. This project combines comparative and digital humanities methods to examine how these concepts relate to each other, how they differ in Dādestān ī Dēnīg and Wizīdagīhā ī Zādspram, and what these principles may have meant to Mazdayasnian high priests in ninth-century Iran.
-    </p>
+      </p>
+    </details>
 
     <div class="project-tech">
       <code>HTML</code>
