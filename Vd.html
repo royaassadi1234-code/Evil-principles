@@ -119,49 +119,132 @@ window.onload = highlightWords;
 <div class="container">
 
   <!-- Column 1: Ahreman -->
-  <div class="column">
-    <h2>Vīdēvdād</h2>
-    <!-- 10 blocks -->
-    <script>
-      for(let i=1;i<=10;i++){
-        document.write('<div class="block" onclick="toggleCards(\'ah'+i+'\')">'+i+'</div>');
-        document.write('<div class="cards" id="ah'+i+'">');
-        document.write('<div class="card"><h3>Transcription</h3><p>Ahrimen and aŋhrōmaińiiuš appear in block '+i+'.</p></div>');
-        document.write('<div class="card"><h3>Translation</h3><p>Translation Druj appears in block '+i+'.</p></div>');
-        document.write('<div class="card"><h3>Comparison</h3><p>Comparison angraman mentioned in block '+i+'.</p></div>');
-        document.write('</div>');
-      }
-    </script>
+<div class="column">
+  <h2>Vīdēvdād</h2>
+
+  <script>
+    const labels = [
+      "Fargard 1",
+      "Fargard 2",
+      "Fargard 3",
+      "Fargard 4",
+      "Fargard 5",
+      "Fargard 6",
+      "Fargard 7",
+      "Fargard 8",
+      "Fargard 9",
+      "Fargard 10"
+    ];
+
+    labels.forEach((label, i) => {
+
+      document.write(
+        '<div class="block" onclick="toggleCards(\'ah'+i+'\')">'+label+'</div>'
+      );
+
+      document.write('<div class="cards" id="ah'+i+'">');
+
+      document.write(
+        '<div class="card"><h3>Transcription</h3><p>Text for '+label+' with Ahrimen and aŋhrōmaińiiuš.</p></div>'
+      );
+
+      document.write(
+        '<div class="card"><h3>Translation</h3><p>Translation of '+label+' mentioning Druj.</p></div>'
+      );
+
+      document.write(
+        '<div class="card"><h3>Comparison</h3><p>Comparison for '+label+' including angraman.</p></div>'
+      );
+
+      document.write('</div>');
+    });
+  </script>
+</div>
   </div>
 
   <!-- Column 2: Druj -->
   <div class="column">
     <h2>Dādestān ī dēnīg</h2>
-    <script>
-      for(let i=1;i<=10;i++){
-        document.write('<div class="block" onclick="toggleCards(\'dr'+i+'\')">'+i+'</div>');
-        document.write('<div class="cards" id="dr'+i+'">');
-        document.write('<div class="card"><h3>Transcription</h3><p>Druj appears with Ahrimen and aŋhrōmaińiiuš in block '+i+'.</p></div>');
-        document.write('<div class="card"><h3>Translation</h3><p>Translation includes Druj in block '+i+'.</p></div>');
-        document.write('<div class="card"><h3>Comparison</h3><p>Comparison angraman in block '+i+'.</p></div>');
-        document.write('</div>');
-      }
-    </script>
+   <script>
+    const labels = [
+      "Fargard 1",
+      "Fargard 2",
+      "Fargard 3",
+      "Fargard 4",
+      "Fargard 5",
+      "Fargard 6",
+      "Fargard 7",
+      "Fargard 8",
+      "Fargard 9",
+      "Fargard 10"
+    ];
+
+    labels.forEach((label, i) => {
+
+      document.write(
+        '<div class="block" onclick="toggleCards(\'ah'+i+'\')">'+label+'</div>'
+      );
+
+      document.write('<div class="cards" id="ah'+i+'">');
+
+      document.write(
+        '<div class="card"><h3>Transcription</h3><p>Text for '+label+' with Ahrimen and aŋhrōmaińiiuš.</p></div>'
+      );
+
+      document.write(
+        '<div class="card"><h3>Translation</h3><p>Translation of '+label+' mentioning Druj.</p></div>'
+      );
+
+      document.write(
+        '<div class="card"><h3>Comparison</h3><p>Comparison for '+label+' including angraman.</p></div>'
+      );
+
+      document.write('</div>');
+    });
+  </script>
   </div>
 
   <!-- Column 3: Polyseme -->
   <div class="column">
     <h2>Wizīdagīhā ī Zādspram</h2>
-    <script>
-      for(let i=1;i<=10;i++){
-        document.write('<div class="block" onclick="toggleCards(\'pl'+i+'\')">'+i+'</div>');
-        document.write('<div class="cards" id="pl'+i+'">');
-        document.write('<div class="card"><h3>Transcription</h3><p>Polyseme text with Ahrimen and aŋhrōmaińiiuš in block '+i+'.</p></div>');
-        document.write('<div class="card"><h3>Translation</h3><p>Translation Druj appears in block '+i+'.</p></div>');
-        document.write('<div class="card"><h3>Comparison</h3><p>Comparison angraman in block '+i+'.</p></div>');
-        document.write('</div>');
-      }
-    </script>
+<script>
+    const labels = [
+      "Fargard 1",
+      "Fargard 2",
+      "Fargard 3",
+      "Fargard 4",
+      "Fargard 5",
+      "Fargard 6",
+      "Fargard 7",
+      "Fargard 8",
+      "Fargard 9",
+      "Fargard 10"
+    ];
+
+    labels.forEach((label, i) => {
+
+      document.write(
+        '<div class="block" onclick="toggleCards(\'ah'+i+'\')">'+label+'</div>'
+      );
+
+      document.write('<div class="cards" id="ah'+i+'">');
+
+      document.write(
+        '<div class="card"><h3>Transcription</h3><p>Text for '+label+' with Ahrimen and aŋhrōmaińiiuš.</p></div>'
+      );
+
+      document.write(
+        '<div class="card"><h3>Translation</h3><p>Translation of '+label+' mentioning Druj.</p></div>'
+      );
+
+      document.write(
+        '<div class="card"><h3>Comparison</h3><p>Comparison for '+label+' including angraman.</p></div>'
+      );
+
+      document.write('</div>');
+    });
+  </script>
+  
   </div>
 
 </div>
