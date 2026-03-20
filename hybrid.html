@@ -71,12 +71,6 @@ body {
 
 <script>
 function toggleCards(id) {
-  document.querySelectorAll('.cards').forEach(card => {
-    if (card.id !== id) {
-      card.style.display = 'none';
-    }
-  });
-
   const selected = document.getElementById(id);
   selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
 }
@@ -133,7 +127,7 @@ window.onload = highlightWords;
 <body>
 
 <h1>Hybrid</h1>
-<p>Click a block to show transcription, translation, and comparison. Only one block's cards are visible at a time.</p>
+<p>Click a block to show or hide its transcription, translation, and comparison cards. You can keep multiple blocks open at the same time.</p>
 
 <div class="container">
   <div class="column">
