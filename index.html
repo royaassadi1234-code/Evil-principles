@@ -123,16 +123,9 @@ h1 {
 
 .expandable-toggle {
   cursor: pointer;
-  padding: 0;
-  border: 0;
-  background: none;
   color: var(--text);
   font-weight: bold;
-  font: inherit;
   display: inline;
-  box-shadow: none;
-  appearance: none;
-  -webkit-appearance: none;
 }
 
 .expandable.is-collapsed .full-text {
@@ -142,7 +135,7 @@ h1 {
   overflow: hidden;
 }
 
-.card button {
+.card-action {
   margin-top: auto;
   align-self: flex-start;
   border: 0;
@@ -157,7 +150,7 @@ h1 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card button:hover {
+.card-action:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 28px rgba(127, 46, 32, 0.28);
 }
@@ -268,9 +261,9 @@ function toggleExpandable(button) {
            Since this chapter is also absent from the Vendīdād Sāde Mss. (on which, see below), we can conclude 
            that the composite texts were constructed after the 7th century, that is, after the loss of Chap. 12, 
            and that the Widēwdād-ceremony (Modi, 1922, pp. 350-51) is an innovation of the Islamic period.</p>
-          <button class="expandable-toggle" type="button" onclick="toggleExpandable(this)">See more</button>
+          <span class="expandable-toggle" onclick="toggleExpandable(this)">See more</span>
         </div>
-        <button onclick="window.location.href='Vidēvdād.html'">Related passages</button>
+        <button class="card-action" onclick="window.location.href='Vidēvdād.html'">Related passages</button>
       </div>
     </article>
 
@@ -282,9 +275,9 @@ function toggleExpandable(button) {
           <p class="full-text">Content. Dādestān ī dēnīg is a strictly orthodox and traditional work, dealing with 
           a variety of subjects ranging from religious to social, ethical, legal, and philosophical 
           questions, as well as cosmology, natural phenomena, and the like.</p>
-          <button class="expandable-toggle" type="button" onclick="toggleExpandable(this)">See more</button>
+          <span class="expandable-toggle" onclick="toggleExpandable(this)">See more</span>
         </div>
-        <button onclick="window.location.href='Dādestān ī Dēnīg.html'">Related passages</button>
+        <button class="card-action" onclick="window.location.href='Dādestān ī Dēnīg.html'">Related passages</button>
       </div>
     </article>
 
@@ -304,9 +297,9 @@ the end of the world, in the analysis of the human compound, in anci ent Iranian
 and finally in the legends about Zoroaster, which are probably the result of late 
 developments,7 because Mazdaism, like the other great religions, could not do without its 
 own hagiography.</p>
-          <button class="expandable-toggle" type="button" onclick="toggleExpandable(this)">See more</button>
+          <span class="expandable-toggle" onclick="toggleExpandable(this)">See more</span>
         </div>
-        <button onclick="window.location.href='Wizīdagīhā ī Zādspram.html'">Related passages</button>
+        <button class="card-action" onclick="window.location.href='Wizīdagīhā ī Zādspram.html'">Related passages</button>
       </div>
     </article>
   </section>
