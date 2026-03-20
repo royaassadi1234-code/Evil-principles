@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comparison>
+  <title>Comparison of WZ (2).xml and Dd.txt on Demon-Related Themes</title>
+  <summary>This file summarizes the shared themes between Wizidagih? ? Z?dspram (WZ) and D?dest?n ? d?n?g (DD) around Druj, demons, Ahrimen, opposition, evil, sorcery, and punishment.</summary>
+  <themes>
+    <theme id="1">
+      <name>Druj or Druz as hostile anti-cosmic force</name>
+      <description>WZ presents druz as a reason for protective creation and as a major enemy entering the world; DD repeatedly presents Druz as adversary, corrupter, and destroyer.</description>
+      <wz_refs><ref>12.0</ref><ref>86.0</ref><ref>217.0</ref></wz_refs>
+      <dd_refs><ref>0.5a</ref><ref>31.10a</ref><ref>36.31</ref></dd_refs>
+    </theme>
+    <theme id="2">
+      <name>D?ws and Druz acting together</name>
+      <description>Both texts pair demon powers with Druj or druwands.</description>
+      <wz_refs><ref>61.0</ref><ref>126.0</ref><ref>128.0</ref></wz_refs>
+      <dd_refs><ref>15.7</ref><ref>26.2</ref><ref>36.43</ref></dd_refs>
+    </theme>
+    <theme id="3">
+      <name>Pety?rag and opposition</name>
+      <description>Both texts use the idea of hostile opposition; DD also emphasizes a-pety?rag?h as the purified final state.</description>
+      <wz_refs><ref>32.0</ref><ref>71.0</ref><ref>153.0</ref></wz_refs>
+      <dd_refs><ref>25.6</ref><ref>36.22</ref><ref>36.29b</ref></dd_refs>
+    </theme>
+    <theme id="4">
+      <name>An?g as evil and affliction</name>
+      <description>DD uses an?g?h very extensively; WZ also connects evil with destructive moral and eschatological states.</description>
+      <wz_refs><ref>33.0</ref><ref>90.x cluster</ref></wz_refs>
+      <dd_refs><ref>5.1-5.2</ref><ref>26.4-26.7</ref><ref>32.2-32.5</ref></dd_refs>
+    </theme>
+    <theme id="5">
+      <name>Ahrimen or destructive spirit</name>
+      <description>DD names Ahrimen explicitly many times; WZ also contains Ahrimen and angraman. In both works he is tied to evil, hell, or the anti-good principle.</description>
+      <wz_refs><ref>111.0</ref><ref>1261</ref></wz_refs>
+      <dd_refs><ref>18.1-18.6b</ref><ref>26.7</ref><ref>36.12</ref></dd_refs>
+    </theme>
+    <theme id="6">
+      <name>Sorcery and demon-backed corruption</name>
+      <description>WZ links druz, magical harm, and demonic injury to creation. DD parallels this with ??d?g?n, du?-d?n figures, and demon-driven destruction.</description>
+      <wz_refs><ref>236.0</ref></wz_refs>
+      <dd_refs><ref>36.22</ref><ref>36.84</ref><ref>71.3</ref><ref>71.8</ref></dd_refs>
+    </theme>
+    <theme id="7">
+      <name>Du?-d?n and false religion</name>
+      <description>This is especially strong in DD, but WZ also links demonic forces with corrupt teaching and moral corruption.</description>
+      <wz_refs><ref>179.0</ref><ref>236.0</ref></wz_refs>
+      <dd_refs><ref>36.64</ref><ref>36.84</ref><ref>71.8</ref></dd_refs>
+    </theme>
+    <theme id="8">
+      <name>Punishment of the druwand and final defeat of demonic opposition</name>
+      <description>Both texts tie Druj to hell, punishment, and eventual removal in the final restoration.</description>
+      <wz_refs><ref>61.0</ref><ref>86.0</ref></wz_refs>
+      <dd_refs><ref>31.10a-31.11</ref><ref>32.2-32.5</ref><ref>33.1</ref><ref>36.95</ref></dd_refs>
+    </theme>
+  </themes>
+  <attested_terms>
+    <term>Druj</term>
+    <term>Druz</term>
+    <term>d?w ud Druz</term>
+    <term>du?-d?n</term>
+    <term>??d?g?h d?w</term>
+    <term>?kenn?d</term>
+    <term>pety?rag</term>
+    <term>Ahrimen</term>
+    <term>an?g</term>
+    <term>d?w?n druz?n</term>
+    <term>angraman</term>
+  </attested_terms>
+  <not_exactly_attested>
+    <term>da?uu?m</term>
+    <term>Drujim</term>
+    <term>druua?t?m</term>
+    <term>a?hr?</term>
+    <term>mai?iiu?</term>
+    <term>a??ahe</term>
+  </not_exactly_attested>
+  <conclusion>The strongest shared theme is that Druj is the active destructive and deceptive force allied with d?ws, Ahrimen, sorcery, false religion, affliction, and the fate of the druwand in hell, while final restoration is imagined as the removal of that demonic opposition.</conclusion>
+</comparison>
