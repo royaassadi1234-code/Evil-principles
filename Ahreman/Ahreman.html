@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Vidēvdād</title>
+<title>Ahreman</title>
 
 <style>
 :root {
@@ -179,13 +179,20 @@ function toggleCards(id) {
   selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 function renderColumn(prefix, items) {
   items.forEach((item, i) => {
     document.write(`<div class="block" onclick="toggleCards('${prefix + i}')">${item.label}</div>`);
     document.write(`<div class="cards" id="${prefix + i}">`);
-    document.write(`<div class="card"><h3>Transcription</h3><p>${item.transcription}</p></div>`);
-    document.write(`<details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>${item.translation}</p></div></details>`);
-    document.write(`<details class="card-toggle"><summary>Notes</summary><div class="card-body"><p>${item.comparison}</p></div></details>`);
+    document.write(`<div class="card"><h3>Transcription</h3><p>${escapeHtml(item.transcription)}</p></div>`);
+    document.write(`<details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>${escapeHtml(item.translation)}</p></div></details>`);
+    document.write(`<details class="card-toggle"><summary>Notes</summary><div class="card-body"><p>${escapeHtml(item.comparison)}</p></div></details>`);
     document.write('</div>');
   });
 }
@@ -226,8 +233,8 @@ window.onload = highlightWords;
       <script>
         const column1Items = [
           { label: "Fargard 1", transcription: "abar gumēzišn ī spennāgmēnōy ud gannāgmēnōy", translation: "", comparison: "" },
-          { label: "Fargard 2", transcription: "Text for Fargard 2 with Ahrimen and aŋhrōmaińiiuš.", translation: "", comparison: "" },
-          { label: "Fargard 3", transcription: "Text for Fargard 3 with Ahrimen and aŋhrōmaińiiuš.", translation: "", comparison: "" }
+          { label: "Fargard 2", transcription: "", translation: "", comparison: "Not populated yet." },
+          { label: "Fargard 3", transcription: "", translation: "", comparison: "Not populated yet." }
         ];
         renderColumn('ah', column1Items);
       </script>
