@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dādestān ī dēnīg</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.block {
+  padding: 12px;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.block:hover {
+  background-color: #bbb;
+}
+
+.cards {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  line-height: 1.5;
+}
+
+.red-highlight {
+  color: red;
+  font-weight: bold;
+}
+
+.green-highlight {
+  color: green;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+function toggleCards(id) {
+  document.querySelectorAll('.cards').forEach(card => {
+    if (card.id !== id) {
+      card.style.display = 'none';
+    }
+  });
+
+  const selected = document.getElementById(id);
+  selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function renderColumn(prefix, labels) {
+  labels.forEach((label, i) => {
+    document.write(
+      '<div class="block" onclick="toggleCards(\'' + prefix + i + '\')">' + label + '</div>'
+    );
+
+    document.write('<div class="cards" id="' + prefix + i + '">');
+
+    document.write(
+      '<div class="card"><h3>Transcription</h3><p>Text for ' + label + ' with Ahrimen and aŋhrōmaińiiuš.</p></div>'
+    );
+
+    document.write(
+      '<div class="card"><h3>Translation</h3><p>Translation of ' + label + ' mentioning Druj.</p></div>'
+    );
+
+    document.write(
+      '<div class="card"><h3>Comparison</h3><p>Comparison for ' + label + ' including angraman.</p></div>'
+    );
+
+    document.write('</div>');
+  });
+}
+
+function highlightWords() {
+  const redWords = ['aŋhrōmaińiiuš', 'Ahrimen', 'angraman'];
+  const greenWords = ['Druj'];
+
+  document.querySelectorAll('.card').forEach(card => {
+    let html = card.innerHTML;
+
+    redWords.forEach(word => {
+      const regex = new RegExp('\\b(' + word + ')\\b', 'g');
+      html = html.replace(regex, '<span class="red-highlight">$1</span>');
+    });
+
+    greenWords.forEach(word => {
+      const regex = new RegExp('\\b(' + word + ')\\b', 'g');
+      html = html.replace(regex, '<span class="green-highlight">$1</span>');
+    });
+
+    card.innerHTML = html;
+  });
+}
+
+window.onload = highlightWords;
+</script>
+
+</head>
+<body>
+
+<h1>Druj</h1>
+<p>Click a block to show transcription, translation, and comparison. Only one block's cards are visible at a time.</p>
+
+<div class="container">
+  <div class="column">
+    <h2>Vidēvdād</h2>
+    <script>
+      const column1Labels = [
+        "Fargard 1",
+        "Fargard 2",
+        "Fargard 3",
+        "Fargard 4",
+        "Fargard 5",
+        "Fargard 6",
+        "Fargard 7",
+        "Fargard 8",
+        "Fargard 9",
+        "Fargard 10"
+      ];
+
+      renderColumn('ah', column1Labels);
+    </script>
+  </div>
+
+  <div class="column">
+    <h2>Dādestān ī dēnīg</h2>
+    <script>
+      const column2Labels = [
+        "Fargard 1",
+        "Fargard 2",
+        "Fargard 3",
+        "Fargard 4",
+        "Fargard 5",
+        "Fargard 6",
+        "Fargard 7",
+        "Fargard 8",
+        "Fargard 9",
+        "Fargard 10"
+      ];
+
+      renderColumn('dd', column2Labels);
+    </script>
+  </div>
+
+  <div class="column">
+    <h2>Wizīdagīhā ī Zādspram</h2>
+    <script>
+      const column3Labels = [
+        "Fargard 1",
+        "Fargard 2",
+        "Fargard 3",
+        "Fargard 4",
+        "Fargard 5",
+        "Fargard 6",
+        "Fargard 7",
+        "Fargard 8",
+        "Fargard 9",
+        "Fargard 10"
+      ];
+
+      renderColumn('wz', column3Labels);
+    </script>
+  </div>
+</div>
+
+</body>
+</html>
