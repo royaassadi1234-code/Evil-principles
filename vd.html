@@ -231,6 +231,8 @@ h1 {
   border-radius: 14px;
   border: 1px solid var(--border);
   background: rgba(239, 229, 216, 0.42);
+  display: flex;
+  flex-direction: column;
 }
 
 .compare-column h3 {
@@ -240,6 +242,22 @@ h1 {
 
 .compare-column .note-block + .note-block {
   margin-top: 8px;
+}
+
+.compare-link {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 0.92rem;
+}
+
+.compare-link a {
+  color: var(--accent-dark);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.compare-link a:hover {
+  text-decoration: underline;
 }
 
 .card-toggle {
@@ -305,6 +323,15 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;');
 }
 
+function buildFurtherInfoLink(url) {
+  if (!url) {
+    return '';
+  }
+
+  const safeUrl = escapeHtml(url);
+  return `<div class="compare-link"><a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Further information</a></div>`;
+}
+
 function buildNotesMarkup(item) {
   const ddContent = item.DD
     ? `<div class="note-block note-dd">${escapeHtml(item.DD)}</div>`
@@ -322,14 +349,17 @@ function buildNotesMarkup(item) {
       <div class="compare-column">
         <h3>DD</h3>
         ${ddContent}
+        ${buildFurtherInfoLink(item.DDLink)}
       </div>
       <div class="compare-column">
         <h3>WZ</h3>
         ${wzContent}
+        ${buildFurtherInfoLink(item.WZLink)}
       </div>
       <div class="compare-column">
         <h3>Other</h3>
         ${otherContent}
+        ${buildFurtherInfoLink(item.otherLink)}
       </div>
     </div>
   `;
@@ -429,15 +459,15 @@ window.onload = () => {
 
   <script>
         const vdCards = [
-          { label: "Section 1", transcription: "Vd. 9.7 āat̰. mē. aēm. paitiiaōxta. haōmō. aṣ̌auua. dūraōšō. āϑβiiō. mąm. bitiiō. maṣ̌iiō. astuuaiϑiiāi. hunūta. gaēϑaiiāi. hā. aɱāi. aṣ̌iš. ərənāuui. tat̰. aɱāi. jasat̰. āiiaptəm. yat̰. hē. puϑrō. us.zaiiata. vīsō. sūraiiā̊. ϑraētaōnō.", translation: "Vd. 9.7 Then, the holder of the order Haōma, who burns badly, answered this to me: Āϑβya was the second man, who pressed me for the material creation. This reward was set in motion for him. This profit came to him: a son was born to him, Thraētaōna, of a mighty clan.", DD: "DD 36.84 ēk ēn kū ka ān ī duš-dēn Dahāg kē-š was-ōztom dēw ud Druz pad az-kerb abar frēg ast az band ī Frēdōn rahēd ud pad ǰādūgīh dēw bē ō gēhān marnǰēnīdār estēd ēk mard ī tagīg az rist pēš ul hangēzīhēd xwānīhēd Sāmān Kersāsp ī pad ēk gad ī gāwsar ān druzīh škennēd pad ān ī frārōn bīm ān Dahāg ō dād ud ristag ī yazdān ānayēd", WZ: "WZ 24.3 ohrmazd guft kū bawēd rōzān ka =tān ān and ī nē hāxt ī xwad gēhān dādārīh ī ristāxēz ka bē az dahāg harw kas bē dād ī frašegirdkirdārīh hāxtēd ud dahāg apatitīgīh rāy zanīhēd", other: "Add notes here." }
+          { label: "Section 1", transcription: "Vd. 9.7 āat̰. mē. aēm. paitiiaōxta. haōmō. aṣ̌auua. dūraōšō. āϑβiiō. mąm. bitiiō. maṣ̌iiō. astuuaiϑiiāi. hunūta. gaēϑaiiāi. hā. aɱāi. aṣ̌iš. ərənāuui. tat̰. aɱāi. jasat̰. āiiaptəm. yat̰. hē. puϑrō. us.zaiiata. vīsō. sūraiiā̊. ϑraētaōnō.", translation: "Vd. 9.7 Then, the holder of the order Haōma, who burns badly, answered this to me: Āϑβya was the second man, who pressed me for the material creation. This reward was set in motion for him. This profit came to him: a son was born to him, Thraētaōna, of a mighty clan.", DD: "DD 36.84 ēk ēn kū ka ān ī duš-dēn Dahāg kē-š was-ōztom dēw ud Druz pad az-kerb abar frēg ast az band ī Frēdōn rahēd ud pad ǰādūgīh dēw bē ō gēhān marnǰēnīdār estēd ēk mard ī tagīg az rist pēš ul hangēzīhēd xwānīhēd Sāmān Kersāsp ī pad ēk gad ī gāwsar ān druzīh škennēd pad ān ī frārōn bīm ān Dahāg ō dād ud ristag ī yazdān ānayēd", WZ: "WZ 24.3 ohrmazd guft kū bawēd rōzān ka =tān ān and ī nē hāxt ī xwad gēhān dādārīh ī ristāxēz ka bē az dahāg harw kas bē dād ī frašegirdkirdārīh hāxtēd ud dahāg apatitīgīh rāy zanīhēd", Notes: "<div>In Vd. 9.8, dru- is mostly used for the corruptions which one (holder of the asha) cannot recognize (needs more evidence), Hidden corruptions maybe. This is compatible to drujas tactics in corrupting people which have been described repeatedly in DD (36.47) and WZ. Aži Dahāka is in a specific position as the very strong demon Druj being shaped (created?)  by Aŋhra Maińiiu (9.8), who is surprisingly absent in Manuchihr’s version (36.84), for the destruction of the living beings of the Order; the later shifts from cosmogony to cosmology and eschatology by introducing ǰādūgīh as the tactic of Dahāg for destroying the world and later explain how he is brought to the justice. Zadesparam mentions Dahāg (WZ24) as the only one being annihilated in frašegird because he refuses the possibility of recreation of the world during ristāxēz (ka =tān ān and ī nē hāxt ī xwad gēhān dādārīh ī ristāxēz) who also will not be repentant (WZ24). Manuchihr’s version matches Vd. in Dahāg’s fault as destroyer of the living beings of Order but does not mention his death and suffices to tell us that he is defeated and put in the way of yazadān. Zadesparam put emphasis on disbelieve-denial of ristāxēz by Dahāg. The context is more similar to Vd. describing different corruptions, evil doers and their final annihilation. In new Persian the snake is specifically allocated with charming dishonesty (ǰādūgīh?) aimed to hurt others in a painful and ruthless way.</div>" }
         ];
 
         const ddCards = [
-          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
+          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", DDLink: "", WZ: "Add notes here.", WZLink: "", other: "Add notes here.", otherLink: "" }
         ];
 
         const wzCards = [
-          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
+          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", DDLink: "", WZ: "Add notes here.", WZLink: "", other: "Add notes here.", otherLink: "" }
         ];
   </script>
 
