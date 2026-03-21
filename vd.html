@@ -137,6 +137,12 @@ h1 {
   margin-top: -2px;
 }
 
+.transcription-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .card {
   background: var(--surface-strong);
   padding: 16px;
@@ -149,6 +155,32 @@ h1 {
   margin: 0 0 8px;
   font-size: 1.05rem;
   color: var(--accent-dark);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+.compare-button {
+  border: 0;
+  background: transparent;
+  color: var(--accent-dark);
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+}
+
+.compare-button:hover {
+  color: var(--accent);
 }
 
 .card p {
@@ -165,6 +197,20 @@ h1 {
 .card-section + .card-section,
 .note-block + .note-block {
   margin-top: 10px;
+}
+
+.transcription-card {
+  flex: 1 1 60%;
+}
+
+.compare-panel {
+  display: none;
+  width: min(320px, 42%);
+  flex: 0 0 min(320px, 42%);
+}
+
+.compare-panel.is-open {
+  display: block;
 }
 
 .card-toggle {
@@ -209,6 +255,15 @@ h1 {
     padding: 22px 18px;
     border-radius: 22px;
   }
+
+  .transcription-row {
+    flex-direction: column;
+  }
+
+  .compare-panel {
+    width: 100%;
+    flex-basis: auto;
+  }
 }
 </style>
 
@@ -216,6 +271,12 @@ h1 {
 function toggleCards(id) {
   const selected = document.getElementById(id);
   selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function toggleCompare(id, button) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.toggle('is-open');
+  button.textContent = isOpen ? 'Close compare' : 'Compare';
 }
 
 function escapeHtml(value) {
@@ -253,13 +314,23 @@ function createEntryMarkup(prefix, item, index) {
   }
 
   const cardId = `${prefix}${index}`;
+  const compareId = `${cardId}-compare`;
   return `
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
       <div class="cards" id="${cardId}">
-        <div class="card card-section">
-          <h3>Transcription</h3>
-          <div class="field-block transcription-block">${escapeHtml(item.transcription)}</div>
+        <div class="transcription-row">
+          <div class="card card-section transcription-card">
+            <div class="card-header">
+              <h3>Transcription</h3>
+              <button type="button" class="compare-button" onclick="toggleCompare('${compareId}', this)">Compare</button>
+            </div>
+            <div class="field-block transcription-block">${escapeHtml(item.transcription)}</div>
+          </div>
+          <div class="card compare-panel" id="${compareId}">
+            <h3>Compare</h3>
+            ${buildNotesMarkup(item)}
+          </div>
         </div>
         <details class="card-toggle">
           <summary>Translation</summary>
@@ -267,7 +338,6 @@ function createEntryMarkup(prefix, item, index) {
             <div class="field-block translation-block">${escapeHtml(item.translation)}</div>
           </div>
         </details>
-        <details class="card-toggle"><summary>Notes</summary><div class="card-body">${buildNotesMarkup(item)}</div></details>
       </div>
     </div>
   `;
