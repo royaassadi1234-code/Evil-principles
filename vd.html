@@ -156,6 +156,16 @@ h1 {
   color: var(--muted);
 }
 
+.field-block,
+.note-block {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.note-block + .note-block {
+  margin-top: 10px;
+}
+
 .card-toggle {
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -218,19 +228,19 @@ function buildNotesMarkup(item) {
   const noteSections = [];
 
   if (item.DD) {
-    noteSections.push(`<p><strong>DD:</strong> ${escapeHtml(item.DD)}</p>`);
+    noteSections.push(`<div class="note-block note-dd"><strong>DD:</strong> ${escapeHtml(item.DD)}</div>`);
   }
   if (item.WZ) {
-    noteSections.push(`<p><strong>WZ:</strong> ${escapeHtml(item.WZ)}</p>`);
+    noteSections.push(`<div class="note-block note-wz"><strong>WZ:</strong> ${escapeHtml(item.WZ)}</div>`);
   }
   if (item.other) {
-    noteSections.push(`<p><strong>Other:</strong> ${escapeHtml(item.other)}</p>`);
+    noteSections.push(`<div class="note-block note-other"><strong>Other:</strong> ${escapeHtml(item.other)}</div>`);
   }
   if (noteSections.length === 0 && item.comparison) {
-    noteSections.push(`<p>${escapeHtml(item.comparison)}</p>`);
+    noteSections.push(`<div class="note-block note-comparison">${escapeHtml(item.comparison)}</div>`);
   }
   if (noteSections.length === 0) {
-    noteSections.push('<p>No notes added yet.</p>');
+    noteSections.push('<div class="note-block note-empty">No notes added yet.</div>');
   }
 
   return noteSections.join('');
@@ -246,8 +256,16 @@ function createEntryMarkup(prefix, item, index) {
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
       <div class="cards" id="${cardId}">
-        <div class="card"><h3>Transcription</h3><p>${escapeHtml(item.transcription)}</p></div>
-        <details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>${escapeHtml(item.translation)}</p></div></details>
+        <div class="card transcription-block">
+          <h3>Transcription</h3>
+          <div class="field-block transcription-content">${escapeHtml(item.transcription)}</div>
+        </div>
+        <details class="card-toggle">
+          <summary>Translation</summary>
+          <div class="card-body">
+            <div class="field-block translation-content">${escapeHtml(item.translation)}</div>
+          </div>
+        </details>
         <details class="card-toggle"><summary>Notes</summary><div class="card-body">${buildNotesMarkup(item)}</div></details>
       </div>
     </div>
