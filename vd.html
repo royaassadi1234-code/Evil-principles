@@ -156,16 +156,6 @@ h1 {
   color: var(--muted);
 }
 
-.field-block,
-.note-block {
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.note-block + .note-block {
-  margin-top: 10px;
-}
-
 .card-toggle {
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -228,19 +218,19 @@ function buildNotesMarkup(item) {
   const noteSections = [];
 
   if (item.DD) {
-    noteSections.push(`<div class="note-block note-dd"><strong>DD:</strong> ${escapeHtml(item.DD)}</div>`);
+    noteSections.push(`<p><strong>DD:</strong> ${escapeHtml(item.DD)}</p>`);
   }
   if (item.WZ) {
-    noteSections.push(`<div class="note-block note-wz"><strong>WZ:</strong> ${escapeHtml(item.WZ)}</div>`);
+    noteSections.push(`<p><strong>WZ:</strong> ${escapeHtml(item.WZ)}</p>`);
   }
   if (item.other) {
-    noteSections.push(`<div class="note-block note-other"><strong>Other:</strong> ${escapeHtml(item.other)}</div>`);
+    noteSections.push(`<p><strong>Other:</strong> ${escapeHtml(item.other)}</p>`);
   }
   if (noteSections.length === 0 && item.comparison) {
-    noteSections.push(`<div class="note-block note-comparison">${escapeHtml(item.comparison)}</div>`);
+    noteSections.push(`<p>${escapeHtml(item.comparison)}</p>`);
   }
   if (noteSections.length === 0) {
-    noteSections.push('<div class="note-block note-empty">No notes added yet.</div>');
+    noteSections.push('<p>No notes added yet.</p>');
   }
 
   return noteSections.join('');
@@ -256,16 +246,8 @@ function createEntryMarkup(prefix, item, index) {
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
       <div class="cards" id="${cardId}">
-        <div class="card transcription-block">
-          <h3>Transcription</h3>
-          <div class="field-block transcription-content">${escapeHtml(item.transcription)}</div>
-        </div>
-        <details class="card-toggle">
-          <summary>Translation</summary>
-          <div class="card-body">
-            <div class="field-block translation-content">${escapeHtml(item.translation)}</div>
-          </div>
-        </details>
+        <div class="card"><h3>Transcription</h3><p>${escapeHtml(item.transcription)}</p></div>
+        <details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>${escapeHtml(item.translation)}</p></div></details>
         <details class="card-toggle"><summary>Notes</summary><div class="card-body">${buildNotesMarkup(item)}</div></details>
       </div>
     </div>
@@ -332,42 +314,15 @@ window.onload = () => {
 
   <script>
         const column1Items = [
-          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 2", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 3", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 4", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 5", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 6", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 7", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 8", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 9", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 10", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
+          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
         ];
 
         const column2Items = [
-          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 2", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 3", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 4", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 5", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 6", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 7", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 8", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 9", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 10", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
+          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
         ];
 
         const column3Items = [
-          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 2", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 3", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 4", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 5", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 6", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 7", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 8", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 9", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." },
-          { label: "Section 10", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
+          { label: "Section 1", transcription: "", translation: "", DD: "Add notes here.", WZ: "Add notes here.", other: "Add notes here." }
         ];
   </script>
 
