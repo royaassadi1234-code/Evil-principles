@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Druj</title>
+
+<style>
+:root {
+  --bg: #f4efe6;
+  --bg-accent: #e7ddd1;
+  --surface: rgba(255, 251, 245, 0.9);
+  --surface-strong: #fffdf9;
+  --text: #241b16;
+  --muted: #65584f;
+  --border: rgba(92, 67, 48, 0.14);
+  --shadow: 0 18px 50px rgba(56, 39, 25, 0.12);
+  --accent: #9f3f2c;
+  --accent-dark: #7f2e20;
+  --block-bg: #efe5d8;
+  --block-hover: #e3d2be;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(159, 63, 44, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(122, 92, 61, 0.12), transparent 24%),
+    linear-gradient(180deg, #f8f4ed 0%, var(--bg) 50%, var(--bg-accent) 100%);
+}
+
+.page {
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 36px 0 56px;
+  display: grid;
+  gap: 28px;
+}
+
+.hero {
+  padding: 36px 32px 30px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(247, 240, 231, 0.9));
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+}
+
+.intro {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.section-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.grid-header,
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.column-heading,
+.column-cell {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.column-heading {
+  padding: 22px;
+}
+
+.column-heading h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+.column-cell {
+  padding: 18px;
+  min-height: 96px;
+}
+
+.column-cell.is-empty {
+  background: rgba(255, 251, 245, 0.55);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.block {
+  padding: 14px 16px;
+  background: var(--block-bg);
+  cursor: pointer;
+  border: 1px solid rgba(159, 63, 44, 0.1);
+  border-radius: 16px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.block:hover {
+  transform: translateY(-2px);
+  background: var(--block-hover);
+  border-color: rgba(159, 63, 44, 0.22);
+}
+
+.cards {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.card {
+  background: var(--surface-strong);
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  line-height: 1.65;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: var(--accent-dark);
+}
+
+.card p,
+.empty-note {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card-toggle {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-strong);
+  overflow: hidden;
+}
+
+.card-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--accent-dark);
+}
+
+.card-toggle summary::-webkit-details-marker { display: none; }
+.card-toggle[open] summary { border-bottom: 1px solid var(--border); }
+.card-toggle .card-body { padding: 16px; color: var(--muted); line-height: 1.65; }
+
+.empty-note { font-style: italic; }
+
+@media (max-width: 1000px) {
+  .grid-header,
+  .grid-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    width: min(100% - 28px, 900px);
+    padding: 24px 0 40px;
+    gap: 22px;
+  }
+
+  .hero,
+  .column-heading,
+  .column-cell {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+}
+</style>
+
+<script>
+function toggleCards(id) {
+  const selected = document.getElementById(id);
+  selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function buildNotesMarkup(item) {
+  const noteSections = [];
+
+  if (item.DD) {
+    noteSections.push(`<p><strong>DD:</strong> ${escapeHtml(item.DD)}</p>`);
+  }
+  if (item.WZ) {
+    noteSections.push(`<p><strong>WZ:</strong> ${escapeHtml(item.WZ)}</p>`);
+  }
+  if (item.other) {
+    noteSections.push(`<p><strong>Other:</strong> ${escapeHtml(item.other)}</p>`);
+  }
+  if (noteSections.length === 0 && item.comparison) {
+    noteSections.push(`<p>${escapeHtml(item.comparison)}</p>`);
+  }
+  if (noteSections.length === 0) {
+    noteSections.push('<p>No notes added yet.</p>');
+  }
+
+  return noteSections.join('');
+}
+
+function createEntryMarkup(prefix, item, index) {
+  if (!item) {
+    return '<div class="column-cell is-empty"><p class="empty-note">No section in this row.</p></div>';
+  }
+
+  const cardId = `${prefix}${index}`;
+  return `
+    <div class="column-cell">
+      <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
+      <div class="cards" id="${cardId}">
+        <div class="card"><h3>Transcription</h3><p>${escapeHtml(item.transcription)}</p></div>
+        <details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>${escapeHtml(item.translation)}</p></div></details>
+        <details class="card-toggle"><summary>Notes</summary><div class="card-body">${buildNotesMarkup(item)}</div></details>
+      </div>
+    </div>
+  `;
+}
+
+function renderSectionGrid(columns) {
+  const root = document.getElementById('section-grid');
+  const maxRows = Math.max(...columns.map(column => column.items.length));
+
+  let html = `
+    <div class="grid-header">
+      ${columns.map(column => `<section class="column-heading"><h2>${escapeHtml(column.title)}</h2></section>`).join('')}
+    </div>
+  `;
+
+  for (let i = 0; i < maxRows; i += 1) {
+    html += '<div class="grid-row">';
+    columns.forEach(column => {
+      html += createEntryMarkup(column.prefix, column.items[i], i);
+    });
+    html += '</div>';
+  }
+
+  root.innerHTML = html;
+}
+
+const column1Items = [
+  { label: "Section 1", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
+  { label: "Section 2", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
+  { label: "Section 3", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." }
+];
+
+const column2Items = [
+  { label: "Section 1", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
+  { label: "Section 2", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
+  { label: "Section 3", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." }
+];
+
+const column3Items = [
+  { label: "Section 1", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
+  { label: "Section 2", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
+  { label: "Section 3", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." }
+];
+
+window.onload = () => {
+  renderSectionGrid([
+    { title: 'Ahreman', prefix: 'vd', items: column1Items },
+    { title: 'Drūz', prefix: 'dd', items: column2Items },
+    { title: 'Hybrid', prefix: 'wz', items: column3Items }
+
+  ]);
+};
+</script>
+
+</head>
+<body>
+
+<main class="page">
+  <section class="hero">
+    <h1>Ceteri</h1>
+    <p class="intro">Each row now holds one separate section across the three texts. The placeholders are empty so you can add the transcriptions later and keep matching sections beside each other.</p>
+  </section>
+
+  <div id="section-grid" class="section-grid"></div>
+</main>
+
+</body>
+</html>
