@@ -253,6 +253,13 @@ h1 {
   font-size: 0.92rem;
 }
 
+.compare-link-title {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+  font-weight: bold;
+}
+
 .compare-link a {
   color: var(--accent-dark);
   font-weight: bold;
@@ -332,7 +339,12 @@ function buildFurtherInfoLink(url) {
   }
 
   const safeUrl = escapeHtml(url);
-  return `<div class="compare-link"><a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Further information</a></div>`;
+  return `
+    <div class="compare-link">
+      <span class="compare-link-title">More information</span>
+      <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Open related card</a>
+    </div>
+  `;
 }
 
 function buildNotesMarkup(item) {
@@ -360,7 +372,7 @@ function buildNotesMarkup(item) {
         ${buildFurtherInfoLink(item.WZLink)}
       </div>
       <div class="compare-column">
-        <h3>Other</h3>
+        <h3>Ceteri</h3>
         ${otherContent}
         ${buildFurtherInfoLink(item.otherLink)}
       </div>
