@@ -138,7 +138,7 @@ h1 {
 }
 
 .transcription-row {
-  display: block;
+  position: relative;
 }
 
 .card {
@@ -206,8 +206,12 @@ h1 {
 
 .compare-panel {
   display: none;
-  width: 100%;
-  margin-top: 12px;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: clamp(360px, 46vw, 760px);
+  z-index: 10;
+  box-shadow: 0 24px 50px rgba(56, 39, 25, 0.16);
 }
 
 .compare-panel.is-open {
@@ -350,9 +354,9 @@ function createEntryMarkup(prefix, item, index) {
             </div>
             <div class="field-block transcription-block">${escapeHtml(item.transcription)}</div>
           </div>
-        </div>
-        <div class="card compare-panel" id="${compareId}">
-          ${buildNotesMarkup(item)}
+          <div class="card compare-panel" id="${compareId}">
+            ${buildNotesMarkup(item)}
+          </div>
         </div>
         <details class="card-toggle">
           <summary>Translation</summary>
