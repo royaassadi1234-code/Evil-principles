@@ -170,17 +170,24 @@ h1 {
 }
 
 .compare-button {
-  border: 0;
-  background: transparent;
+  border: 1px solid rgba(159, 63, 44, 0.18);
+  background: #ead6bf;
   color: var(--accent-dark);
   font: inherit;
   font-weight: bold;
   cursor: pointer;
-  padding: 0;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .compare-button:hover {
-  color: var(--accent);
+  background: #e3c7aa;
+  border-color: rgba(159, 63, 44, 0.32);
+  transform: translateY(-1px);
 }
 
 .card p {
@@ -275,8 +282,7 @@ function toggleCards(id) {
 
 function toggleCompare(id, button) {
   const panel = document.getElementById(id);
-  const isOpen = panel.classList.toggle('is-open');
-  button.textContent = isOpen ? 'Close compare' : 'Compare';
+  panel.classList.toggle('is-open');
 }
 
 function escapeHtml(value) {
@@ -384,9 +390,9 @@ function highlightWords() {
 
 window.onload = () => {
   renderSectionGrid([
-    { title: 'Vidēvdād', prefix: 'vd', cards: vdCards },
-    { title: 'Dādestān ī dēnīg', prefix: 'dd', cards: ddCards },
-    { title: 'Wizīdagīhā ī Zādspram', prefix: 'wz', cards: wzCards }
+    { title: 'Ahreman', prefix: 'vd', cards: vdCards },
+    { title: 'Drūz', prefix: 'dd', cards: ddCards },
+    { title: 'Hybrid', prefix: 'wz', cards: wzCards }
   ]);
   highlightWords();
 };
