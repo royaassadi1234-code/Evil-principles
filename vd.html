@@ -138,7 +138,8 @@ h1 {
 }
 
 .transcription-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: stretch;
   gap: 12px;
 }
@@ -207,12 +208,12 @@ h1 {
 }
 
 .transcription-card {
-  flex: 1 1 44%;
+  min-width: 0;
 }
 
 .compare-panel {
   display: none;
-  flex: 1 1 56%;
+  min-width: 0;
 }
 
 .compare-panel.is-open {
@@ -287,12 +288,11 @@ h1 {
   }
 
   .transcription-row {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .compare-panel {
     width: 100%;
-    flex-basis: auto;
   }
 
   .compare-grid {
