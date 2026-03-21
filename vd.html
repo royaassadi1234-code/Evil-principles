@@ -138,10 +138,7 @@ h1 {
 }
 
 .transcription-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: stretch;
-  gap: 12px;
+  display: block;
 }
 
 .card {
@@ -207,17 +204,14 @@ h1 {
   margin-top: 10px;
 }
 
-.transcription-card {
-  min-width: 0;
-}
-
 .compare-panel {
   display: none;
-  min-width: 0;
+  width: 100%;
+  margin-top: 12px;
 }
 
 .compare-panel.is-open {
-  display: flex;
+  display: block;
 }
 
 .compare-grid {
@@ -349,16 +343,16 @@ function createEntryMarkup(prefix, item, index) {
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
       <div class="cards" id="${cardId}">
         <div class="transcription-row">
-          <div class="card card-section transcription-card">
+          <div class="card card-section">
             <div class="card-header">
               <h3>Transcription</h3>
               <button type="button" class="compare-button" onclick="toggleCompare('${compareId}', this)">Compare</button>
             </div>
             <div class="field-block transcription-block">${escapeHtml(item.transcription)}</div>
           </div>
-          <div class="card compare-panel" id="${compareId}">
-            ${buildNotesMarkup(item)}
-          </div>
+        </div>
+        <div class="card compare-panel" id="${compareId}">
+          ${buildNotesMarkup(item)}
         </div>
         <details class="card-toggle">
           <summary>Translation</summary>
