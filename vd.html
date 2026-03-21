@@ -139,7 +139,7 @@ h1 {
 
 .transcription-row {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 12px;
 }
 
@@ -207,17 +207,40 @@ h1 {
 }
 
 .transcription-card {
-  flex: 1 1 60%;
+  flex: 1 1 44%;
 }
 
 .compare-panel {
   display: none;
-  width: min(320px, 42%);
-  flex: 0 0 min(320px, 42%);
+  flex: 1 1 56%;
 }
 
 .compare-panel.is-open {
-  display: block;
+  display: flex;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.compare-column {
+  min-width: 0;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(239, 229, 216, 0.42);
+}
+
+.compare-column h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.compare-column .note-block + .note-block {
+  margin-top: 8px;
 }
 
 .card-toggle {
@@ -271,6 +294,10 @@ h1 {
     width: 100%;
     flex-basis: auto;
   }
+
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 
@@ -293,25 +320,33 @@ function escapeHtml(value) {
 }
 
 function buildNotesMarkup(item) {
-  const noteSections = [];
+  const ddContent = item.DD
+    ? `<div class="note-block note-dd">${escapeHtml(item.DD)}</div>`
+    : '<div class="note-block note-empty">No DD note yet.</div>';
+  const wzContent = item.WZ
+    ? `<div class="note-block note-wz">${escapeHtml(item.WZ)}</div>`
+    : '<div class="note-block note-empty">No WZ note yet.</div>';
+  const otherSource = item.other || item.comparison || '';
+  const otherContent = otherSource
+    ? `<div class="note-block note-other">${escapeHtml(otherSource)}</div>`
+    : '<div class="note-block note-empty">No other note yet.</div>';
 
-  if (item.DD) {
-    noteSections.push(`<div class="note-block note-dd"><strong>DD:</strong> ${escapeHtml(item.DD)}</div>`);
-  }
-  if (item.WZ) {
-    noteSections.push(`<div class="note-block note-wz"><strong>WZ:</strong> ${escapeHtml(item.WZ)}</div>`);
-  }
-  if (item.other) {
-    noteSections.push(`<div class="note-block note-other"><strong>Other:</strong> ${escapeHtml(item.other)}</div>`);
-  }
-  if (noteSections.length === 0 && item.comparison) {
-    noteSections.push(`<div class="note-block note-comparison">${escapeHtml(item.comparison)}</div>`);
-  }
-  if (noteSections.length === 0) {
-    noteSections.push('<div class="note-block note-empty">No notes added yet.</div>');
-  }
-
-  return noteSections.join('');
+  return `
+    <div class="compare-grid">
+      <div class="compare-column">
+        <h3>DD</h3>
+        ${ddContent}
+      </div>
+      <div class="compare-column">
+        <h3>WZ</h3>
+        ${wzContent}
+      </div>
+      <div class="compare-column">
+        <h3>Other</h3>
+        ${otherContent}
+      </div>
+    </div>
+  `;
 }
 
 function createEntryMarkup(prefix, item, index) {
