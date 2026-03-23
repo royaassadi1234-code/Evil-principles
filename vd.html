@@ -226,11 +226,10 @@ h1 {
 }
 
 .text-division {
-  display: block;
-  margin-bottom: 0.2em;
+  display: inline;
+  margin-right: 0.35em;
   font-weight: bold;
-  color: var(--accent-dark);
-  text-align: left;
+  color: #000;
 }
 
 .analysis-link {
@@ -405,7 +404,10 @@ function escapeHtml(value) {
 }
 
 function formatTextBlock(value) {
-  const text = String(value || '').replace(/\r\n/g, '\n').trim();
+  const text = String(value || '')
+    .replace(/\r\n/g, '\n')
+    .replace(/\n\s*((?:Vd\.|DD|WZ)\s+\d+\.\d+[a-z]?)/gi, '\n\n$1')
+    .trim();
   if (!text) {
     return '';
   }
