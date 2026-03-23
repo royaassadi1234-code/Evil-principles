@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Druj</title>
+<title>Ahreman</title>
 
 <style>
 :root {
@@ -18,6 +18,7 @@
   --accent-dark: #7f2e20;
   --block-bg: #efe5d8;
   --block-hover: #e3d2be;
+  --serif-stack: "Noto Serif", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
 }
 
 * { box-sizing: border-box; }
@@ -25,7 +26,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif-stack);
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(159, 63, 44, 0.12), transparent 28%),
@@ -34,7 +35,7 @@ body {
 }
 
 .page {
-  width: min(1320px, calc(100% - 48px));
+  width: calc(100% - 48px);
   margin: 0 auto;
   padding: 36px 0 56px;
   display: grid;
@@ -106,6 +107,12 @@ h1 {
   box-shadow: none;
 }
 
+.empty-note {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
 .block {
   padding: 14px 16px;
   background: var(--block-bg);
@@ -128,7 +135,11 @@ h1 {
   display: none;
   flex-direction: column;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: -2px;
+}
+
+.transcription-row {
+  position: relative;
 }
 
 .card {
@@ -145,10 +156,173 @@ h1 {
   color: var(--accent-dark);
 }
 
-.card p,
-.empty-note {
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+.compare-button {
+  border: 1px solid rgba(159, 63, 44, 0.18);
+  background: #ead6bf;
+  color: var(--accent-dark);
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.compare-button:hover {
+  background: #e3c7aa;
+  border-color: rgba(159, 63, 44, 0.32);
+  transform: translateY(-1px);
+}
+
+.card p {
   margin: 0;
   color: var(--muted);
+}
+
+.field-block,
+.note-block {
+  font-family: var(--serif-stack);
+  color: var(--muted);
+  line-height: 1.65;
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.transcription-block,
+.translation-block,
+.note-block {
+  display: block;
+  width: 100%;
+  text-align: justify !important;
+}
+
+.text-paragraph {
+  margin: 0;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.text-paragraph + .text-paragraph {
+  margin-top: 0.9em;
+}
+
+.text-division {
+  display: inline;
+  margin-right: 0.35em;
+  font-weight: bold;
+  color: #000;
+}
+
+.analysis-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.analysis-link:hover {
+  text-decoration: underline;
+}
+
+.analysis-link.is-empty {
+  opacity: 0.7;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+.card-section + .card-section,
+.note-block + .note-block {
+  margin-top: 10px;
+}
+
+.compare-panel {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: clamp(360px, 46vw, 760px);
+  z-index: 10;
+  box-shadow: 0 24px 50px rgba(56, 39, 25, 0.16);
+}
+
+.compare-panel.compare-panel-left {
+  left: auto;
+  right: calc(100% + 12px);
+}
+
+.compare-panel.is-open {
+  display: block;
+}
+
+.compare-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.compare-column {
+  min-width: 0;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(239, 229, 216, 0.42);
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-column h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.compare-column .note-block + .note-block {
+  margin-top: 8px;
+}
+
+.compare-link {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 0.92rem;
+}
+
+.compare-link-title {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+  font-weight: bold;
+}
+
+.compare-link a {
+  color: var(--accent-dark);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.compare-link a:hover {
+  text-decoration: underline;
 }
 
 .card-toggle {
@@ -171,12 +345,22 @@ h1 {
 .card-toggle[open] summary { border-bottom: 1px solid var(--border); }
 .card-toggle .card-body { padding: 16px; color: var(--muted); line-height: 1.65; }
 
-.empty-note { font-style: italic; }
+.red-highlight { color: #a12f1c; font-weight: bold; }
+.green-highlight { color: #2f6a45; font-weight: bold; }
 
 @media (max-width: 1000px) {
   .grid-header,
   .grid-row {
     grid-template-columns: 1fr;
+  }
+
+  .compare-panel,
+  .compare-panel.compare-panel-left {
+    position: static;
+    left: auto;
+    right: auto;
+    width: 100%;
+    margin-top: 12px;
   }
 }
 
@@ -186,7 +370,6 @@ h1 {
     padding: 24px 0 40px;
     gap: 22px;
   }
-
   .hero,
   .column-heading,
   .column-cell {
@@ -199,7 +382,18 @@ h1 {
 <script>
 function toggleCards(id) {
   const selected = document.getElementById(id);
-  selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
+  const shouldOpen = selected.style.display !== 'flex';
+
+  document.querySelectorAll('.cards').forEach(cardGroup => {
+    cardGroup.style.display = 'none';
+  });
+
+  selected.style.display = shouldOpen ? 'flex' : 'none';
+}
+
+function toggleCompare(id, button) {
+  const panel = document.getElementById(id);
+  panel.classList.toggle('is-open');
 }
 
 function escapeHtml(value) {
@@ -209,26 +403,99 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;');
 }
 
+function formatTextBlock(value) {
+  const text = String(value || '')
+    .replace(/\r\n/g, '\n')
+    .replace(/\n\s*((?:Vd\.|DD|WZ)\s+\d+\.\d+[a-z]?)/gi, '\n\n$1')
+    .trim();
+  if (!text) {
+    return '';
+  }
+
+  return text
+    .split(/\n\s*\n/)
+    .map(paragraph => paragraph.replace(/\n+/g, ' ').trim())
+    .filter(Boolean)
+    .map(paragraph => {
+      const match = paragraph.match(/^((?:Vd\.|DD|WZ)\s+\d+\.\d+[a-z]?)\s*(.*)$/i);
+      if (!match) {
+        return `<p class="text-paragraph">${escapeHtml(paragraph)}</p>`;
+      }
+
+      const division = escapeHtml(match[1]);
+      const remainder = escapeHtml(match[2]);
+
+      if (!remainder) {
+        return `<p class="text-paragraph"><span class="text-division">${division}</span></p>`;
+      }
+
+      return `<p class="text-paragraph"><span class="text-division">${division}</span>${remainder}</p>`;
+    })
+    .join('');
+}
+
+function buildFurtherInfoLink(url) {
+  if (!url) {
+    return '';
+  }
+
+  const safeUrl = escapeHtml(url);
+  return `
+    <div class="compare-link">
+      <span class="compare-link-title">More information</span>
+      <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Open related card</a>
+    </div>
+  `;
+}
+
+function buildAnalysisLink(url) {
+  if (!url) {
+    return `<span class="analysis-link is-empty">See full analysis</span>`;
+  }
+
+  const safeUrl = escapeHtml(url);
+  return `<a class="analysis-link" href="${safeUrl}" target="_blank" rel="noopener noreferrer">See full analysis</a>`;
+}
+
 function buildNotesMarkup(item) {
-  const noteSections = [];
+  const ddContent = item.DD
+    ? `<div class="note-block note-dd">${formatTextBlock(item.DD)}</div>`
+    : '<div class="note-block note-empty">No DD note yet.</div>';
+  const wzContent = item.WZ
+    ? `<div class="note-block note-wz">${formatTextBlock(item.WZ)}</div>`
+    : '<div class="note-block note-empty">No WZ note yet.</div>';
+  const ceteriSource = item.Ceteri || item.other || item.comparison || '';
+  const ceteriContent = ceteriSource
+    ? `<div class="note-block note-other">${formatTextBlock(ceteriSource)}</div>`
+    : '<div class="note-block note-empty">No Cet. note yet.</div>';
+  const notesContent = item.Notes
+    ? `<div class="note-block note-other">${formatTextBlock(item.Notes)}</div>`
+    : '<div class="note-block note-empty">No notes yet.</div>';
 
-  if (item.DD) {
-    noteSections.push(`<p><strong>DD:</strong> ${escapeHtml(item.DD)}</p>`);
-  }
-  if (item.WZ) {
-    noteSections.push(`<p><strong>WZ:</strong> ${escapeHtml(item.WZ)}</p>`);
-  }
-  if (item.other) {
-    noteSections.push(`<p><strong>Other:</strong> ${escapeHtml(item.other)}</p>`);
-  }
-  if (noteSections.length === 0 && item.comparison) {
-    noteSections.push(`<p>${escapeHtml(item.comparison)}</p>`);
-  }
-  if (noteSections.length === 0) {
-    noteSections.push('<p>No notes added yet.</p>');
-  }
-
-  return noteSections.join('');
+  return `
+    <div class="compare-grid">
+      <div class="compare-column">
+        <h3>DD</h3>
+        ${ddContent}
+        ${buildFurtherInfoLink(item.DDLink)}
+      </div>
+      <div class="compare-column">
+        <h3>WZ</h3>
+        ${wzContent}
+        ${buildFurtherInfoLink(item.WZLink)}
+      </div>
+      <div class="compare-column">
+        <h3>Cet.</h3>
+        ${ceteriContent}
+        ${buildFurtherInfoLink(item.CeteriLink)}
+      </div>
+      <div class="compare-column">
+        <h3>Notes</h3>
+        ${notesContent}
+        ${buildFurtherInfoLink(item.NotesLink)}
+      </div>
+    </div>
+  `;
 }
 
 function createEntryMarkup(prefix, item, index) {
@@ -237,13 +504,31 @@ function createEntryMarkup(prefix, item, index) {
   }
 
   const cardId = `${prefix}${index}`;
+  const compareId = `${cardId}-compare`;
+  const comparePanelClass = prefix === 'Hyb' ? 'card compare-panel compare-panel-left' : 'card compare-panel';
   return `
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
       <div class="cards" id="${cardId}">
-        <div class="card"><h3>Transcription</h3><p>${escapeHtml(item.transcription)}</p></div>
-        <details class="card-toggle"><summary>Translation</summary><div class="card-body"><p>${escapeHtml(item.translation)}</p></div></details>
-        <details class="card-toggle"><summary>Notes</summary><div class="card-body">${buildNotesMarkup(item)}</div></details>
+        <div class="transcription-row">
+          <div class="card card-section">
+            <div class="card-header">
+              <h3>Transcription</h3>
+              <button type="button" class="compare-button" onclick="toggleCompare('${compareId}', this)">Compare</button>
+            </div>
+            <div class="field-block transcription-block">${formatTextBlock(item.transcription)}</div>
+            ${buildAnalysisLink(item.analysisLink)}
+          </div>
+          <div class="${comparePanelClass}" id="${compareId}">
+            ${buildNotesMarkup(item)}
+          </div>
+        </div>
+        <details class="card-toggle">
+          <summary>Translation</summary>
+          <div class="card-body">
+            <div class="field-block translation-block">${formatTextBlock(item.translation)}</div>
+          </div>
+        </details>
       </div>
     </div>
   `;
@@ -251,7 +536,7 @@ function createEntryMarkup(prefix, item, index) {
 
 function renderSectionGrid(columns) {
   const root = document.getElementById('section-grid');
-  const maxRows = Math.max(...columns.map(column => column.items.length));
+  const maxRows = Math.max(...columns.map(column => column.cards.length));
 
   let html = `
     <div class="grid-header">
@@ -262,7 +547,7 @@ function renderSectionGrid(columns) {
   for (let i = 0; i < maxRows; i += 1) {
     html += '<div class="grid-row">';
     columns.forEach(column => {
-      html += createEntryMarkup(column.prefix, column.items[i], i);
+      html += createEntryMarkup(column.prefix, column.cards[i], i);
     });
     html += '</div>';
   }
@@ -270,31 +555,31 @@ function renderSectionGrid(columns) {
   root.innerHTML = html;
 }
 
-const column1Items = [
-  { label: "Section 1", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
-  { label: "Section 2", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
-  { label: "Section 3", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." }
-];
+function highlightWords() {
+  const redWords = ['aŋhrōmaińiiuš', 'Ahrimen', 'angraman', 'gannāgmēnōy', 'ahreman', 'Gannāg Mēnōy', 'Ganāy Mēnōy', 'Ahrimenīg'];
+  const greenWords = ['Druj'];
 
-const column2Items = [
-  { label: "Section 1", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
-  { label: "Section 2", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
-  { label: "Section 3", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." }
-];
-
-const column3Items = [
-  { label: "Section 1", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
-  { label: "Section 2", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." },
-  { label: "Section 3", transcription: "", translation: "", Vd: "Add DD notes here.", WZ: "Add WZ notes here.", other: "Add other notes here." }
-];
+  document.querySelectorAll('.card').forEach(card => {
+    let html = card.innerHTML;
+    redWords.forEach(word => {
+      const regex = new RegExp('\\b(' + word + ')\\b', 'gi');
+      html = html.replace(regex, '<span class="red-highlight">$1</span>');
+    });
+    greenWords.forEach(word => {
+      const regex = new RegExp('\\b(' + word + ')\\b', 'g');
+      html = html.replace(regex, '<span class="green-highlight">$1</span>');
+    });
+    card.innerHTML = html;
+  });
+}
 
 window.onload = () => {
   renderSectionGrid([
-    { title: 'Ahreman', prefix: 'vd', items: column1Items },
-    { title: 'Drūz', prefix: 'dd', items: column2Items },
-    { title: 'Hybrid', prefix: 'wz', items: column3Items }
-
+    { title: 'Ahreman', prefix: 'AhM', cards: AhMCards },
+    { title: 'Drūz', prefix: 'Dz', cards: DzCards },
+    { title: 'Hybrid', prefix: 'Hyb', cards: HybCards }
   ]);
+  highlightWords();
 };
 </script>
 
@@ -304,8 +589,63 @@ window.onload = () => {
 <main class="page">
   <section class="hero">
     <h1>Dādestān ī dēnīg</h1>
-    <p class="intro">Each row now holds one separate section across the three texts. The placeholders are empty so you can add the transcriptions later and keep matching sections beside each other.</p>
+    <p class="intro">Each row now holds one separate section across the three texts. The structure is kept in place, but the transcription fields are intentionally empty so you can add them later.</p>
   </section>
+
+  <script>
+        // Use backticks for long or multi-line text, for example:
+        // transcription: `<text>
+        //   <line>First line</line>
+        //   <line>Second line</line>
+        // </text>`
+        function makeEmptySections(start, end) {
+          return Array.from({ length: end - start + 1 }, (_, offset) => ({
+            label: `Section ${start + offset}`,
+            transcription: ``,
+            translation: ``,
+            analysisLink: "",
+            Vd: `Add notes here.`,
+            Link: "",
+            WZ: `Add notes here.`, 
+            WZLink: "",
+            Ceteri: `Add notes here.`,
+            CeteriLink: "",
+            Notes: `Add notes here.`
+          }));
+        }
+
+        const AhMCards = [
+    { label: "Section 1", transcription: ``, 
+          translation: ``, analysisLink: "", 
+          Vd: `Add notes here.`, VdLink: "", 
+          WZ: `Add notes here.`, WZLink: "", 
+          Ceteri: `Add notes here.`, CeteriLink: "", 
+          Notes: `Add notes here.`},
+          ...makeEmptySections(2, 10)
+        ];
+
+
+        const DzCards = [
+          { label: "Section 1", transcription: ``, 
+          translation: ``, analysisLink: "", 
+          Vd: `Add notes here.`, VdLink: "", 
+          WZ: `Add notes here.`, WZLink: "", 
+          Ceteri: `Add notes here.`, CeteriLink: "", 
+          Notes: `Add notes here.`},
+          ...makeEmptySections(2, 10)
+        ];
+
+        const HybCards = [
+    { label: "Section 1", transcription: ``, 
+          translation: ``, analysisLink: "", 
+          Vd: `Add notes here.`, VdLink: "", 
+          WZ: `Add notes here.`, WZLink: "", 
+          Ceteri: `Add notes here.`, CeteriLink: "", 
+          Notes: `Add notes here.`},
+          ...makeEmptySections(2, 10)
+        ];
+
+  </script>
 
   <div id="section-grid" class="section-grid"></div>
 </main>
