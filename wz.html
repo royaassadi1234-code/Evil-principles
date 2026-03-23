@@ -406,7 +406,7 @@ function escapeHtml(value) {
 function formatTextBlock(value) {
   const text = String(value || '')
     .replace(/\r\n/g, '\n')
-    .replace(/\n\s*((?:Vd\.|DD|WZ)\s+\d+\.\d+[a-z]?)/gi, '\n\n$1')
+    .replace(/\n\s*((?:WZ\.|DD|Vd)\s+\d+\.\d+[a-z]?)/gi, '\n\n$1')
     .trim();
   if (!text) {
     return '';
@@ -417,7 +417,7 @@ function formatTextBlock(value) {
     .map(paragraph => paragraph.replace(/\n+/g, ' ').trim())
     .filter(Boolean)
     .map(paragraph => {
-      const match = paragraph.match(/^((?:Vd\.|DD|WZ)\s+\d+\.\d+[a-z]?)\s*(.*)$/i);
+      const match = paragraph.match(/^((?:WZ\.|DD|Vd)\s+\d+\.\d+[a-z]?)\s*(.*)$/i);
       if (!match) {
         return `<p class="text-paragraph">${escapeHtml(paragraph)}</p>`;
       }
@@ -461,9 +461,9 @@ function buildNotesMarkup(item) {
   const ddContent = item.DD
     ? `<div class="note-block note-dd">${formatTextBlock(item.DD)}</div>`
     : '<div class="note-block note-empty">No DD note yet.</div>';
-  const wzContent = item.WZ
-    ? `<div class="note-block note-wz">${formatTextBlock(item.WZ)}</div>`
-    : '<div class="note-block note-empty">No WZ note yet.</div>';
+  const wzContent = item.Vd
+    ? `<div class="note-block note-vd">${formatTextBlock(item.Vd)}</div>`
+    : '<div class="note-block note-empty">No Vd note yet.</div>';
   const ceteriSource = item.Ceteri || item.other || item.comparison || '';
   const ceteriContent = ceteriSource
     ? `<div class="note-block note-other">${formatTextBlock(ceteriSource)}</div>`
@@ -475,14 +475,14 @@ function buildNotesMarkup(item) {
   return `
     <div class="compare-grid">
       <div class="compare-column">
-        <h3>DD</h3>
+        <h3>Vd</h3>
         ${ddContent}
         ${buildFurtherInfoLink(item.DDLink)}
       </div>
       <div class="compare-column">
-        <h3>WZ</h3>
-        ${wzContent}
-        ${buildFurtherInfoLink(item.WZLink)}
+        <h3>DD</h3>
+        ${vdContent}
+        ${buildFurtherInfoLink(item.VdLink)}
       </div>
       <div class="compare-column">
         <h3>Cet.</h3>
