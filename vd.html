@@ -355,7 +355,13 @@ h1 {
 <script>
 function toggleCards(id) {
   const selected = document.getElementById(id);
-  selected.style.display = selected.style.display === 'flex' ? 'none' : 'flex';
+  const shouldOpen = selected.style.display !== 'flex';
+
+  document.querySelectorAll('.cards').forEach(cardGroup => {
+    cardGroup.style.display = 'none';
+  });
+
+  selected.style.display = shouldOpen ? 'flex' : 'none';
 }
 
 function toggleCompare(id, button) {
