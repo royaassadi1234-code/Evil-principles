@@ -203,7 +203,6 @@ h1 {
   text-align-last: left;
   text-justify: inter-word;
   hyphens: auto;
-  white-space: pre-wrap;
   overflow-wrap: anywhere;
   word-break: break-word;
 }
@@ -214,6 +213,16 @@ h1 {
   display: block;
   width: 100%;
   text-align: justify !important;
+}
+
+.text-paragraph {
+  margin: 0;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.text-paragraph + .text-paragraph {
+  margin-top: 0.9em;
 }
 
 .card-section + .card-section,
@@ -361,6 +370,20 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;');
 }
 
+function formatTextBlock(value) {
+  const text = String(value || '').replace(/\r\n/g, '\n').trim();
+  if (!text) {
+    return '';
+  }
+
+  return text
+    .split(/\n\s*\n/)
+    .map(paragraph => paragraph.replace(/\n+/g, ' ').trim())
+    .filter(Boolean)
+    .map(paragraph => `<p class="text-paragraph">${escapeHtml(paragraph)}</p>`)
+    .join('');
+}
+
 function buildFurtherInfoLink(url) {
   if (!url) {
     return '';
@@ -377,17 +400,17 @@ function buildFurtherInfoLink(url) {
 
 function buildNotesMarkup(item) {
   const ddContent = item.DD
-    ? `<div class="note-block note-dd">${escapeHtml(item.DD)}</div>`
+    ? `<div class="note-block note-dd">${formatTextBlock(item.DD)}</div>`
     : '<div class="note-block note-empty">No DD note yet.</div>';
   const wzContent = item.WZ
-    ? `<div class="note-block note-wz">${escapeHtml(item.WZ)}</div>`
+    ? `<div class="note-block note-wz">${formatTextBlock(item.WZ)}</div>`
     : '<div class="note-block note-empty">No WZ note yet.</div>';
   const ceteriSource = item.Ceteri || item.other || item.comparison || '';
   const ceteriContent = ceteriSource
-    ? `<div class="note-block note-other">${escapeHtml(ceteriSource)}</div>`
+    ? `<div class="note-block note-other">${formatTextBlock(ceteriSource)}</div>`
     : '<div class="note-block note-empty">No Cet. note yet.</div>';
   const notesContent = item.Notes
-    ? `<div class="note-block note-other">${escapeHtml(item.Notes)}</div>`
+    ? `<div class="note-block note-other">${formatTextBlock(item.Notes)}</div>`
     : '<div class="note-block note-empty">No notes yet.</div>';
 
   return `
@@ -434,7 +457,7 @@ function createEntryMarkup(prefix, item, index) {
               <h3>Transcription</h3>
               <button type="button" class="compare-button" onclick="toggleCompare('${compareId}', this)">Compare</button>
             </div>
-            <div class="field-block transcription-block">${escapeHtml(item.transcription)}</div>
+            <div class="field-block transcription-block">${formatTextBlock(item.transcription)}</div>
           </div>
           <div class="${comparePanelClass}" id="${compareId}">
             ${buildNotesMarkup(item)}
@@ -443,7 +466,7 @@ function createEntryMarkup(prefix, item, index) {
         <details class="card-toggle">
           <summary>Translation</summary>
           <div class="card-body">
-            <div class="field-block translation-block">${escapeHtml(item.translation)}</div>
+            <div class="field-block translation-block">${formatTextBlock(item.translation)}</div>
           </div>
         </details>
       </div>
