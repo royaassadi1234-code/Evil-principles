@@ -538,6 +538,21 @@ window.onload = () => {
         //   <line>First line</line>
         //   <line>Second line</line>
         // </text>`
+        function makeEmptySections(start, end) {
+          return Array.from({ length: end - start + 1 }, (_, offset) => ({
+            label: `Section ${start + offset}`,
+            transcription: ``,
+            translation: ``,
+            DD: `Add notes here.`,
+            DDLink: "",
+            WZ: `Add notes here.`,
+            WZLink: "",
+            Ceteri: `Add notes here.`,
+            CeteriLink: "",
+            Notes: `Add notes here.`
+          }));
+        }
+
         const AhMCards = [
           {
             label: "Section 1",
@@ -564,15 +579,18 @@ window.onload = () => {
             on disbelieve-denial of ristĀxĒz by DahĀg. The context is more similar to Vd. describing different corruptions, evil doers and 
             their final annihilation. In new Persian the snake is specifically allocated with charming dishonesty (ǰĀdŪgĪh?) aimed to hurt 
             others in a painful and ruthless way.`
-          }
+          },
+          ...makeEmptySections(2, 10)
         ];
 
         const DzCards = [
-          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`}
+          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
+          ...makeEmptySections(2, 10)
         ];
 
         const HybCards = [
-          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`}
+          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
+          ...makeEmptySections(2, 10)
         ];
   </script>
 
