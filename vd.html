@@ -225,6 +225,14 @@ h1 {
   margin-top: 0.9em;
 }
 
+.text-division {
+  display: block;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+  color: var(--accent-dark);
+  text-align: left;
+}
+
 .analysis-link {
   display: inline-block;
   margin-top: 14px;
@@ -236,6 +244,13 @@ h1 {
 
 .analysis-link:hover {
   text-decoration: underline;
+}
+
+.analysis-link.is-empty {
+  opacity: 0.7;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
 }
 
 .card-section + .card-section,
@@ -399,7 +414,21 @@ function formatTextBlock(value) {
     .split(/\n\s*\n/)
     .map(paragraph => paragraph.replace(/\n+/g, ' ').trim())
     .filter(Boolean)
-    .map(paragraph => `<p class="text-paragraph">${escapeHtml(paragraph)}</p>`)
+    .map(paragraph => {
+      const match = paragraph.match(/^((?:Vd\.|DD|WZ)\s+\d+\.\d+[a-z]?)\s*(.*)$/i);
+      if (!match) {
+        return `<p class="text-paragraph">${escapeHtml(paragraph)}</p>`;
+      }
+
+      const division = escapeHtml(match[1]);
+      const remainder = escapeHtml(match[2]);
+
+      if (!remainder) {
+        return `<p class="text-paragraph"><span class="text-division">${division}</span></p>`;
+      }
+
+      return `<p class="text-paragraph"><span class="text-division">${division}</span>${remainder}</p>`;
+    })
     .join('');
 }
 
@@ -419,7 +448,7 @@ function buildFurtherInfoLink(url) {
 
 function buildAnalysisLink(url) {
   if (!url) {
-    return '';
+    return `<span class="analysis-link is-empty">See full analysis</span>`;
   }
 
   const safeUrl = escapeHtml(url);
