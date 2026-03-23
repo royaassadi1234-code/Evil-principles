@@ -225,6 +225,19 @@ h1 {
   margin-top: 0.9em;
 }
 
+.analysis-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.analysis-link:hover {
+  text-decoration: underline;
+}
+
 .card-section + .card-section,
 .note-block + .note-block {
   margin-top: 10px;
@@ -404,6 +417,15 @@ function buildFurtherInfoLink(url) {
   `;
 }
 
+function buildAnalysisLink(url) {
+  if (!url) {
+    return '';
+  }
+
+  const safeUrl = escapeHtml(url);
+  return `<a class="analysis-link" href="${safeUrl}" target="_blank" rel="noopener noreferrer">See full analysis</a>`;
+}
+
 function buildNotesMarkup(item) {
   const ddContent = item.DD
     ? `<div class="note-block note-dd">${formatTextBlock(item.DD)}</div>`
@@ -464,6 +486,7 @@ function createEntryMarkup(prefix, item, index) {
               <button type="button" class="compare-button" onclick="toggleCompare('${compareId}', this)">Compare</button>
             </div>
             <div class="field-block transcription-block">${formatTextBlock(item.transcription)}</div>
+            ${buildAnalysisLink(item.analysisLink)}
           </div>
           <div class="${comparePanelClass}" id="${compareId}">
             ${buildNotesMarkup(item)}
@@ -549,6 +572,7 @@ window.onload = () => {
             label: `Section ${start + offset}`,
             transcription: ``,
             translation: ``,
+            analysisLink: "",
             DD: `Add notes here.`,
             DDLink: "",
             WZ: `Add notes here.`,
@@ -567,6 +591,7 @@ window.onload = () => {
             translation: `Vd. 9.7 Then, the holder of the order Haōma, who burns badly, answered this to me: Āϑβya was the second man, who pressed 
             me for the material creation. This reward was set in motion for him. This profit came to him: a son was born to him, Thraētaōna, of a 
             mighty clan.`,
+            analysisLink: "",
             DD: `DD 36.84 ēk ēn kū ka ān ī duš-dēn Dahāg kē-š was-ōztom dēw ud Druz pad az-kerb abar frēg ast az band ī Frēdōn rahēd ud pad 
             ǰādūgīh dēw bē ō gēhān marnǰēnīdār estēd ēk mard ī tagīg az rist pēš ul hangēzīhēd xwānīhēd Sāmān Kersāsp ī pad ēk gad ī gāwsar 
             ān druzīh škennēd pad ān ī frārōn bīm ān Dahāg ō dād ud ristag ī yazdān ānayēd`,
@@ -590,12 +615,12 @@ window.onload = () => {
         ];
 
         const DzCards = [
-          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
+          { label: "Section 1", transcription: ``, translation: ``, analysisLink: "", DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
           ...makeEmptySections(2, 10)
         ];
 
         const HybCards = [
-          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
+          { label: "Section 1", transcription: ``, translation: ``, analysisLink: "", DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
           ...makeEmptySections(2, 10)
         ];
   </script>
