@@ -35,7 +35,7 @@ body {
 }
 
 .page {
-  width: calc(100% - 48px);
+  width: min(1320px, calc(100% - 48px));
   margin: 0 auto;
   padding: 36px 0 56px;
   display: grid;
@@ -199,7 +199,6 @@ h1 {
   font-family: var(--serif-stack);
   color: var(--muted);
   line-height: 1.65;
-  text-align: justify;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -218,11 +217,6 @@ h1 {
   width: clamp(360px, 46vw, 760px);
   z-index: 10;
   box-shadow: 0 24px 50px rgba(56, 39, 25, 0.16);
-}
-
-.compare-panel.compare-panel-left {
-  left: auto;
-  right: calc(100% + 12px);
 }
 
 .compare-panel.is-open {
@@ -305,15 +299,6 @@ h1 {
   .grid-header,
   .grid-row {
     grid-template-columns: 1fr;
-  }
-
-  .compare-panel,
-  .compare-panel.compare-panel-left {
-    position: static;
-    left: auto;
-    right: auto;
-    width: 100%;
-    margin-top: 12px;
   }
 }
 
@@ -412,7 +397,6 @@ function createEntryMarkup(prefix, item, index) {
 
   const cardId = `${prefix}${index}`;
   const compareId = `${cardId}-compare`;
-  const comparePanelClass = prefix === 'Hyb' ? 'card compare-panel compare-panel-left' : 'card compare-panel';
   return `
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
@@ -425,7 +409,7 @@ function createEntryMarkup(prefix, item, index) {
             </div>
             <div class="field-block transcription-block">${escapeHtml(item.transcription)}</div>
           </div>
-          <div class="${comparePanelClass}" id="${compareId}">
+          <div class="card compare-panel" id="${compareId}">
             ${buildNotesMarkup(item)}
           </div>
         </div>
@@ -534,11 +518,11 @@ window.onload = () => {
         ];
 
         const DzCards = [
-          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`, NotesLink: "" }
+          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`}
         ];
 
         const HybCards = [
-          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`, NotesLink: "" }
+          { label: "Section 1", transcription: ``, translation: ``, DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`}
         ];
   </script>
 
