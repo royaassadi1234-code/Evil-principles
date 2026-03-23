@@ -200,9 +200,20 @@ h1 {
   color: var(--muted);
   line-height: 1.65;
   text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+.transcription-block,
+.translation-block,
+.note-block {
+  display: block;
+  width: 100%;
+  text-align: justify !important;
 }
 
 .card-section + .card-section,
