@@ -15,31 +15,30 @@ body {
 /* PAGE LAYOUT */
 .page {
   display: grid;
-  grid-template-columns: auto 350px; /* left auto width, right fixed */
-  gap: 20px;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px; /* reduced from 25px */
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: auto;
+  padding: 20px 15px; /* reduced from 30px 20px */
 }
 
 /* LEFT SIDE */
 .text-area {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-left: 0; /* flush left */
+  gap: 10px; /* reduced from 20px */
 }
-
 /* DIVISION TITLE */
 .division-title {
-  font-weight: bold;
   font-size: 18px;
-  margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 5px; /* reduced from 10px */
 }
 
 /* TRANSCRIPTION BLOCK */
 .transcription-block {
   position: relative;
+  margin-bottom: 10px; /* reduced from 15px */
 }
 
 /* COMPARE BUTTON */
@@ -61,21 +60,21 @@ body {
 
 /* TEXT BLOCK */
 .text-block {
-  padding: 10px 0;
-  border-left: 3px solid #2d6cdf;
-  padding-left: 10px;
+  background: #fafafa;
+  padding: 10px; /* reduced from 15px */
+  border-left: 4px solid #2d6cdf;
+  border-radius: 6px;
   max-height: 200px;
   overflow-y: auto;
 }
 
 /* TRANSLATION */
 .translation-header {
+  font-weight: bold;
   cursor: pointer;
   color: #2d6cdf;
-  font-weight: bold;
-  margin-top: 10px;
+  margin-bottom: 5px; /* reduced from 8px */
 }
-
 /* RIGHT SIDE */
 .compare-area {
   position: sticky;
@@ -86,20 +85,24 @@ body {
 /* COMPARE PANEL */
 .compare-panel {
   display: none;
+  background: #eef2ff;
+  padding: 10px; /* reduced from 15px */
+  border-radius: 10px;
 }
 
 .compare-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px; /* reduced from 10px */
 }
 
 .compare-box {
-  border-left: 3px solid #888;
-  padding-left: 10px;
+  background: white;
+  padding: 8px; /* reduced from 10px */
+  border-left: 4px solid #888;
+  border-radius: 6px;
   max-height: 120px;
   overflow-y: auto;
-}
 
 /* DIFF */
 .diff {
