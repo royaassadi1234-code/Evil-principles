@@ -141,27 +141,33 @@ for (let i = 1; i <= 92; i++) {
 
   const div = document.createElement("div");
 
-  div.innerHTML = `
-    <div class="division-title">Division ${i}</div>
+card.innerHTML = `
+  <div class="division-title">Division ${i}</div>
 
-    <div class="transcription-block">
-      <button class="compare-btn" onclick="openCompare(${i})">Compare</button>
+  <div class="transcription-block">
+    <button class="toggle-compare-btn" onclick="toggleCompareButton(this)">
+      Show Compare
+    </button>
 
-      <div class="text-block">
-        <strong>Transcription</strong>
-        <p>Transcription text for division ${i}...</p>
-      </div>
-    </div>
+    <button class="compare-btn" onclick="openCompare(${i})" style="display:none;">
+      Compare
+    </button>
 
     <div class="text-block">
-      <div class="translation-header" onclick="toggleTranslation(this)">
-        Translation
-      </div>
-      <div class="translation-content" style="display:none;">
-        <p>Translation text for division ${i}...</p>
-      </div>
+      <strong>Transcription</strong>
+      <p>Transcription text for division ${i}...</p>
     </div>
-  `;
+  </div>
+
+  <div class="text-block">
+    <div class="translation-header" onclick="toggleTranslation(this)">
+      Translation
+    </div>
+    <div class="translation-content" style="display:none;">
+      <p>Translation text for division ${i}...</p>
+    </div>
+  </div>
+`;
 
   textArea.appendChild(div);
 }
@@ -248,7 +254,16 @@ function highlightDifferences() {
     p.innerHTML = result.join(" ");
   });
 }
-
+function toggleCompareButton(el) {
+  const compareBtn = el.nextElementSibling;
+  if (compareBtn.style.display === "none") {
+    compareBtn.style.display = "inline-block";
+    el.innerText = "Hide Compare";
+  } else {
+    compareBtn.style.display = "none";
+    el.innerText = "Show Compare";
+  }
+}
 </script>
 
 </body>
