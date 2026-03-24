@@ -11,87 +11,79 @@ body {
   margin: 0;
 }
 
-/* CONTAINER */
-.container {
-  max-width: 1100px;
+/* PAGE GRID */
+.page {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  max-width: 1200px;
   margin: auto;
   padding: 30px 20px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
+/* LEFT SIDE (MAIN TEXT AREA) */
+.text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* SECTION */
-.section {
+/* RIGHT SIDE (COMPARE) */
+.compare-area {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+/* CARD */
+.card {
   background: white;
-  border-radius: 12px;
-  margin-bottom: 25px;
   padding: 20px;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* HEADER */
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.section-title {
-  font-size: 20px;
+/* DIVISION TITLE */
+.division-title {
+  font-size: 18px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
-/* BUTTON */
-button {
-  background: #2d6cdf;
+/* TRANSCRIPTION BLOCK */
+.transcription-block {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+/* COMPARE BUTTON */
+.compare-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #d9534f;
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: 6px;
   cursor: pointer;
-}
-
-/* RED COMPARE BUTTON */
-.compare-btn {
-  background: #d9534f;
 }
 
 .compare-btn:hover {
   background: #b52b27;
 }
 
-/* MAIN GRID */
-.section-content {
-  display: none;
-  margin-top: 20px;
-}
-
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-/* TEXT SIDE */
-.text-column {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
+/* TEXT BLOCKS */
 .text-block {
   background: #fafafa;
   padding: 15px;
   border-left: 4px solid #2d6cdf;
   border-radius: 6px;
-  max-height: 250px;
+  max-height: 200px;
   overflow-y: auto;
 }
 
-/* TRANSLATION TOGGLE */
+/* TRANSLATION HEADER */
 .translation-header {
   font-weight: bold;
   cursor: pointer;
@@ -99,42 +91,37 @@ button {
   margin-bottom: 8px;
 }
 
-/* COMPARE CONTAINER (separate) */
-.compare-container {
-  display: none;
-}
-
+/* COMPARE PANEL */
 .compare-panel {
+  display: none;
   background: #eef2ff;
   padding: 15px;
   border-radius: 10px;
 }
 
-/* VERTICAL COMPARE */
 .compare-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .compare-box {
   background: white;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 10px;
   border-left: 4px solid #888;
-  max-height: 150px;
+  border-radius: 6px;
+  max-height: 120px;
   overflow-y: auto;
 }
 
 /* DIFF */
 .diff {
   background: yellow;
-  font-weight: bold;
 }
 
 /* RESPONSIVE */
-@media (max-width: 800px) {
-  .content-grid {
+@media (max-width: 900px) {
+  .page {
     grid-template-columns: 1fr;
   }
 }
@@ -143,115 +130,102 @@ button {
 
 <body>
 
-<div class="container">
+<div class="page">
 
-<h1>Digital Critical Edition</h1>
+  <!-- LEFT SIDE -->
+  <div class="text-area" id="textArea"></div>
 
-<div class="section">
-
-  <div class="section-header" onclick="toggleContent(this)">
-    <div class="section-title">1.1</div>
-    <button class="compare-btn" onclick="toggleCompare(event, this)">Compare</button>
+  <!-- RIGHT SIDE -->
+  <div class="compare-area">
+    <div class="compare-panel" id="comparePanel"></div>
   </div>
-
-  <div class="section-content">
-
-    <div class="content-grid">
-
-      <!-- LEFT SIDE -->
-      <div class="text-column">
-
-        <!-- TRANSCRIPTION -->
-        <div class="text-block">
-          <strong>Transcription</strong>
-          <p>Lorem ipsum dolor sit amet, manuscript text goes here.</p>
-        </div>
-
-        <!-- TRANSLATION -->
-        <div class="text-block">
-          <div class="translation-header" onclick="toggleTranslation(this)">
-            Translation
-          </div>
-          <div class="translation-content" style="display:none;">
-            <p>This is the translation of the passage.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- RIGHT SIDE: COMPARE (SEPARATE CONTAINER) -->
-      <div class="compare-container">
-
-        <div class="compare-panel">
-          <div class="compare-grid">
-
-            <div class="compare-box sync">
-              <strong>M1</strong>
-              <p>Lorem ipsum dolor sit amet original text.</p>
-            </div>
-
-            <div class="compare-box sync">
-              <strong>M2</strong>
-              <p>Lorem ipsum dolor sit amet variant reading.</p>
-            </div>
-
-            <div class="compare-box sync">
-              <strong>M3</strong>
-              <p>Lorem ipsum dolor sit amet different version.</p>
-            </div>
-
-            <div class="compare-box sync">
-              <strong>Ed.</strong>
-              <p>Lorem ipsum dolor sit amet edited version.</p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</div>
 
 </div>
 
 <script>
 
-/* TOGGLE SECTION */
-function toggleContent(header) {
-  const content = header.nextElementSibling;
-  content.style.display =
-    content.style.display === "block" ? "none" : "block";
-}
+/* GENERATE 92 DIVISIONS */
+const textArea = document.getElementById("textArea");
 
-/* TOGGLE COMPARE */
-function toggleCompare(event, button) {
-  event.stopPropagation();
+for (let i = 1; i <= 92; i++) {
 
-  const section = button.closest(".section");
-  const container = section.querySelector(".compare-container");
+  const card = document.createElement("div");
+  card.className = "card";
 
-  container.style.display =
-    container.style.display === "block" ? "none" : "block";
+  card.innerHTML = `
+    <div class="division-title">Division ${i}</div>
 
-  if (container.style.display === "block") {
-    syncScroll(section);
-    highlightDifferences(section);
-  }
+    <div class="transcription-block">
+      <button class="compare-btn" onclick="openCompare(${i})">Compare</button>
+
+      <div class="text-block">
+        <strong>Transcription</strong>
+        <p>Transcription text for division ${i}...</p>
+      </div>
+    </div>
+
+    <div class="text-block">
+      <div class="translation-header" onclick="toggleTranslation(this)">
+        Translation
+      </div>
+      <div class="translation-content" style="display:none;">
+        <p>Translation text for division ${i}...</p>
+      </div>
+    </div>
+  `;
+
+  textArea.appendChild(card);
 }
 
 /* TRANSLATION TOGGLE */
-function toggleTranslation(header) {
-  const content = header.nextElementSibling;
+function toggleTranslation(el) {
+  const content = el.nextElementSibling;
   content.style.display =
     content.style.display === "block" ? "none" : "block";
 }
 
+/* OPEN COMPARE PANEL */
+function openCompare(index) {
+
+  const panel = document.getElementById("comparePanel");
+
+  panel.style.display = "block";
+
+  panel.innerHTML = `
+    <h3>Comparison – Division ${index}</h3>
+
+    <div class="compare-grid">
+
+      <div class="compare-box sync">
+        <strong>M1</strong>
+        <p>Version A text for division ${index}</p>
+      </div>
+
+      <div class="compare-box sync">
+        <strong>M2</strong>
+        <p>Version B text for division ${index}</p>
+      </div>
+
+      <div class="compare-box sync">
+        <strong>M3</strong>
+        <p>Version C text for division ${index}</p>
+      </div>
+
+      <div class="compare-box sync">
+        <strong>Ed.</strong>
+        <p>Edited version for division ${index}</p>
+      </div>
+
+    </div>
+  `;
+
+  syncScroll();
+  highlightDifferences();
+}
+
 /* SYNC SCROLL */
-function syncScroll(section) {
-  const boxes = section.querySelectorAll(".sync");
+function syncScroll() {
+  const boxes = document.querySelectorAll(".sync");
 
   boxes.forEach(box => {
     box.addEventListener("scroll", () => {
@@ -265,8 +239,8 @@ function syncScroll(section) {
 }
 
 /* DIFF */
-function highlightDifferences(section) {
-  const texts = Array.from(section.querySelectorAll(".compare-box p"));
+function highlightDifferences() {
+  const texts = Array.from(document.querySelectorAll(".compare-box p"));
 
   if (texts.length < 2) return;
 
