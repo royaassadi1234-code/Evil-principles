@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Critical Edition</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f4f6f9;
+}
+
+/* SECTION */
+.section {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  background: #2d6cdf;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1b4ea8;
+}
+
+.section-content {
+  display: none;
+  margin-top: 15px;
+}
+
+/* TWO COLUMN */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.panel {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+/* COMPARE PANEL */
+.compare-panel {
+  display: none;
+  margin-top: 15px;
+  background: #eef2ff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* VERTICAL STACK */
+.compare-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compare-box {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+/* HIGHLIGHT DIFF */
+.diff {
+  background: yellow;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Digital Critical Edition</h1>
+
+<!-- SECTION -->
+<div class="section">
+
+  <div class="section-header" onclick="toggleContent(this)">
+    <div class="section-title">1.1</div>
+    <button onclick="toggleCompare(event, this)">Compare</button>
+  </div>
+
+  <div class="section-content">
+
+    <!-- TRANSCRIPTION / TRANSLATION -->
+    <div class="two-col">
+      <div class="panel">
+        <strong>Transcription</strong>
+        <p>Lorem ipsum dolor sit amet, original text version here.</p>
+      </div>
+
+      <div class="panel">
+        <strong>Translation</strong>
+        <p>This is the translated version of the same passage.</p>
+      </div>
+    </div>
+
+    <!-- COMPARE -->
+    <div class="compare-panel">
+      <div class="compare-grid">
+
+        <div class="compare-box sync">
+          <strong>M1</strong>
+          <p>Lorem ipsum dolor sit amet original text here.</p>
+        </div>
+
+        <div class="compare-box sync">
+          <strong>M2</strong>
+          <p>Lorem ipsum dolor sit amet variant reading here.</p>
+        </div>
+
+        <div class="compare-box sync">
+          <strong>M3</strong>
+          <p>Lorem ipsum dolor sit amet slightly different text.</p>
+        </div>
+
+        <div class="compare-box sync">
+          <strong>Ed.</strong>
+          <p>Lorem ipsum dolor sit amet edited critical version.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+/* COLLAPSE SECTION */
+function toggleContent(header) {
+  const content = header.nextElementSibling;
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
+/* TOGGLE COMPARE */
+function toggleCompare(event, button) {
+  event.stopPropagation();
+  const section = button.closest(".section");
+  const panel = section.querySelector(".compare-panel");
+
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+
+  if (panel.style.display === "block") {
+    syncScroll(section);
+    highlightDifferences(section);
+  }
+}
+
+/* SYNC SCROLL */
+function syncScroll(section) {
+  const boxes = section.querySelectorAll(".sync");
+
+  boxes.forEach(box => {
+    box.addEventListener("scroll", () => {
+      boxes.forEach(other => {
+        if (other !== box) {
+          other.scrollTop = box.scrollTop;
+        }
+      });
+    });
+  });
+}
+
+/* SIMPLE DIFF HIGHLIGHT */
+function highlightDifferences(section) {
+  const texts = Array.from(section.querySelectorAll(".compare-box p"));
+
+  if (texts.length < 2) return;
+
+  const base = texts[0].innerText.split(" ");
+
+  texts.forEach(p => {
+    const words = p.innerText.split(" ");
+    let result = [];
+
+    words.forEach((word, i) => {
+      if (word !== base[i]) {
+        result.push(`<span class="diff">${word}</span>`);
+      } else {
+        result.push(word);
+      }
+    });
+
+    p.innerHTML = result.join(" ");
+  });
+}
+
+</script>
+
+</body>
+</html>
