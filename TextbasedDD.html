@@ -23,7 +23,7 @@ h1 {
   margin-bottom: 40px;
 }
 
-/* SECTION CARD */
+/* SECTION */
 .section {
   background: white;
   border-radius: 12px;
@@ -44,7 +44,7 @@ h1 {
   font-weight: bold;
 }
 
-/* DEFAULT BUTTON (if you add more later) */
+/* BUTTON */
 button {
   background: #2d6cdf;
   color: white;
@@ -63,7 +63,7 @@ button {
   background: #b52b27;
 }
 
-/* MAIN CONTENT LAYOUT */
+/* MAIN GRID */
 .section-content {
   display: none;
   margin-top: 20px;
@@ -75,7 +75,7 @@ button {
   gap: 20px;
 }
 
-/* LEFT SIDE (TEXT) */
+/* TEXT SIDE */
 .text-column {
   display: flex;
   flex-direction: column;
@@ -91,20 +91,26 @@ button {
   overflow-y: auto;
 }
 
-.text-block strong {
-  display: block;
+/* TRANSLATION TOGGLE */
+.translation-header {
+  font-weight: bold;
+  cursor: pointer;
+  color: #2d6cdf;
   margin-bottom: 8px;
 }
 
-/* RIGHT SIDE (COMPARE) */
-.compare-panel {
+/* COMPARE CONTAINER (separate) */
+.compare-container {
   display: none;
+}
+
+.compare-panel {
   background: #eef2ff;
   padding: 15px;
   border-radius: 10px;
 }
 
-/* VERTICAL STACK INSIDE COMPARE */
+/* VERTICAL COMPARE */
 .compare-grid {
   display: flex;
   flex-direction: column;
@@ -152,46 +158,54 @@ button {
 
     <div class="content-grid">
 
-      <!-- LEFT: TEXT -->
+      <!-- LEFT SIDE -->
       <div class="text-column">
 
+        <!-- TRANSCRIPTION -->
         <div class="text-block">
           <strong>Transcription</strong>
           <p>Lorem ipsum dolor sit amet, manuscript text goes here.</p>
         </div>
 
+        <!-- TRANSLATION -->
         <div class="text-block">
-          <strong>Translation</strong>
-          <p>This is the translation of the passage.</p>
+          <div class="translation-header" onclick="toggleTranslation(this)">
+            Translation
+          </div>
+          <div class="translation-content" style="display:none;">
+            <p>This is the translation of the passage.</p>
+          </div>
         </div>
 
       </div>
 
-      <!-- RIGHT: COMPARE -->
-      <div class="compare-panel">
+      <!-- RIGHT SIDE: COMPARE (SEPARATE CONTAINER) -->
+      <div class="compare-container">
 
-        <div class="compare-grid">
+        <div class="compare-panel">
+          <div class="compare-grid">
 
-          <div class="compare-box sync">
-            <strong>M1</strong>
-            <p>Lorem ipsum dolor sit amet original text.</p>
+            <div class="compare-box sync">
+              <strong>M1</strong>
+              <p>Lorem ipsum dolor sit amet original text.</p>
+            </div>
+
+            <div class="compare-box sync">
+              <strong>M2</strong>
+              <p>Lorem ipsum dolor sit amet variant reading.</p>
+            </div>
+
+            <div class="compare-box sync">
+              <strong>M3</strong>
+              <p>Lorem ipsum dolor sit amet different version.</p>
+            </div>
+
+            <div class="compare-box sync">
+              <strong>Ed.</strong>
+              <p>Lorem ipsum dolor sit amet edited version.</p>
+            </div>
+
           </div>
-
-          <div class="compare-box sync">
-            <strong>M2</strong>
-            <p>Lorem ipsum dolor sit amet variant reading.</p>
-          </div>
-
-          <div class="compare-box sync">
-            <strong>M3</strong>
-            <p>Lorem ipsum dolor sit amet different version.</p>
-          </div>
-
-          <div class="compare-box sync">
-            <strong>Ed.</strong>
-            <p>Lorem ipsum dolor sit amet edited version.</p>
-          </div>
-
         </div>
 
       </div>
@@ -205,27 +219,34 @@ button {
 
 <script>
 
-/* TOGGLE MAIN SECTION */
+/* TOGGLE SECTION */
 function toggleContent(header) {
   const content = header.nextElementSibling;
   content.style.display =
     content.style.display === "block" ? "none" : "block";
 }
 
-/* TOGGLE COMPARE PANEL */
+/* TOGGLE COMPARE */
 function toggleCompare(event, button) {
   event.stopPropagation();
 
   const section = button.closest(".section");
-  const panel = section.querySelector(".compare-panel");
+  const container = section.querySelector(".compare-container");
 
-  panel.style.display =
-    panel.style.display === "block" ? "none" : "block";
+  container.style.display =
+    container.style.display === "block" ? "none" : "block";
 
-  if (panel.style.display === "block") {
+  if (container.style.display === "block") {
     syncScroll(section);
     highlightDifferences(section);
   }
+}
+
+/* TRANSLATION TOGGLE */
+function toggleTranslation(header) {
+  const content = header.nextElementSibling;
+  content.style.display =
+    content.style.display === "block" ? "none" : "block";
 }
 
 /* SYNC SCROLL */
@@ -243,7 +264,7 @@ function syncScroll(section) {
   });
 }
 
-/* DIFF HIGHLIGHT */
+/* DIFF */
 function highlightDifferences(section) {
   const texts = Array.from(section.querySelectorAll(".compare-box p"));
 
