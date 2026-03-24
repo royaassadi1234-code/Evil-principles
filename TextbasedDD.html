@@ -112,37 +112,6 @@ body {
     grid-template-columns: 1fr;
   }
 }
-function toggleCompareButton(el) {
-  const compareBtn = el.nextElementSibling;
-  if (compareBtn.style.display === "none") {
-    compareBtn.style.display = "inline-block";
-    el.innerText = "Hide Compare";
-  } else {
-    compareBtn.style.display = "none";
-    el.innerText = "Show Compare";
-  }
-}
-/* TOGGLE COMPARE BUTTON */
-.toggle-compare-btn {
-  background: #5bc0de;
-  color: white;
-  border: none;
-  padding: 3px 6px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  margin-right: 5px;
-}
-
-.toggle-compare-btn:hover {
-  background: #31b0d5;
-}
-
-/* Compare button stays smaller */
-.compare-btn {
-  padding: 3px 6px;
-  font-size: 12px;
-}
 </style>
 </head>
 
