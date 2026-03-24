@@ -12,75 +12,61 @@ body {
 }
 
 /* PAGE GRID */
+/* PAGE GRID */
 .page {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 25px;
+  gap: 10px; /* tighter */
   max-width: 1200px;
   margin: auto;
-  padding: 30px 20px;
+  padding: 15px 10px; /* reduced padding */
 }
 
 /* LEFT SIDE (MAIN TEXT AREA) */
 .text-area {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-/* RIGHT SIDE (COMPARE) */
-.compare-area {
-  position: sticky;
-  top: 20px;
-  height: fit-content;
+  gap: 5px; /* very tight */
 }
 
 /* CARD */
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 10px; /* tighter */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* slightly lighter shadow */
 }
 
 /* DIVISION TITLE */
 .division-title {
-  font-size: 18px;
+  font-size: 16px; /* slightly smaller */
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 3px; /* very tight */
 }
 
 /* TRANSCRIPTION BLOCK */
 .transcription-block {
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 5px; /* tight */
 }
 
 /* COMPARE BUTTON */
 .compare-btn {
-  position: absolute;
   top: 0;
   right: 0;
-  background: #d9534f;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.compare-btn:hover {
-  background: #b52b27;
+  padding: 3px 6px; /* smaller button */
+  font-size: 12px; /* smaller text */
 }
 
 /* TEXT BLOCKS */
 .text-block {
   background: #fafafa;
-  padding: 15px;
-  border-left: 4px solid #2d6cdf;
-  border-radius: 6px;
-  max-height: 200px;
+  padding: 8px; /* tight */
+  border-left: 3px solid #2d6cdf; /* slightly thinner */
+  border-radius: 4px;
+  max-height: 180px;
   overflow-y: auto;
+  font-size: 14px; /* slightly smaller text */
 }
 
 /* TRANSLATION HEADER */
@@ -88,30 +74,31 @@ body {
   font-weight: bold;
   cursor: pointer;
   color: #2d6cdf;
-  margin-bottom: 8px;
+  margin-bottom: 3px; /* tighter */
 }
 
 /* COMPARE PANEL */
 .compare-panel {
   display: none;
   background: #eef2ff;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 8px; /* tighter */
+  border-radius: 8px;
 }
 
 .compare-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 3px; /* tight */
 }
 
 .compare-box {
   background: white;
-  padding: 10px;
-  border-left: 4px solid #888;
-  border-radius: 6px;
-  max-height: 120px;
+  padding: 6px; /* tighter */
+  border-left: 3px solid #888;
+  border-radius: 4px;
+  max-height: 100px;
   overflow-y: auto;
+  font-size: 13px; /* smaller text */
 }
 
 /* DIFF */
@@ -124,6 +111,37 @@ body {
   .page {
     grid-template-columns: 1fr;
   }
+}
+function toggleCompareButton(el) {
+  const compareBtn = el.nextElementSibling;
+  if (compareBtn.style.display === "none") {
+    compareBtn.style.display = "inline-block";
+    el.innerText = "Hide Compare";
+  } else {
+    compareBtn.style.display = "none";
+    el.innerText = "Show Compare";
+  }
+}
+/* TOGGLE COMPARE BUTTON */
+.toggle-compare-btn {
+  background: #5bc0de;
+  color: white;
+  border: none;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.toggle-compare-btn:hover {
+  background: #31b0d5;
+}
+
+/* Compare button stays smaller */
+.compare-btn {
+  padding: 3px 6px;
+  font-size: 12px;
 }
 </style>
 </head>
@@ -153,26 +171,32 @@ for (let i = 1; i <= 92; i++) {
   card.className = "card";
 
   card.innerHTML = `
-    <div class="division-title">Division ${i}</div>
+  <div class="division-title">Division ${i}</div>
 
-    <div class="transcription-block">
-      <button class="compare-btn" onclick="openCompare(${i})">Compare</button>
+  <div class="transcription-block">
+    <button class="toggle-compare-btn" onclick="toggleCompareButton(this)">
+      Show Compare
+    </button>
 
-      <div class="text-block">
-        <strong>Transcription</strong>
-        <p>Transcription text for division ${i}...</p>
-      </div>
-    </div>
+    <button class="compare-btn" onclick="openCompare(${i})" style="display:none;">
+      Compare
+    </button>
 
     <div class="text-block">
-      <div class="translation-header" onclick="toggleTranslation(this)">
-        Translation
-      </div>
-      <div class="translation-content" style="display:none;">
-        <p>Translation text for division ${i}...</p>
-      </div>
+      <strong>Transcription</strong>
+      <p>Transcription text for division ${i}...</p>
     </div>
-  `;
+  </div>
+
+  <div class="text-block">
+    <div class="translation-header" onclick="toggleTranslation(this)">
+      Translation
+    </div>
+    <div class="translation-content" style="display:none;">
+      <p>Translation text for division ${i}...</p>
+    </div>
+  </div>
+`;
 
   textArea.appendChild(card);
 }
