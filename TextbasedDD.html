@@ -6,91 +6,110 @@
 
 <style>
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background: #f4f6f9;
+  font-family: Georgia, serif;
+  background: #f8f9fb;
+  margin: 0;
+  padding: 0;
 }
 
-/* SECTION */
+/* PAGE CONTAINER */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* TITLE */
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* SECTION CARD */
 .section {
   background: white;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  padding: 15px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  margin-bottom: 25px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* HEADER */
 .section-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 
 .section-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 }
 
+/* BUTTON */
 button {
-  padding: 5px 10px;
-  border: none;
   background: #2d6cdf;
   color: white;
-  border-radius: 5px;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 13px;
 }
 
 button:hover {
   background: #1b4ea8;
 }
 
+/* CONTENT */
 .section-content {
   display: none;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
-/* TWO COLUMN */
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.panel {
-  border: 1px solid #ddd;
+/* VERTICAL PANELS */
+.text-block {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #fafafa;
+  border-left: 4px solid #2d6cdf;
   border-radius: 6px;
-  padding: 10px;
   max-height: 250px;
   overflow-y: auto;
-  background: #fafafa;
+}
+
+.text-block strong {
+  display: block;
+  margin-bottom: 8px;
 }
 
 /* COMPARE PANEL */
 .compare-panel {
   display: none;
-  margin-top: 15px;
+  margin-top: 20px;
+  padding: 15px;
   background: #eef2ff;
-  padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-/* VERTICAL STACK */
+/* VERTICAL COMPARE */
 .compare-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .compare-box {
   background: white;
-  border: 1px solid #ccc;
+  padding: 12px;
   border-radius: 6px;
-  padding: 10px;
-  max-height: 150px;
+  border-left: 4px solid #888;
+  max-height: 160px;
   overflow-y: auto;
 }
 
-/* HIGHLIGHT DIFF */
+/* DIFF */
 .diff {
   background: yellow;
   font-weight: bold;
@@ -99,6 +118,8 @@ button:hover {
 </head>
 
 <body>
+
+<div class="container">
 
 <h1>Digital Critical Edition</h1>
 
@@ -112,17 +133,16 @@ button:hover {
 
   <div class="section-content">
 
-    <!-- TRANSCRIPTION / TRANSLATION -->
-    <div class="two-col">
-      <div class="panel">
-        <strong>Transcription</strong>
-        <p>Lorem ipsum dolor sit amet, original text version here.</p>
-      </div>
+    <!-- TRANSCRIPTION -->
+    <div class="text-block">
+      <strong>Transcription</strong>
+      <p>Lorem ipsum dolor sit amet, original manuscript text goes here. Long passages will scroll.</p>
+    </div>
 
-      <div class="panel">
-        <strong>Translation</strong>
-        <p>This is the translated version of the same passage.</p>
-      </div>
+    <!-- TRANSLATION -->
+    <div class="text-block">
+      <strong>Translation</strong>
+      <p>This is the translation of the same passage. Structured and readable for comparison.</p>
     </div>
 
     <!-- COMPARE -->
@@ -155,21 +175,26 @@ button:hover {
   </div>
 </div>
 
+</div>
+
 <script>
 
-/* COLLAPSE SECTION */
+/* TOGGLE SECTION */
 function toggleContent(header) {
   const content = header.nextElementSibling;
-  content.style.display = content.style.display === "block" ? "none" : "block";
+  content.style.display =
+    content.style.display === "block" ? "none" : "block";
 }
 
 /* TOGGLE COMPARE */
 function toggleCompare(event, button) {
   event.stopPropagation();
+
   const section = button.closest(".section");
   const panel = section.querySelector(".compare-panel");
 
-  panel.style.display = panel.style.display === "block" ? "none" : "block";
+  panel.style.display =
+    panel.style.display === "block" ? "none" : "block";
 
   if (panel.style.display === "block") {
     syncScroll(section);
@@ -192,7 +217,7 @@ function syncScroll(section) {
   });
 }
 
-/* SIMPLE DIFF HIGHLIGHT */
+/* DIFF HIGHLIGHT */
 function highlightDifferences(section) {
   const texts = Array.from(section.querySelectorAll(".compare-box p"));
 
