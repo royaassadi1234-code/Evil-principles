@@ -68,7 +68,7 @@ h1 {
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 320px));
+  grid-template-columns: repeat(4, minmax(240px, 300px));
   gap: 28px;
   align-items: stretch;
   justify-content: center;
@@ -190,10 +190,6 @@ h1 {
   color: var(--muted);
 }
 
-.project-description {
-  margin: 0 0 22px;
-}
-
 .project-tech {
   display: flex;
   flex-wrap: wrap;
@@ -206,6 +202,12 @@ h1 {
   background: #f0e7dc;
   color: #4f3c30;
   font-size: 0.9rem;
+}
+
+@media (max-width: 1200px) {
+  .card-container {
+    grid-template-columns: repeat(2, minmax(240px, 320px));
+  }
 }
 
 @media (max-width: 900px) {
@@ -247,46 +249,44 @@ function toggleExpandable(button) {
 
   <section class="card-container">
     <article class="card">
-      <img src="images/ddfolio1.jpg" alt="Dādestān ī Dēnīg">
+      <img src="images/ddfolio1.jpg" alt="Ahreman">
       <div class="card-content">
-        <h3>Dādestān ī Dēnīg</h3>
+        <h3>Ahreman</h3>
         <div class="expandable is-collapsed">
-          <p class="full-text"> Dādestān ī dēnīg is a strictly orthodox and traditional work, dealing with 
-          a variety of subjects ranging from religious to social, ethical, legal, and philosophical 
-          questions, as well as cosmology, natural phenomena, and the like.</p>
+          <p class="full-text">Passages gathered around Ahreman as the active evil principle, with linked material for comparison and close reading.</p>
         </div>
         <button class="card-action" onclick="window.location.href='ddmain.html'">Related passages</button>
       </div>
     </article>
 
     <article class="card">
-      <img src="images/wzfolio1.jpg" alt="Wizīdagīhā ī Zādspram">
+      <img src="images/wzfolio1.jpg" alt="Drūz I">
       <div class="card-content">
-        <h3>Wizīdagīhā ī Zādspram</h3>
+        <h3>Drūz I</h3>
         <div class="expandable is-collapsed">
-          <p class="full-text">The book is both a good witness to Mazdean  cosmogony and thought, but the author also 
-seems to have drawn extensively on what had become, over the centuries of the Sassanid 
-monarchy, a legacy in the Iranian world, namely the data of Greek philosophy, gnosis, 
-Manichaeism in particular, but also Gre co-Chaldean medicine or astrology, not to mention 
-influences from India or further east. 
- While references to the Avesta and the Zand are obviously present in our text, but often 
-difficult to identify, its main interest lies in the closely dependent conceptions of creation and 
-the end of the world, in the analysis of the human compound, in anci ent Iranian mythology, 
-and finally in the legends about Zoroaster, which are probably the result of late 
-developments,7 because Mazdaism, like the other great religions, could not do without its 
-own hagiography.</p>
-          <span class="expandable-toggle" onclick="toggleExpandable(this)">See more</span>
+          <p class="full-text">A first group of passages focused on Drūz, arranged for comparison across the selected texts.</p>
         </div>
         <button class="card-action" onclick="window.location.href='wz.html'">Related passages</button>
       </div>
     </article>
 
     <article class="card">
-      <img src="images/Ceteri4.jpg" alt="Ceteri">
+      <img src="images/ddfolio1.jpg" alt="Drūz II">
       <div class="card-content">
-        <h3>Ceteri</h3>
+        <h3>Drūz II</h3>
         <div class="expandable is-collapsed">
-          <p class="full-text">Although this study focues mainly on the specific texts, an attempt has been made to analyze other MP texts as well.</p>
+          <p class="full-text">A second Drūz grouping for passages that need to be treated separately within the edition structure.</p>
+        </div>
+        <button class="card-action" onclick="window.location.href='vd.html'">Related passages</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Ceteri4.jpg" alt="Dēw_Drūz">
+      <div class="card-content">
+        <h3>Dēw_Drūz</h3>
+        <div class="expandable is-collapsed">
+          <p class="full-text">Material for passages where Dēw and Drūz are treated together or overlap conceptually in the textual evidence.</p>
         </div>
         <button class="card-action" onclick="window.location.href='Ceteri.html'">Related passages</button>
       </div>
@@ -299,7 +299,7 @@ own hagiography.</p>
       <h2>Evil Principles in Selected Middle Persian and Avestan Texts</h2>
     </div>
     <p class="project-description">
-      While some Pahlavi texts focus more on Ahreman, or "Gannāg-Mēnōy," as the ultimate evil principle, Druz also plays an active role in other Middle Persian works such as Dādestān ī Dēnīg. This project combines comparative and digital humanities methods to examine how these concepts relate to each other, how they differ in Dādestān ī Dēnīg and Wizīdagīhā ī Zādspram, and what these principles may have meant to Mazdayasnian high priests in ninth-century Iran.
+      While some Pahlavi texts focus more on Ahreman, or "Gannāg-Mēnōy," as the ultimate evil principle, Drūz also plays an active role in other Middle Persian works. This project combines comparative and digital humanities methods to examine how these concepts relate to each other, how they differ across the selected corpora, and what these principles may have meant to Mazdayasnian high priests in ninth-century Iran.
     </p>
 
     <div class="project-tech">
