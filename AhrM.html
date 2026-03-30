@@ -298,10 +298,6 @@ h1 {
   font-size: 0.95rem;
 }
 
-.compare-column .note-block + .note-block {
-  margin-top: 8px;
-}
-
 .compare-link {
   margin-top: auto;
   padding-top: 12px;
@@ -370,6 +366,7 @@ h1 {
     padding: 24px 0 40px;
     gap: 22px;
   }
+
   .hero,
   .column-heading,
   .column-cell {
@@ -458,16 +455,10 @@ function buildAnalysisLink(url) {
 }
 
 function buildNotesMarkup(item) {
-  const ddContent = item.DD
-    ? `<div class="note-block note-dd">${formatTextBlock(item.DD)}</div>`
-    : '<div class="note-block note-empty">No DD note yet.</div>';
-  const wzContent = item.WZ
-    ? `<div class="note-block note-wz">${formatTextBlock(item.WZ)}</div>`
-    : '<div class="note-block note-empty">No WZ note yet.</div>';
-  const ceteriSource = item.Ceteri || item.other || item.comparison || '';
-  const ceteriContent = ceteriSource
-    ? `<div class="note-block note-other">${formatTextBlock(ceteriSource)}</div>`
-    : '<div class="note-block note-empty">No Cet. note yet.</div>';
+  const comparisonSource = item.DDvsWZ || item.comparison || '';
+  const comparisonContent = comparisonSource
+    ? `<div class="note-block note-other">${formatTextBlock(comparisonSource)}</div>`
+    : '<div class="note-block note-empty">No DDvsWZ note yet.</div>';
   const notesContent = item.Notes
     ? `<div class="note-block note-other">${formatTextBlock(item.Notes)}</div>`
     : '<div class="note-block note-empty">No notes yet.</div>';
@@ -475,19 +466,9 @@ function buildNotesMarkup(item) {
   return `
     <div class="compare-grid">
       <div class="compare-column">
-        <h3>DD</h3>
-        ${ddContent}
-        ${buildFurtherInfoLink(item.DDLink)}
-      </div>
-      <div class="compare-column">
-        <h3>WZ</h3>
-        ${wzContent}
-        ${buildFurtherInfoLink(item.WZLink)}
-      </div>
-      <div class="compare-column">
-        <h3>Cet.</h3>
-        ${ceteriContent}
-        ${buildFurtherInfoLink(item.CeteriLink)}
+        <h3>DDvsWZ</h3>
+        ${comparisonContent}
+        ${buildFurtherInfoLink(item.DDvsWZLink)}
       </div>
       <div class="compare-column">
         <h3>Notes</h3>
@@ -505,7 +486,7 @@ function createEntryMarkup(prefix, item, index) {
 
   const cardId = `${prefix}${index}`;
   const compareId = `${cardId}-compare`;
-  const comparePanelClass = prefix === 'Hyb' ? 'card compare-panel compare-panel-left' : 'card compare-panel';
+  const comparePanelClass = prefix === 'Cet' ? 'card compare-panel compare-panel-left' : 'card compare-panel';
   return `
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
@@ -575,9 +556,9 @@ function highlightWords() {
 
 window.onload = () => {
   renderSectionGrid([
-    { title: 'Ahreman', prefix: 'AhM', cards: AhMCards },
-    { title: 'Drūz', prefix: 'Dz', cards: DzCards },
-    { title: 'Hybrid', prefix: 'Hyb', cards: HybCards }
+    { title: 'Dādestān ī dēnīg', prefix: 'Dd', cards: DdCards },
+    { title: 'Wizīdagīhā ī Zādspram', prefix: 'Wz', cards: WzCards },
+    { title: 'Ceteri', prefix: 'Cet', cards: CetCards }
   ]);
   highlightWords();
 };
@@ -588,72 +569,63 @@ window.onload = () => {
 
 <main class="page">
   <section class="hero">
-    <h1>Dādestān ī dēnīg</h1>
+    <h1>Ahreman</h1>
     <p class="intro">Each row now holds one separate section across the three texts. The structure is kept in place, but the transcription fields are intentionally empty so you can add them later.</p>
   </section>
 
   <script>
-        // Use backticks for long or multi-line text, for example:
-        // transcription: `<text>
-        //   <line>First line</line>
-        //   <line>Second line</line>
-        // </text>`
         function makeEmptySections(start, end) {
           return Array.from({ length: end - start + 1 }, (_, offset) => ({
             label: `Section ${start + offset}`,
             transcription: ``,
             translation: ``,
             analysisLink: "",
-            DD: `Add notes here.`,
-            DDLink: "",
-            WZ: `Add notes here.`,
-            WZLink: "",
-            Ceteri: `Add notes here.`,
-            CeteriLink: "",
-            Notes: `Add notes here.`
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
+            NotesLink: ""
           }));
         }
 
-        const AhMCards = [
+        const DdCards = [
           {
-            label: "Dahāg",
-            transcription: `Vd. 9.7 āat̰. mē. aēm. paitiiaōxta. haōmō. aṣ̌auua. dūraōšō. āϑβiiō. mąm. bitiiō. maṣ̌iiō. astuuaiϑiiāi. hunūta. gaēϑaiiāi. 
-            hā. aɱāi.       
-Vd. 9.8 yō. janat̰. ažīm. dahākəm. ϑri.zafanəm. ϑri.kamərəδəm. xšuuaš.ašīm. hazaŋhrā.yaōxštīm.  ašaōjaŋhəm. daēuuīm. drujim. aγəm. gaēϑāuuiiō. druuaṇtəm. yąm. ašaōjastəmąm. drujim. fraca. kərəṇtat̰. aŋhrō. maińiiuš. auui. yąm. astuuaitīm. gaēϑąm. mahrkāi. aṣ̌ahe. gaēϑanąm (CAB).
-Vd. 9. 10 āat̰. mē. aēm. paitiiaōxta. haōmō. aṣ̌auua. dūraōšō.      ϑritō. sāmanąm. səuuištō. ϑritiiō. mąm. maṣ̌iiō. astuuaiϑiiāi. hunūta. gaēϑaiiāi. hā. aɱāi. aṣ̌iš. ərənāuui. tat̰. aɱāi. jasat̰. āiiaptəm.      yat̰. hē. puϑra. us.zaiiōiϑe. uruuāxšaiiō. kərəsāspasca.      t̰kaēšō. ańiiō. dātō.rāzō.      āat̰. ańiiō. uparō.kairiiō. yuua. gaēsuš. gaδauuarō.
-Vd. 9.20 iməm. ϑβąm. tūirīm. yānəm. haōma. jaiδiiemi. dūraōša. yaϑa. aēšō. amauuā̊. ϑrąfəδō. fraxštāne. zəmā. paiti. t̰baēšō.tauruuā̊. drujim.vanō.      iməm. ϑβąm. puxδəm. yānəm. haōma. jaiδiiemi. dūraōša. yaϑa. vərəϑrajā̊. vanat̰.pəṣ̌anō. fraxštāne. zəmā. paiti. t̰baēšō.tauruuā̊. drujim.vanō.
-Vd.9.30 paiti. ažōiš. zairitahe. simahe. vīšō.vaēpahe.      kəhrpəm. nāšəmnāi. aṣ̌aōne. haōma. zāire. vadarə. jaiδi.      paiti. gaδahe. vīuuarəzdauuatō. xruuīš́iiatō. zazarānō.      kəhrpəm. nāšəmnāi. aṣ̌aōne. haōma. zāire. vadarə. jaiδi.
-
-
-`,
-            translation: `Vd. 9.7 Then, the holder of the order Haōma, who burns badly, answered this to me: Āϑβya was the second man, who pressed 
-            me for the material creation. This reward was set in motion for him. This profit came to him: a son was born to him, Thraētaōna, of a 
-            mighty clan.       
-Vd. 9.8 who killed Aži Dahāka, of three jaws, of three heads, of six eyes, with thousend skills; the very strong demon Druj, evil for all the creations, holder of lie; who is the strongest Druj that Aŋhra Maińiiu shaped against the material creation, for the destruction of the living-beings of the Order (CAB).
-Vd. 9. 10 Then, the holder of the order Haōma, who burns badly, answered this to me: "Thrito, the mightiest of the Sāma, was the third man, who pressed me for the material creation. This reward was set in motion for him. This profit came to him: two sons were born to him, Urvāxšaya and Kərəsāspa, one as the teacher who runs the ritual, the other as a crinkly young man, whose deeds are superior and who carries a club,
-Vd. 9.20 I demand from you this fourth favour, oh Haōma, you who burn badly: that I can proceed capable, holding offensive power, sated to the earth, overcoming the hostilities, defeating the lie. I demand from you this fifth favour, oh Haōma, you who burn badly: that I can proceed resilient, victorious in the battle, to the earth, overcoming the hostilities, defeating the lie.
-Vd.9.30 Oh golden Haōma, strike the weapon on behalf of the supporter of the Order, if he has been reached, against the body of the yellowish horrible snake that throws poison. Oh golden Haōma, strike the weapon on behalf of the supporter of the Order, if he has been reached, against the body of the bandit, who alienates the gains, scavenger, enraged.
-`,
-            analysisLink: "https://cab.geschkult.fu-berlin.de/exist/apps/cab/pages/tools/stanza.html?stanza_id=VVrS9.7&stanza_location=4",
-            DD: `DD 36.84 ēk ēn kū ka ān ī duš-dēn Dahāg kē-š was-ōztom dēw ud Druz pad az-kerb abar frēg ast az band ī Frēdōn rahēd ud pad 
-            ǰādūgīh dēw bē ō gēhān marnǰēnīdār estēd ēk mard ī tagīg az rist pēš ul hangēzīhēd xwānīhēd Sāmān Kersāsp ī pad ēk gad ī gāwsar 
-            ān druzīh škennēd pad ān ī frārōn bīm ān Dahāg ō dād ud ristag ī yazdān ānayēd`,
-            WZ: `WZ 24.3 ohrmazd guft kū bawēd rōzān ka =tān ān and ī nē hāxt ī xwad gēhān dādārīh ī ristāxēz ka bē az dahāg harw kas 
-            bē dād ī frašegirdkirdārīh hāxtēd ud dahāg apatitīgīh rāy zanīhēd
-            WZ 32.4 ēdōn =iz frēdōn bastan ī az ī dahāg rāy xwānīhēd pad abāzēstišn ī azkirdārān bēš (MPCD).`,
-            Ceteri: ``,
-            Notes: ``
+            label: "Section 1",
+            transcription: ``,
+            translation: ``,
+            analysisLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
+            NotesLink: ""
           },
           ...makeEmptySections(2, 10)
         ];
 
-        const DzCards = [
-          { label: "Section 1", transcription: ``, translation: ``, analysisLink: "", DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
+        const WzCards = [
+          {
+            label: "Section 1",
+            transcription: ``,
+            translation: ``,
+            analysisLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
+            NotesLink: ""
+          },
           ...makeEmptySections(2, 10)
         ];
 
-        const HybCards = [
-          { label: "Section 1", transcription: ``, translation: ``, analysisLink: "", DD: `Add notes here.`, DDLink: "", WZ: `Add notes here.`, WZLink: "", Ceteri: `Add notes here.`, CeteriLink: "", Notes: `Add notes here.`},
+        const CetCards = [
+          {
+            label: "Section 1",
+            transcription: ``,
+            translation: ``,
+            analysisLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
+            NotesLink: ""
+          },
           ...makeEmptySections(2, 10)
         ];
   </script>

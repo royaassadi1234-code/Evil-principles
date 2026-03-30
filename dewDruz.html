@@ -1,8 +1,8 @@
-the code is this: <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ahreman</title>
+<title>Dēw_Drūz</title>
 
 <style>
 :root {
@@ -138,10 +138,8 @@ h1 {
   margin-top: -2px;
 }
 
-.content-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+.transcription-row {
+  position: relative;
 }
 
 .card {
@@ -168,6 +166,27 @@ h1 {
 
 .card-header h3 {
   margin: 0;
+}
+
+.compare-button {
+  border: 1px solid rgba(159, 63, 44, 0.18);
+  background: #ead6bf;
+  color: var(--accent-dark);
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.compare-button:hover {
+  background: #e3c7aa;
+  border-color: rgba(159, 63, 44, 0.32);
+  transform: translateY(-1px);
 }
 
 .card p {
@@ -238,38 +257,89 @@ h1 {
   margin-top: 10px;
 }
 
-.content-card {
+.compare-panel {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: clamp(360px, 46vw, 760px);
+  z-index: 10;
+  box-shadow: 0 24px 50px rgba(56, 39, 25, 0.16);
+}
+
+.compare-panel.compare-panel-left {
+  left: auto;
+  right: calc(100% + 12px);
+}
+
+.compare-panel.is-open {
+  display: block;
+}
+
+.compare-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.compare-column {
   min-width: 0;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(239, 229, 216, 0.42);
   display: flex;
   flex-direction: column;
 }
 
-.notes-card {
-  grid-column: 3 / 5;
+.compare-column h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
 }
 
-.card-link {
+.compare-link {
   margin-top: auto;
   padding-top: 12px;
   font-size: 0.92rem;
 }
 
-.card-link-title {
+.compare-link-title {
   display: block;
   margin-bottom: 6px;
   color: var(--accent-dark);
   font-weight: bold;
 }
 
-.card-link a {
+.compare-link a {
   color: var(--accent-dark);
   font-weight: bold;
   text-decoration: none;
 }
 
-.card-link a:hover {
+.compare-link a:hover {
   text-decoration: underline;
 }
+
+.card-toggle {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-strong);
+  overflow: hidden;
+}
+
+.card-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--accent-dark);
+}
+
+.card-toggle summary::-webkit-details-marker { display: none; }
+.card-toggle[open] summary { border-bottom: 1px solid var(--border); }
+.card-toggle .card-body { padding: 16px; color: var(--muted); line-height: 1.65; }
 
 .red-highlight { color: #a12f1c; font-weight: bold; }
 .green-highlight { color: #2f6a45; font-weight: bold; }
@@ -280,22 +350,13 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .content-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .notes-card {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 700px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .notes-card {
-    grid-column: auto;
+  .compare-panel,
+  .compare-panel.compare-panel-left {
+    position: static;
+    left: auto;
+    right: auto;
+    width: 100%;
+    margin-top: 12px;
   }
 }
 
@@ -305,6 +366,7 @@ h1 {
     padding: 24px 0 40px;
     gap: 22px;
   }
+
   .hero,
   .column-heading,
   .column-cell {
@@ -324,6 +386,11 @@ function toggleCards(id) {
   });
 
   selected.style.display = shouldOpen ? 'flex' : 'none';
+}
+
+function toggleCompare(id, button) {
+  const panel = document.getElementById(id);
+  panel.classList.toggle('is-open');
 }
 
 function escapeHtml(value) {
@@ -371,8 +438,8 @@ function buildFurtherInfoLink(url) {
 
   const safeUrl = escapeHtml(url);
   return `
-    <div class="card-link">
-      <span class="card-link-title">More information</span>
+    <div class="compare-link">
+      <span class="compare-link-title">More information</span>
       <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Open related card</a>
     </div>
   `;
@@ -387,43 +454,27 @@ function buildAnalysisLink(url) {
   return `<a class="analysis-link" href="${safeUrl}" target="_blank" rel="noopener noreferrer">See full analysis</a>`;
 }
 
-function buildReferenceCard(title, content, link, emptyText, extraClass = '') {
-  const body = content
-    ? `<div class="note-block">${formatTextBlock(content)}</div>`
-    : `<div class="note-block note-empty">${emptyText}</div>`;
-
-  return `
-    <section class="card card-section content-card ${extraClass}">
-      <h3>${title}</h3>
-      ${body}
-      ${buildFurtherInfoLink(link)}
-    </section>
-  `;
-}
-
-function buildInlineLayout(item) {
-  const wzContent = item.WZ
-    ? item.WZ
-    : '';
-  const ceteriSource = item.Ceteri || item.other || item.comparison || '';
+function buildNotesMarkup(item) {
+  const comparisonSource = item.DDvsWZ || item.comparison || '';
+  const comparisonContent = comparisonSource
+    ? `<div class="note-block note-other">${formatTextBlock(comparisonSource)}</div>`
+    : '<div class="note-block note-empty">No DDvsWZ note yet.</div>';
   const notesContent = item.Notes
-    ? item.Notes
-    : '';
+    ? `<div class="note-block note-other">${formatTextBlock(item.Notes)}</div>`
+    : '<div class="note-block note-empty">No notes yet.</div>';
 
   return `
-    <div class="content-grid">
-      <section class="card card-section content-card">
-        <h3>Transcription</h3>
-        <div class="field-block transcription-block">${formatTextBlock(item.transcription)}</div>
-        ${buildAnalysisLink(item.analysisLink)}
-      </section>
-      <section class="card card-section content-card">
-        <h3>Translation</h3>
-        <div class="field-block translation-block">${formatTextBlock(item.translation)}</div>
-      </section>
-      ${buildReferenceCard('WZ', wzContent, item.WZLink, 'No WZ note yet.')}
-      ${buildReferenceCard('Cet.', ceteriSource, item.CeteriLink, 'No Cet. note yet.')}
-      ${buildReferenceCard('Notes', notesContent, item.NotesLink, 'No notes yet.', 'notes-card')}
+    <div class="compare-grid">
+      <div class="compare-column">
+        <h3>DDvsWZ</h3>
+        ${comparisonContent}
+        ${buildFurtherInfoLink(item.DDvsWZLink)}
+      </div>
+      <div class="compare-column">
+        <h3>Notes</h3>
+        ${notesContent}
+        ${buildFurtherInfoLink(item.NotesLink)}
+      </div>
     </div>
   `;
 }
@@ -434,11 +485,31 @@ function createEntryMarkup(prefix, item, index) {
   }
 
   const cardId = `${prefix}${index}`;
+  const compareId = `${cardId}-compare`;
+  const comparePanelClass = prefix === 'Cet' ? 'card compare-panel compare-panel-left' : 'card compare-panel';
   return `
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
       <div class="cards" id="${cardId}">
-        ${buildInlineLayout(item)}
+        <div class="transcription-row">
+          <div class="card card-section">
+            <div class="card-header">
+              <h3>Transcription</h3>
+              <button type="button" class="compare-button" onclick="toggleCompare('${compareId}', this)">Compare</button>
+            </div>
+            <div class="field-block transcription-block">${formatTextBlock(item.transcription)}</div>
+            ${buildAnalysisLink(item.analysisLink)}
+          </div>
+          <div class="${comparePanelClass}" id="${compareId}">
+            ${buildNotesMarkup(item)}
+          </div>
+        </div>
+        <details class="card-toggle">
+          <summary>Translation</summary>
+          <div class="card-body">
+            <div class="field-block translation-block">${formatTextBlock(item.translation)}</div>
+          </div>
+        </details>
       </div>
     </div>
   `;
@@ -485,9 +556,9 @@ function highlightWords() {
 
 window.onload = () => {
   renderSectionGrid([
-    { title: 'Ahreman', prefix: 'AhM', cards: AhMCards },
-    { title: 'Drūz', prefix: 'Dz', cards: DzCards },
-    { title: 'Hybrid', prefix: 'Hyb', cards: HybCards }
+    { title: 'Dādestān ī dēnīg', prefix: 'Dd', cards: DdCards },
+    { title: 'Wizīdagīhā ī Zādspram', prefix: 'Wz', cards: WzCards },
+    { title: 'Ceteri', prefix: 'Cet', cards: CetCards }
   ]);
   highlightWords();
 };
@@ -498,59 +569,65 @@ window.onload = () => {
 
 <main class="page">
   <section class="hero">
-    <h1>Wizīdagīhā ī Zādspram</h1>
+    <h1>Dēw_Drūz</h1>
     <p class="intro">Each row now holds one separate section across the three texts. The structure is kept in place, but the transcription fields are intentionally empty so you can add them later.</p>
   </section>
 
   <script>
-        // Use backticks for long or multi-line text, for example:
-        // transcription: `<text>
-        //   <line>First line</line>
-        //   <line>Second line</line>
-        // </text>`
         function makeEmptySections(start, end) {
           return Array.from({ length: end - start + 1 }, (_, offset) => ({
             label: `Section ${start + offset}`,
             transcription: ``,
             translation: ``,
             analysisLink: "",
-            WZ: `Add notes here.`, 
-            WZLink: "",
-            Ceteri: `Add notes here.`,
-            CeteriLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
             Notes: `Add notes here.`,
             NotesLink: ""
           }));
         }
 
-        const AhMCards = [
-    { label: "Section 1", transcription: ``, 
-          translation: ``, analysisLink: "", 
-          WZ: `Add notes here.`, WZLink: "", 
-          Ceteri: `Add notes here.`, CeteriLink: "", 
-          Notes: `Add notes here.`, NotesLink: ""},
+        const DdCards = [
+          {
+            label: "Section 1",
+            transcription: ``,
+            translation: ``,
+            analysisLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
+            NotesLink: ""
+          },
           ...makeEmptySections(2, 10)
         ];
 
-
-        const DzCards = [
-          { label: "Section 1", transcription: ``, 
-          translation: ``, analysisLink: "", 
-          WZ: `Add notes here.`, WZLink: "", 
-          Ceteri: `Add notes here.`, CeteriLink: "", 
-          Notes: `Add notes here.`, NotesLink: ""},
+        const WzCards = [
+          {
+            label: "Section 1",
+            transcription: ``,
+            translation: ``,
+            analysisLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
+            NotesLink: ""
+          },
           ...makeEmptySections(2, 10)
         ];
 
-        const HybCards = [
-    { label: "Section 1", transcription: ``, 
-          translation: ``, analysisLink: "", 
-          WZ: `Add notes here.`, WZLink: "", 
-          Ceteri: `Add notes here.`, CeteriLink: "", 
-          Notes: `Add notes here.`, NotesLink: ""},
+        const CetCards = [
+          {
+            label: "Section 1",
+            transcription: ``,
+            translation: ``,
+            analysisLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
+            NotesLink: ""
+          },
           ...makeEmptySections(2, 10)
         ];
-
   </script>
 
   <div id="section-grid" class="section-grid"></div>
