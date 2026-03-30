@@ -68,9 +68,10 @@ h1 {
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(260px, 320px));
   gap: 28px;
   align-items: stretch;
+  justify-content: center;
 }
 
 .card {
@@ -221,7 +222,8 @@ h1 {
   }
 
   .card-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 420px);
+    justify-content: center;
   }
 }
 </style>
