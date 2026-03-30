@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Drūz II</title>
+<title>Druz II</title>
 
 <style>
 :root {
@@ -298,10 +298,6 @@ h1 {
   font-size: 0.95rem;
 }
 
-.compare-column .note-block + .note-block {
-  margin-top: 8px;
-}
-
 .compare-link {
   margin-top: auto;
   padding-top: 12px;
@@ -370,6 +366,7 @@ h1 {
     padding: 24px 0 40px;
     gap: 22px;
   }
+
   .hero,
   .column-heading,
   .column-cell {
@@ -458,18 +455,10 @@ function buildAnalysisLink(url) {
 }
 
 function buildNotesMarkup(item) {
-  const ddSource = item["Dādestān ī dēnīg"] || '';
-  const ddContent = ddSource
-    ? `<div class="note-block note-dd">${formatTextBlock(ddSource)}</div>`
-    : '<div class="note-block note-empty">No Dādestān ī dēnīg note yet.</div>';
-  const wzSource = item["Wizīdagīhā ī Zādspram"] || '';
-  const wzContent = wzSource
-    ? `<div class="note-block note-wz">${formatTextBlock(wzSource)}</div>`
-    : '<div class="note-block note-empty">No Wizīdagīhā ī Zādspram note yet.</div>';
-  const ceteriSource = item.Ceteri || item.other || item.comparison || '';
-  const ceteriContent = ceteriSource
-    ? `<div class="note-block note-other">${formatTextBlock(ceteriSource)}</div>`
-    : '<div class="note-block note-empty">No Ceteri note yet.</div>';
+  const comparisonSource = item.DDvsWZ || item.comparison || '';
+  const comparisonContent = comparisonSource
+    ? `<div class="note-block note-other">${formatTextBlock(comparisonSource)}</div>`
+    : '<div class="note-block note-empty">No DDvsWZ note yet.</div>';
   const notesContent = item.Notes
     ? `<div class="note-block note-other">${formatTextBlock(item.Notes)}</div>`
     : '<div class="note-block note-empty">No notes yet.</div>';
@@ -477,19 +466,9 @@ function buildNotesMarkup(item) {
   return `
     <div class="compare-grid">
       <div class="compare-column">
-        <h3>Dādestān ī dēnīg</h3>
-        ${ddContent}
-        ${buildFurtherInfoLink(item["Dādestān ī dēnīg Link"])}
-      </div>
-      <div class="compare-column">
-        <h3>Wizīdagīhā ī Zādspram</h3>
-        ${wzContent}
-        ${buildFurtherInfoLink(item["Wizīdagīhā ī Zādspram Link"])}
-      </div>
-      <div class="compare-column">
-        <h3>Ceteri</h3>
-        ${ceteriContent}
-        ${buildFurtherInfoLink(item.CeteriLink)}
+        <h3>DDvsWZ</h3>
+        ${comparisonContent}
+        ${buildFurtherInfoLink(item.DDvsWZLink)}
       </div>
       <div class="compare-column">
         <h3>Notes</h3>
@@ -558,7 +537,7 @@ function renderSectionGrid(columns) {
 }
 
 function highlightWords() {
-  const redWords = ['aŋhrōmaińiiuš', 'Ahrimen', 'angraman', 'gannāgmēnōy', 'ahreman', 'Gannāg Mēnōy', 'Ganāy Mēnōy', 'Ahrimenīg'];
+  const redWords = ['aÅ‹hrÅmaiÅ„iiuÅ¡', 'Ahrimen', 'angraman', 'gannÄgmÄ“nÅy', 'ahreman', 'GannÄg MÄ“nÅy', 'GanÄy MÄ“nÅy', 'AhrimenÄ«g'];
   const greenWords = ['Druj'];
 
   document.querySelectorAll('.card').forEach(card => {
@@ -577,8 +556,8 @@ function highlightWords() {
 
 window.onload = () => {
   renderSectionGrid([
-    { title: 'Dādestān ī dēnīg', prefix: 'Dd', cards: DdCards },
-    { title: 'Wizīdagīhā ī Zādspram', prefix: 'Wz', cards: WzCards },
+    { title: 'DÄdestÄn Ä« dÄ“nÄ«g', prefix: 'Dd', cards: DdCards },
+    { title: 'WizÄ«dagÄ«hÄ Ä« ZÄdspram', prefix: 'Wz', cards: WzCards },
     { title: 'Ceteri', prefix: 'Cet', cards: CetCards }
   ]);
   highlightWords();
@@ -590,7 +569,7 @@ window.onload = () => {
 
 <main class="page">
   <section class="hero">
-    <h1>Drūz II</h1>
+    <h1>DrÅ«z II</h1>
     <p class="intro">Each row now holds one separate section across the three texts. The structure is kept in place, but the transcription fields are intentionally empty so you can add them later.</p>
   </section>
 
@@ -601,12 +580,8 @@ window.onload = () => {
             transcription: ``,
             translation: ``,
             analysisLink: "",
-            "Dādestān ī dēnīg": `Add notes here.`,
-            "Dādestān ī dēnīg Link": "",
-            "Wizīdagīhā ī Zādspram": `Add notes here.`,
-            "Wizīdagīhā ī Zādspram Link": "",
-            Ceteri: `Add notes here.`,
-            CeteriLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
             Notes: `Add notes here.`,
             NotesLink: ""
           }));
@@ -618,12 +593,8 @@ window.onload = () => {
             transcription: ``,
             translation: ``,
             analysisLink: "",
-            "Dādestān ī dēnīg": `Add notes here.`,
-            "Dādestān ī dēnīg Link": "",
-            "Wizīdagīhā ī Zādspram": `Add notes here.`,
-            "Wizīdagīhā ī Zādspram Link": "",
-            Ceteri: `Add notes here.`,
-            CeteriLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
             Notes: `Add notes here.`,
             NotesLink: ""
           },
@@ -632,29 +603,13 @@ window.onload = () => {
 
         const WzCards = [
           {
-            label: "Nasuš as Drūz",
-            transcription: `
-taken from Corpus Avesticum Berolinense: CAB
-VS3.14a : mā.ciš. barō. aēuuō. yat̰. iristəm.
-VS3.14b : āat̰. yezi.šē. barāt̰. aēuuō. yat̰. iristəm.
-VS3.14c : upa. vā. nasuš. naēϑβāt̰. nā̊ŋhanat̰. haca. cašmanat̰. haca. hizumat̰. haca. paitiš.xᵛarənāδa. frauuāxšat̰. haca. frašumakat̰. haca.
-VS3.14d : tē. aēšąm. paiti. sruiiē. aēša. druxš. yā. nasuš. upa.duuąsaiti.
-VS3.14e : aiiaōždiia. pascaēta. bauuaiṇti. yauuaēca. yauuaētātaēca.
-`,
+            label: "Nasus as Druz",
+            transcription: ``,
             translation: ``,
             analysisLink: "",
-            "Dādestān ī dēnīg": `Add notes here.`,
-            "Dādestān ī dēnīg Link": "",
-            "Wizīdagīhā ī Zādspram": `Add notes here.`,
-            "Wizīdagīhā ī Zādspram Link": "",
-            Ceteri: `PV-ed-outdated, taken from Middle Persian Corpus and Dictionary: MPCD
-VS3.14a : ma kas mardōm barād ēwtāg pad tan =ēw ka rist kū murd ēd pad saxwan gōwam kū dānēd kū murd
-VS3.14b : čē agar kas mardōm barēd ēwtāg pad tan =ēw kē rist
-VS3.14c : abar ōy nasuš gumēxtēd az nāk bē az čašm bē az uzwān bē az padišxwar bē az kēr bē az kūn ī ōy murd
-VS3.14d : awēšān srū ī wināhgārān abarpad awēšān wināhgārān ā =šān ān druz ī nasuš abar dwārēd ast kē srū ī murdagān gōwēd
-VS3.14e : ayōǰdāsr pas bawēd tā ō hamēudhamērawišnīh`,
-            CeteriLink: "",
-            Notes: `A female spirit of evil, Nasuš is described both demon and druz`,
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
+            Notes: `Add notes here.`,
             NotesLink: ""
           },
           ...makeEmptySections(2, 10)
@@ -666,18 +621,13 @@ VS3.14e : ayōǰdāsr pas bawēd tā ō hamēudhamērawišnīh`,
             transcription: ``,
             translation: ``,
             analysisLink: "",
-            "Dādestān ī dēnīg": `Add notes here.`,
-            "Dādestān ī dēnīg Link": "",
-            "Wizīdagīhā ī Zādspram": `Add notes here.`,
-            "Wizīdagīhā ī Zādspram Link": "",
-            Ceteri: `Add notes here.`,
-            CeteriLink: "",
+            DDvsWZ: `Add notes here.`,
+            DDvsWZLink: "",
             Notes: `Add notes here.`,
             NotesLink: ""
           },
           ...makeEmptySections(2, 10)
         ];
-
   </script>
 
   <div id="section-grid" class="section-grid"></div>
