@@ -138,8 +138,10 @@ h1 {
   margin-top: -2px;
 }
 
-.transcription-row {
-  position: relative;
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .card {
@@ -166,27 +168,6 @@ h1 {
 
 .card-header h3 {
   margin: 0;
-}
-
-.compare-button {
-  border: 1px solid rgba(159, 63, 44, 0.18);
-  background: #ead6bf;
-  color: var(--accent-dark);
-  font: inherit;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  line-height: 1;
-  white-space: nowrap;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.compare-button:hover {
-  background: #e3c7aa;
-  border-color: rgba(159, 63, 44, 0.32);
-  transform: translateY(-1px);
 }
 
 .card p {
@@ -257,93 +238,38 @@ h1 {
   margin-top: 10px;
 }
 
-.compare-panel {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: calc(100% + 12px);
-  width: clamp(360px, 46vw, 760px);
-  z-index: 10;
-  box-shadow: 0 24px 50px rgba(56, 39, 25, 0.16);
-}
-
-.compare-panel.compare-panel-left {
-  left: auto;
-  right: calc(100% + 12px);
-}
-
-.compare-panel.is-open {
-  display: block;
-}
-
-.compare-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-
-.compare-column {
+.content-card {
   min-width: 0;
-  padding: 14px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: rgba(239, 229, 216, 0.42);
   display: flex;
   flex-direction: column;
 }
 
-.compare-column h3 {
-  margin: 0 0 8px;
-  font-size: 0.95rem;
+.notes-card {
+  grid-column: 3 / 5;
 }
 
-.compare-column .note-block + .note-block {
-  margin-top: 8px;
-}
-
-.compare-link {
+.card-link {
   margin-top: auto;
   padding-top: 12px;
   font-size: 0.92rem;
 }
 
-.compare-link-title {
+.card-link-title {
   display: block;
   margin-bottom: 6px;
   color: var(--accent-dark);
   font-weight: bold;
 }
 
-.compare-link a {
+.card-link a {
   color: var(--accent-dark);
   font-weight: bold;
   text-decoration: none;
 }
 
-.compare-link a:hover {
+.card-link a:hover {
   text-decoration: underline;
 }
-
-.card-toggle {
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--surface-strong);
-  overflow: hidden;
-}
-
-.card-toggle summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 16px;
-  font-size: 1.05rem;
-  font-weight: bold;
-  color: var(--accent-dark);
-}
-
-.card-toggle summary::-webkit-details-marker { display: none; }
-.card-toggle[open] summary { border-bottom: 1px solid var(--border); }
-.card-toggle .card-body { padding: 16px; color: var(--muted); line-height: 1.65; }
 
 .red-highlight { color: #a12f1c; font-weight: bold; }
 .green-highlight { color: #2f6a45; font-weight: bold; }
@@ -354,13 +280,22 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .compare-panel,
-  .compare-panel.compare-panel-left {
-    position: static;
-    left: auto;
-    right: auto;
-    width: 100%;
-    margin-top: 12px;
+  .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .notes-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .notes-card {
+    grid-column: auto;
   }
 }
 
@@ -389,11 +324,6 @@ function toggleCards(id) {
   });
 
   selected.style.display = shouldOpen ? 'flex' : 'none';
-}
-
-function toggleCompare(id, button) {
-  const panel = document.getElementById(id);
-  panel.classList.toggle('is-open');
 }
 
 function escapeHtml(value) {
@@ -441,8 +371,8 @@ function buildFurtherInfoLink(url) {
 
   const safeUrl = escapeHtml(url);
   return `
-    <div class="compare-link">
-      <span class="compare-link-title">More information</span>
+    <div class="card-link">
+      <span class="card-link-title">More information</span>
       <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Open related card</a>
     </div>
   `;
@@ -457,43 +387,43 @@ function buildAnalysisLink(url) {
   return `<a class="analysis-link" href="${safeUrl}" target="_blank" rel="noopener noreferrer">See full analysis</a>`;
 }
 
-function buildNotesMarkup(item) {
-  const ddContent = item.DD
-    ? `<div class="note-block note-dd">${formatTextBlock(item.DD)}</div>`
-    : '<div class="note-block note-empty">No DD note yet.</div>';
-  const wzContent = item.WZ
-    ? `<div class="note-block note-wz">${formatTextBlock(item.WZ)}</div>`
-    : '<div class="note-block note-empty">No WZ note yet.</div>';
-  const ceteriSource = item.Ceteri || item.other || item.comparison || '';
-  const ceteriContent = ceteriSource
-    ? `<div class="note-block note-other">${formatTextBlock(ceteriSource)}</div>`
-    : '<div class="note-block note-empty">No Cet. note yet.</div>';
-  const notesContent = item.Notes
-    ? `<div class="note-block note-other">${formatTextBlock(item.Notes)}</div>`
-    : '<div class="note-block note-empty">No notes yet.</div>';
+function buildReferenceCard(title, content, link, emptyText, extraClass = '') {
+  const body = content
+    ? `<div class="note-block">${formatTextBlock(content)}</div>`
+    : `<div class="note-block note-empty">${emptyText}</div>`;
 
   return `
-    <div class="compare-grid">
-      <div class="compare-column">
-        <h3>DD</h3>
-        ${ddContent}
-        ${buildFurtherInfoLink(item.DDLink)}
-      </div>
-      <div class="compare-column">
-        <h3>WZ</h3>
-        ${wzContent}
-        ${buildFurtherInfoLink(item.WZLink)}
-      </div>
-      <div class="compare-column">
-        <h3>Cet.</h3>
-        ${ceteriContent}
-        ${buildFurtherInfoLink(item.CeteriLink)}
-      </div>
-      <div class="compare-column">
-        <h3>Notes</h3>
-        ${notesContent}
-        ${buildFurtherInfoLink(item.NotesLink)}
-      </div>
+    <section class="card card-section content-card ${extraClass}">
+      <h3>${title}</h3>
+      ${body}
+      ${buildFurtherInfoLink(link)}
+    </section>
+  `;
+}
+
+function buildInlineLayout(item) {
+  const wzContent = item.WZ
+    ? item.WZ
+    : '';
+  const ceteriSource = item.Ceteri || item.other || item.comparison || '';
+  const notesContent = item.Notes
+    ? item.Notes
+    : '';
+
+  return `
+    <div class="content-grid">
+      <section class="card card-section content-card">
+        <h3>Transcription</h3>
+        <div class="field-block transcription-block">${formatTextBlock(item.transcription)}</div>
+        ${buildAnalysisLink(item.analysisLink)}
+      </section>
+      <section class="card card-section content-card">
+        <h3>Translation</h3>
+        <div class="field-block translation-block">${formatTextBlock(item.translation)}</div>
+      </section>
+      ${buildReferenceCard('WZ', wzContent, item.WZLink, 'No WZ note yet.')}
+      ${buildReferenceCard('Cet.', ceteriSource, item.CeteriLink, 'No Cet. note yet.')}
+      ${buildReferenceCard('Notes', notesContent, item.NotesLink, 'No notes yet.', 'notes-card')}
     </div>
   `;
 }
@@ -504,31 +434,11 @@ function createEntryMarkup(prefix, item, index) {
   }
 
   const cardId = `${prefix}${index}`;
-  const compareId = `${cardId}-compare`;
-  const comparePanelClass = prefix === 'Hyb' ? 'card compare-panel compare-panel-left' : 'card compare-panel';
   return `
     <div class="column-cell">
       <div class="block" onclick="toggleCards('${cardId}')">${escapeHtml(item.label)}</div>
       <div class="cards" id="${cardId}">
-        <div class="transcription-row">
-          <div class="card card-section">
-            <div class="card-header">
-              <h3>Transcription</h3>
-              <button type="button" class="compare-button" onclick="toggleCompare('${compareId}', this)">Compare</button>
-            </div>
-            <div class="field-block transcription-block">${formatTextBlock(item.transcription)}</div>
-            ${buildAnalysisLink(item.analysisLink)}
-          </div>
-          <div class="${comparePanelClass}" id="${compareId}">
-            ${buildNotesMarkup(item)}
-          </div>
-        </div>
-        <details class="card-toggle">
-          <summary>Translation</summary>
-          <div class="card-body">
-            <div class="field-block translation-block">${formatTextBlock(item.translation)}</div>
-          </div>
-        </details>
+        ${buildInlineLayout(item)}
       </div>
     </div>
   `;
@@ -604,23 +514,21 @@ window.onload = () => {
             transcription: ``,
             translation: ``,
             analysisLink: "",
-            Vd: `Add notes here.`,
-            Link: "",
             WZ: `Add notes here.`, 
             WZLink: "",
             Ceteri: `Add notes here.`,
             CeteriLink: "",
-            Notes: `Add notes here.`
+            Notes: `Add notes here.`,
+            NotesLink: ""
           }));
         }
 
         const AhMCards = [
     { label: "Section 1", transcription: ``, 
           translation: ``, analysisLink: "", 
-          Vd: `Add notes here.`, VdLink: "", 
           WZ: `Add notes here.`, WZLink: "", 
           Ceteri: `Add notes here.`, CeteriLink: "", 
-          Notes: `Add notes here.`},
+          Notes: `Add notes here.`, NotesLink: ""},
           ...makeEmptySections(2, 10)
         ];
 
@@ -628,20 +536,18 @@ window.onload = () => {
         const DzCards = [
           { label: "Section 1", transcription: ``, 
           translation: ``, analysisLink: "", 
-          Vd: `Add notes here.`, VdLink: "", 
           WZ: `Add notes here.`, WZLink: "", 
           Ceteri: `Add notes here.`, CeteriLink: "", 
-          Notes: `Add notes here.`},
+          Notes: `Add notes here.`, NotesLink: ""},
           ...makeEmptySections(2, 10)
         ];
 
         const HybCards = [
     { label: "Section 1", transcription: ``, 
           translation: ``, analysisLink: "", 
-          Vd: `Add notes here.`, VdLink: "", 
           WZ: `Add notes here.`, WZLink: "", 
           Ceteri: `Add notes here.`, CeteriLink: "", 
-          Notes: `Add notes here.`},
+          Notes: `Add notes here.`, NotesLink: ""},
           ...makeEmptySections(2, 10)
         ];
 
